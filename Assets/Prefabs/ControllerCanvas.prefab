@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 7106220665280099405}
   - component: {fileID: 7106220665280099404}
   - component: {fileID: 1661238509564978428}
-  - component: {fileID: 3364665893095886243}
+  - component: {fileID: 2795262422937768017}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -373,19 +373,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7106220665280099405}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 7172939c05b083f40b6b56ac59140813, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1661238509564978428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +390,7 @@ MonoBehaviour:
   serverOnly: 0
   m_AssetId: 
   hasSpawned: 0
---- !u!114 &3364665893095886243
+--- !u!114 &2795262422937768017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -411,7 +399,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7106220665280099406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 909183c58f5c73c4c9abe451806a0b0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 614163a85ba28c4489eccaa3be9b228c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisButton: {fileID: 0}
