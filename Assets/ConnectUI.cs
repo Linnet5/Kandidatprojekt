@@ -13,11 +13,7 @@ public class ConnectUI : MonoBehaviour
     {
         networkManager = GameObject.Find("NetworkManager");
 
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            //UI.SetActive(true);
-        }
-        else
+        if (SystemInfo.deviceType != DeviceType.Handheld)
         {
             Destroy(gameObject);
         }
@@ -28,4 +24,5 @@ public class ConnectUI : MonoBehaviour
     {
         networkManager.GetComponent<Mirror.Discovery.NetworkDiscoveryHUD_Custom>().RefreshList();
     }
+        
 }

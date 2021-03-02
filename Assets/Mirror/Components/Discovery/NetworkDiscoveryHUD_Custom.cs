@@ -14,6 +14,15 @@ namespace Mirror.Discovery
         Vector2 scrollViewPos = Vector2.zero;
 
         public NetworkDiscovery networkDiscovery;
+        [SerializeField] private GameObject joinButton;
+        [SerializeField] private GameObject connectionUI;
+        private GameObject content;
+
+        private void Start()
+        {
+            //Fetch the content of the scroll view
+            content = connectionUI.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject;
+        }
 
 #if UNITY_EDITOR
         void OnValidate()
@@ -57,26 +66,19 @@ namespace Mirror.Discovery
                 discoveredServers.Clear();
                 networkDiscovery.StartDiscovery();
             }
-            /*
 
-            
-            // LAN Host
-            if (GUILayout.Button("Start Host"))
+            foreach (ServerResponse info in discoveredServers.Values)
             {
-                discoveredServers.Clear();
-                NetworkManager.singleton.StartHost();
-                networkDiscovery.AdvertiseServer();
-            }
+                var newJoinButton = Instantiate(joinButton, content.transform, false);
+                newJoinButton.transform.position = new Vector3(newJoinButton.transform.position.x, newJoinButton.transform.position.y - (140 * discoveredServers.Count), newJoinButton.transform.position.z);
 
-            // Dedicated server
-            if (GUILayout.Button("Start Server"))
-            {
-                discoveredServers.Clear();
-                NetworkManager.singleton.StartServer();
-
-                networkDiscovery.AdvertiseServer();
+                //newJoinButton.GetComponent<TextMesh>().text = "Computer " + discoveredServers.Count;    
+                if (GUILayout.Button("Computer " + discoveredServers.Count))
+                {
+                    Connect(info);
+                    Destroy(connectionUI);
+                }
             }
-            */
 
             GUILayout.EndHorizontal();
 
@@ -85,12 +87,8 @@ namespace Mirror.Discovery
             GUILayout.Label($"Discovered Servers [{discoveredServers.Count}]:");
 
             // servers
-            scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);
-
-            foreach (ServerResponse info in discoveredServers.Values)
-                if (GUILayout.Button("Computer " + discoveredServers.Count))
-                    Connect(info);
-
+            scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);   
+            
             GUILayout.EndScrollView();
         }
 
