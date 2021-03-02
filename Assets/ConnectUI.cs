@@ -25,10 +25,4 @@ public class ConnectUI : MonoBehaviour
     {
         networkManager.GetComponent<Mirror.Discovery.NetworkDiscoveryHUD_Custom>().RefreshList();
     }
-
-    public void Connect()
-    {
-
-    }
-
 }

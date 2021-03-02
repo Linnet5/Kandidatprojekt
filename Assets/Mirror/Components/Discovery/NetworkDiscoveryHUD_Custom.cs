@@ -50,7 +50,7 @@ namespace Mirror.Discovery
                     discoveredServers.Clear();
                     NetworkManager.singleton.StartServer();
                     networkDiscovery.AdvertiseServer();
-                    Instantiate(instructionCanvas);
+                    Instantiate(instructionCanvas).name = "ConnectionInstructions";
                 }
                 else
                 {
@@ -60,14 +60,6 @@ namespace Mirror.Discovery
 
             //Fetch content from gameobject in canvas
             content = connectionUI.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject;
-        }
-
-        private void Update()
-        {
-            if (NetworkClient.isConnected)
-            {
-                Destroy(instructionCanvas);
-            }
         }
 
         void Draw()
@@ -80,7 +72,7 @@ namespace Mirror.Discovery
                 networkDiscovery.StartDiscovery();
             } */
 
-            if(discoveredServers.Count > 0)
+            if (discoveredServers.Count > 0)
             {
                 Destroy(GameObject.Find("NoServerFoundText"));
             }
