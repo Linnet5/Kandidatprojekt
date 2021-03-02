@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Mirror.Discovery;
 
 public class ConnectUI : MonoBehaviour
 {
@@ -24,5 +25,10 @@ public class ConnectUI : MonoBehaviour
     {
         networkManager.GetComponent<Mirror.Discovery.NetworkDiscoveryHUD_Custom>().RefreshList();
     }
-        
+
+    public void Connect()
+    {
+
+    }
+
 }

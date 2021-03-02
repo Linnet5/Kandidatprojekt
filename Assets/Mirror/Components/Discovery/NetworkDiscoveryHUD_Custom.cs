@@ -18,12 +18,6 @@ namespace Mirror.Discovery
         [SerializeField] private GameObject connectionUI;
         private GameObject content;
 
-        private void Start()
-        {
-            //Fetch the content of the scroll view
-            content = connectionUI.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject;
-        }
-
 #if UNITY_EDITOR
         void OnValidate()
         {
@@ -36,8 +30,10 @@ namespace Mirror.Discovery
         }
 #endif
 
-        void OnGUI()
+        void Start()
         {
+            //Fetch the content of the scroll view
+
             if (NetworkManager.singleton == null)
                 return;
 
@@ -46,40 +42,58 @@ namespace Mirror.Discovery
 
             if (!NetworkClient.isConnected && !NetworkServer.active && !NetworkClient.active)
             {
-                DrawGUI();
+                Draw(); //Draw initial UI
                 if (SystemInfo.deviceType != DeviceType.Handheld)
                 {
+                    //Start server if device is not a mobile device
                     discoveredServers.Clear();
                     NetworkManager.singleton.StartServer();
                     networkDiscovery.AdvertiseServer();
                 }
+                else
+                {
+                    RefreshList(); //Refresh list of servers if starting application as mobile
+                }
             }
+
+            //Fetch content from gameobject in canvas
+            content = connectionUI.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject;
         }
 
-        void DrawGUI()
+        void Draw()
         {
-
-            GUILayout.BeginHorizontal();
-            
+            //GUILayout.BeginHorizontal();
+            /*
             if (GUILayout.Button("Refresh Server List"))
             {
                 discoveredServers.Clear();
                 networkDiscovery.StartDiscovery();
+            } */
+
+            if(discoveredServers.Count > 0)
+            {
+                Destroy(GameObject.Find("NoServerFoundText"));
             }
 
+            //Instantiate a button for each active server
             foreach (ServerResponse info in discoveredServers.Values)
             {
                 var newJoinButton = Instantiate(joinButton, content.transform, false);
-                newJoinButton.transform.position = new Vector3(newJoinButton.transform.position.x, newJoinButton.transform.position.y - (140 * discoveredServers.Count), newJoinButton.transform.position.z);
-
+                newJoinButton.transform.position = new Vector3(newJoinButton.transform.position.x, newJoinButton.transform.position.y - (140 * discoveredServers.Count - 1), newJoinButton.transform.position.z);
+                newJoinButton.GetComponent<Button>().onClick.AddListener( () => {
+                    Connect(info);
+                    Destroy(connectionUI);
+                });
                 //newJoinButton.GetComponent<TextMesh>().text = "Computer " + discoveredServers.Count;    
+                /*
                 if (GUILayout.Button("Computer " + discoveredServers.Count))
                 {
                     Connect(info);
                     Destroy(connectionUI);
-                }
+                } */
             }
 
+            /*
             GUILayout.EndHorizontal();
 
             // show list of found server
@@ -90,10 +104,12 @@ namespace Mirror.Discovery
             scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);   
             
             GUILayout.EndScrollView();
+            */
         }
 
         public void RefreshList()
         {
+            Draw();
             discoveredServers.Clear();
             networkDiscovery.StartDiscovery();
         }
