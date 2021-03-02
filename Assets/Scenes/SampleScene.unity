@@ -321,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5599164524670038103, guid: 9a4a7ef117e781f40896c4b7fdb0409d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000089960085
+      value: -0.000019028386
       objectReference: {fileID: 0}
     - target: {fileID: 5840716484795369213, guid: 9a4a7ef117e781f40896c4b7fdb0409d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -658,5 +658,9 @@ PrefabInstance:
       propertyPath: connectionUI
       value: 
       objectReference: {fileID: 531839243}
+    - target: {fileID: 7274845718128127159, guid: f195910a7e137eb4483aaa4f7eea0935, type: 3}
+      propertyPath: instructionCanvas
+      value: 
+      objectReference: {fileID: 144002021060120322, guid: faf107e2449bc504c973be80e60e36c3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f195910a7e137eb4483aaa4f7eea0935, type: 3}

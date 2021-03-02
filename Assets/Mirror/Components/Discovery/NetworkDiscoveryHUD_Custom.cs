@@ -16,6 +16,7 @@ namespace Mirror.Discovery
         public NetworkDiscovery networkDiscovery;
         [SerializeField] private GameObject joinButton;
         [SerializeField] private GameObject connectionUI;
+        [SerializeField] private GameObject instructionCanvas;
         private GameObject content;
 
 #if UNITY_EDITOR
@@ -49,6 +50,7 @@ namespace Mirror.Discovery
                     discoveredServers.Clear();
                     NetworkManager.singleton.StartServer();
                     networkDiscovery.AdvertiseServer();
+                    Instantiate(instructionCanvas);
                 }
                 else
                 {
@@ -58,6 +60,14 @@ namespace Mirror.Discovery
 
             //Fetch content from gameobject in canvas
             content = connectionUI.transform.GetChild(0).transform.GetChild(1).transform.GetChild(0).transform.GetChild(0).gameObject;
+        }
+
+        private void Update()
+        {
+            if (NetworkClient.isConnected)
+            {
+                Destroy(instructionCanvas);
+            }
         }
 
         void Draw()
