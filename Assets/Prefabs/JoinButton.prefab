@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Computer
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d434aebdf209aa543a0ad1372bab0508, type: 2}
-  m_sharedMaterial: {fileID: -5109647220251807971, guid: d434aebdf209aa543a0ad1372bab0508, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 41a2d880fe9583d4ead894803059c432, type: 2}
+  m_sharedMaterial: {fileID: 2494182885421290094, guid: 41a2d880fe9583d4ead894803059c432, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21.39
-  m_fontSizeBase: 21.39
+  m_fontSize: 14.45
+  m_fontSizeBase: 14.45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

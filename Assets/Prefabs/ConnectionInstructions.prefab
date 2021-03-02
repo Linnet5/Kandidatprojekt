@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.60784316, g: 0.77647066, b: 0.83921576, a: 1}
+  m_Color: {r: 0.9339623, g: 0.57083786, b: 0.3216002, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -106,8 +106,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 52.929, y: -55.5699}
-  m_SizeDelta: {x: 1000, y: 477.5022}
+  m_AnchoredPosition: {x: 33.912, y: -26}
+  m_SizeDelta: {x: 640.7058, y: 303.2578}
   m_Pivot: {x: 0.55292916, y: 0.5}
 --- !u!222 &144002020309415130
 CanvasRenderer:
@@ -144,8 +144,8 @@ MonoBehaviour:
     button for the computer or console you wish to pair with your mobile device.\r\n\r\nThat\u2019s
     it! Have a nice workout!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d434aebdf209aa543a0ad1372bab0508, type: 2}
-  m_sharedMaterial: {fileID: -5109647220251807971, guid: d434aebdf209aa543a0ad1372bab0508, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 41a2d880fe9583d4ead894803059c432, type: 2}
+  m_sharedMaterial: {fileID: 2494182885421290094, guid: 41a2d880fe9583d4ead894803059c432, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -169,10 +169,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 19.85
   m_fontSizeBase: 40
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -246,8 +246,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33.931, y: 251}
-  m_SizeDelta: {x: 858.3916, y: 57.8232}
+  m_AnchoredPosition: {x: 29.069, y: 183}
+  m_SizeDelta: {x: 735.1809, y: 45.116}
   m_Pivot: {x: 0.5395401, y: 0.5}
 --- !u!222 &144002020888030847
 CanvasRenderer:
@@ -277,10 +277,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tja
+  m_text: Welcome
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d434aebdf209aa543a0ad1372bab0508, type: 2}
-  m_sharedMaterial: {fileID: -5109647220251807971, guid: d434aebdf209aa543a0ad1372bab0508, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 41a2d880fe9583d4ead894803059c432, type: 2}
+  m_sharedMaterial: {fileID: 2494182885421290094, guid: 41a2d880fe9583d4ead894803059c432, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 2.350907, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}

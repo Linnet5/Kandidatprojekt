@@ -43,8 +43,7 @@ namespace Mirror.Discovery
 
             if (!NetworkClient.isConnected && !NetworkServer.active && !NetworkClient.active)
             {
-                Draw(); //Draw initial UI
-                if (SystemInfo.deviceType != DeviceType.Handheld)
+                if(SystemInfo.deviceType != DeviceType.Handheld)
                 {
                     //Start server if device is not a mobile device
                     discoveredServers.Clear();
@@ -54,7 +53,7 @@ namespace Mirror.Discovery
                 }
                 else
                 {
-                    RefreshList(); //Refresh list of servers if starting application as mobile
+                    RefreshList();
                 }
             }
 
@@ -64,51 +63,23 @@ namespace Mirror.Discovery
 
         void Draw()
         {
-            //GUILayout.BeginHorizontal();
-            /*
-            if (GUILayout.Button("Refresh Server List"))
-            {
-                discoveredServers.Clear();
-                networkDiscovery.StartDiscovery();
-            } */
-
+            //Clean up "no server" text
             if (discoveredServers.Count > 0)
-            {
                 Destroy(GameObject.Find("NoServerFoundText"));
-            }
 
-            //Instantiate a button for each active server
+            //Instantiate a button for each active server (Bug: only finds one server)
             foreach (ServerResponse info in discoveredServers.Values)
             {
                 var newJoinButton = Instantiate(joinButton, content.transform, false);
                 newJoinButton.transform.position = new Vector3(newJoinButton.transform.position.x, newJoinButton.transform.position.y - (140 * discoveredServers.Count - 1), newJoinButton.transform.position.z);
                 newJoinButton.GetComponent<Button>().onClick.AddListener( () => {
                     Connect(info);
-                    Destroy(connectionUI);
+                    Destroy(connectionUI);  //Connects to the chosen server and deletes the UI for server connecting.
                 });
-                //newJoinButton.GetComponent<TextMesh>().text = "Computer " + discoveredServers.Count;    
-                /*
-                if (GUILayout.Button("Computer " + discoveredServers.Count))
-                {
-                    Connect(info);
-                    Destroy(connectionUI);
-                } */
             }
-
-            /*
-            GUILayout.EndHorizontal();
-
-            // show list of found server
-
-            GUILayout.Label($"Discovered Servers [{discoveredServers.Count}]:");
-
-            // servers
-            scrollViewPos = GUILayout.BeginScrollView(scrollViewPos);   
-            
-            GUILayout.EndScrollView();
-            */
         }
 
+        //Refreshes list of servers
         public void RefreshList()
         {
             Draw();
