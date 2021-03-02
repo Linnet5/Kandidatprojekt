@@ -8,17 +8,17 @@ public class Gyro : MonoBehaviour
     //Gyro
     // Start is called before the first frame update
     void Start()
-    {/*
+    {
         if (SystemInfo.supportsGyroscope)
         {
             Input.gyro.enabled = true;
             Debug.Log("Im alive!");
         }
-        */
+        
     }
     
    
-    /*
+    
     // Update is called once per frame
     void Update()
     {
@@ -33,6 +33,6 @@ public class Gyro : MonoBehaviour
     {
         return new Quaternion(q.x, q.y, -q.z, -q.w);
     }
-   */
+   
     
 }
