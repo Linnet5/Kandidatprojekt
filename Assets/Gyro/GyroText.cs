@@ -14,6 +14,7 @@ public class GyroText : MonoBehaviour
     }
 
     private void Update() {
+        gyroRot = GyroManager.Instance.GetGyroRotation();
         GetComponent<Text>().text = gyroRot.ToString();
     }
 }
