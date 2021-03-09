@@ -1,15 +1,19 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Accelerometer : MonoBehaviour
 {
+
     //Move object using accelerometer
-    float speed = 10.0f;
+    float speed = 1.0f;
+
+
 
     // Update is called once per frame
     void Update()
     {
+        
         Vector3 dir = Vector3.zero;
-
         //we assume that device is held parallel to the ground
         //and Home button is in the right hand
 
@@ -28,6 +32,22 @@ public class Accelerometer : MonoBehaviour
 
         //Move object
         transform.Translate(dir * speed);
-            
+
+        //Skriva ut
+        //GetComponent<Text>().text = dir.ToString();
+        //Debug.Log("Accelerometer..." + dir.ToString());
+
     }
+  
+    //Collition with object TEST
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hit a trigger-Accel!");  
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Hitt collision-Accel");
+    }
+
 }

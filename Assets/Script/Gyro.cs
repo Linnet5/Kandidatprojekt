@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Gyro : MonoBehaviour
 {
-    
+
     //Gyro
     // Start is called before the first frame update
     void Start()
@@ -12,11 +12,12 @@ public class Gyro : MonoBehaviour
         if (SystemInfo.supportsGyroscope)
         {
             Input.gyro.enabled = true;
-            Debug.Log("Im alive!");
+            Debug.Log("Im alive in Gyro Start!");
+           
         }
-        
+
     }
-    
+
    
     
     // Update is called once per frame
@@ -25,14 +26,25 @@ public class Gyro : MonoBehaviour
         //Gyro
        if (SystemInfo.supportsGyroscope)
            transform.rotation = GyroToUnity(Input.gyro.attitude);
-    
+       
+
     }
     
     //Gryo
+    //Ska vara private
     private Quaternion GyroToUnity(Quaternion q)
     {
         return new Quaternion(q.x, q.y, -q.z, -q.w);
+        //Debug.Log("Gyro.." + q.ToString());
+
     }
-   
-    
+
+    //ToString
+
+    //collide
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hit a trigger-Gyro!");
+    }
+
 }
