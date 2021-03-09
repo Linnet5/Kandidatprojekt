@@ -14,6 +14,7 @@ public class Accelerometer : MonoBehaviour
     {
         
         Vector3 dir = Vector3.zero;
+        
         //we assume that device is held parallel to the ground
         //and Home button is in the right hand
 
@@ -22,6 +23,7 @@ public class Accelerometer : MonoBehaviour
         // 2) rotate 90 degrees around Y axis 
         dir.x = -Input.acceleration.y;
         dir.z = Input.acceleration.x;
+        Debug.Log("Accelerometer.bbbbbbbbbbbbbbb.." + dir.ToString());
 
         //clamp acceleration vector to unit sphere
         if (dir.sqrMagnitude > 1)
@@ -35,8 +37,8 @@ public class Accelerometer : MonoBehaviour
 
         //Skriva ut
         //GetComponent<Text>().text = dir.ToString();
-        //Debug.Log("Accelerometer..." + dir.ToString());
-
+        
+        
     }
   
     //Collition with object TEST

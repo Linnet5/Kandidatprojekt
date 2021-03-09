@@ -34,8 +34,10 @@ public class Gyro : MonoBehaviour
     //Ska vara private
     private Quaternion GyroToUnity(Quaternion q)
     {
+        Debug.Log("Gyro heeeeeeeeeeeeej.." + q.ToString());
+         //Debug.Log("Gyro..." + Quaternion.q.ToString());
         return new Quaternion(q.x, q.y, -q.z, -q.w);
-        //Debug.Log("Gyro.." + q.ToString());
+       
 
     }
 
