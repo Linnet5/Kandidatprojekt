@@ -15,9 +15,14 @@ public class FollowAccel : MonoBehaviour
     private void Update()
     {
         magnitude = GameObject.Find("accelSlider").GetComponent<Slider>().value;
-        accel = Input.acceleration;
+        accel = Input.gyro.userAcceleration;
         GetComponent<Rigidbody>().AddForce(magnitude * accel);
-        //GetComponent<Transform>().Translate(magnitude*accel);
+    }
+
+    public Vector3 GetAccel() {
+
+        return accel;
+    
     }
 
 }
