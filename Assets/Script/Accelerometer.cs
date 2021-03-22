@@ -17,7 +17,7 @@ public class Accelerometer : MonoBehaviour
         Screen.orientation = ScreenOrientation.Portrait;
 
         Vector3 dir = Vector3.zero;
-       // Vector3 dir1 = Input.acceleration;
+        // Vector3 dir1 = Input.acceleration;
 
         //we assume that device is held parallel to the ground
         //and Home button is in the right hand
@@ -30,8 +30,9 @@ public class Accelerometer : MonoBehaviour
         //dir.z = Input.acceleration.x;
         //Eget försök
         //dir.x = Input.acceleration.x;
-        dir.y = Input.acceleration.z;
-        //dir.z = -Input.acceleration.z;
+         dir.y = Input.acceleration.z;//Denna gör att den är 0 i stående
+        // dir.y = Input.acceleration.y;
+       // dir.z = -Input.acceleration.y;
 
         //transform.Translate(0, Input.acceleration.y, -Input.acceleration.z);
         /*
