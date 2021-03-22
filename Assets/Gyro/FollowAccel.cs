@@ -8,10 +8,12 @@ public class FollowAccel : MonoBehaviour
 
     Vector3 accel;
     float magnitude;
+
     private void Start()
     {
         magnitude = 0.0f;
     }
+
     private void Update()
     {
         magnitude = GameObject.Find("accelSlider").GetComponent<Slider>().value;
