@@ -6,15 +6,14 @@ public class FollowGyro : MonoBehaviour
 {
     [Header("Tweaks")]
     [SerializeField] private Quaternion baseRotation = new Quaternion(0, 0, 1, 0);
-    private Vector3 initial = new Vector3(90, 180, 0);
 
     private void Start() {
         GyroManager.Instance.EnableGyro();
     }
 
     private void Update() {
-        transform.eulerAngles = initial;
-        transform.localRotation = GyroToUnity(GyroManager.Instance.GetGyroRotation()) * baseRotation;
+        Quaternion appliedRot = GyroManager.Instance.GetGyroRotation() * baseRotation;
+        transform.localRotation = appliedRot;
     }
 
     private Quaternion GyroToUnity(Quaternion q)
