@@ -3,10 +3,11 @@ using UnityEngine.UI;
 
 public class Accelerometer : MonoBehaviour
 {
-
+    
     //Move object using accelerometer
     float speed = 1.0f;
-
+    //Vill få att 0 punkt är när mobilen är upprätt
+    public bool stand = true;
 
 
     // Update is called once per frame
@@ -14,15 +15,30 @@ public class Accelerometer : MonoBehaviour
     {
         
         Vector3 dir = Vector3.zero;
-        
+       // Vector3 dir1 = Input.acceleration;
+
         //we assume that device is held parallel to the ground
         //and Home button is in the right hand
 
         //remap device acceleration axis to game coordinates:
         // 1) XY plane of the device is mapped onto XZ plane
-        // 2) rotate 90 degrees around Y axis 
-        dir.x = -Input.acceleration.y;
-        dir.z = Input.acceleration.x;
+        // 2) rotate 90 degrees around Y axis
+        //Detta sade internett
+        //dir.x = -Input.acceleration.y;
+        //dir.z = Input.acceleration.x;
+        //Eget försök
+        //dir.x = Input.acceleration.x;
+        dir.y = -Input.acceleration.y;
+        //dir.z = Input.acceleration.z;
+
+        /*
+        if (stand)
+        {
+            dir1 = Quaternion.Euler(0, -90, 0) * dir1;
+        }
+        */
+        
+
         Debug.Log("Accelerometer.bbbbbbbbbbbbbbb.." + dir.ToString());
 
         //clamp acceleration vector to unit sphere
