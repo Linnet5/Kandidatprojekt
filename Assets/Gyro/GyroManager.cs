@@ -27,6 +27,7 @@ public class GyroManager : MonoBehaviour
     [Header("Logic")]
     private Gyroscope gyro;
     private Quaternion rotation;
+    private Vector3 rotationRate;
     private bool gyroActive;
 
     public void EnableGyro() {
@@ -46,7 +47,7 @@ public class GyroManager : MonoBehaviour
     private void Update() {
         if (gyroActive) {
             rotation = gyro.attitude;
-            Debug.Log(rotation);
+            rotationRate = gyro.rotationRateUnbiased;
         }
     }
 
@@ -54,6 +55,11 @@ public class GyroManager : MonoBehaviour
 
         return rotation;
 
+    }
+
+    public Vector3 GetGyroRotationRateUnbiased()
+    {
+        return rotationRate;
     }
 
 }
