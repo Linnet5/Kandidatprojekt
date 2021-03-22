@@ -13,7 +13,9 @@ public class Accelerometer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Portrait orientation
+        Screen.orientation = ScreenOrientation.Portrait;
+
         Vector3 dir = Vector3.zero;
        // Vector3 dir1 = Input.acceleration;
 
@@ -28,16 +30,17 @@ public class Accelerometer : MonoBehaviour
         //dir.z = Input.acceleration.x;
         //Eget försök
         //dir.x = Input.acceleration.x;
-        dir.y = -Input.acceleration.y;
-        //dir.z = Input.acceleration.z;
+        dir.y = Input.acceleration.z;
+        //dir.z = -Input.acceleration.z;
 
+        //transform.Translate(0, Input.acceleration.y, -Input.acceleration.z);
         /*
         if (stand)
         {
             dir1 = Quaternion.Euler(0, -90, 0) * dir1;
         }
         */
-        
+
 
         Debug.Log("Accelerometer.bbbbbbbbbbbbbbb.." + dir.ToString());
 
