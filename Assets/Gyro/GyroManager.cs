@@ -46,7 +46,7 @@ public class GyroManager : MonoBehaviour
     private void Update() {
         if (gyroActive) {
             rotation = gyro.attitude;
-            Debug.Log(rotation);
+            // Debug.Log(rotation);
         }
     }
 
