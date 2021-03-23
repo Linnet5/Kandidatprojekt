@@ -13,6 +13,6 @@ public class ObjectMover : MonoBehaviour
 
         Debug.Log("POSITION" + accel);
 
-        GetComponent<Transform>().position = accel;
+        GetComponent<Transform>().position += accel;
     }
 }
