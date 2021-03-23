@@ -73,7 +73,8 @@ public class RecorderButton : MonoBehaviour
 
             }
 
-            else if (timeRemaining > 1) {
+            if (timeRemaining > 0.5f)
+            {
                 gyroSnapshot = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
             }
 
@@ -89,10 +90,11 @@ public class RecorderButton : MonoBehaviour
 
                 Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
                 gyroList.Add(gyroData);
-                Vector3 gyrodatakali = gyroData - gyroSnapshot;
                 Debug.Log("GYRO: " + gyroData);
-                Debug.Log("KALIBRERAD GYRO: " + gyrodatakali);
+                Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
             }
+
+
         }
 
         else {
