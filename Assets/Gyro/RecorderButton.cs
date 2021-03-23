@@ -26,6 +26,7 @@ public class RecorderButton : MonoBehaviour
     {
 
         GameObject recorder = new GameObject("Recorder");
+        GameObject analyzer = new GameObject("Analyzer");
         recorder.AddComponent<FollowGyro>();
         recorder.AddComponent<FollowAccel>();
 
@@ -54,11 +55,14 @@ public class RecorderButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (record == true)
         {
+            
+
             if (timeRemaining > 0)
             {
+                accelList.Clear();
+                gyroList.Clear();
                 if (Mathf.RoundToInt(timeRemaining) > 2)
                 {
                     GetComponent<Image>().color = green;
@@ -68,11 +72,11 @@ public class RecorderButton : MonoBehaviour
                     GetComponent<Image>().color = yellow;
                 }
 
-                GameObject.Find("ButtonText").GetComponent<Text>().text = Mathf.RoundToInt(timeRemaining).ToString();
+                GameObject.Find("ButtonRecordText").GetComponent<Text>().text = Mathf.RoundToInt(timeRemaining).ToString();
                 timeRemaining -= Time.deltaTime;
 
             }
-
+            
             if (timeRemaining > 0.5f)
             {
                 gyroSnapshot = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
@@ -82,7 +86,7 @@ public class RecorderButton : MonoBehaviour
             {
 
                 GetComponent<Image>().color = red;
-                GameObject.Find("ButtonText").GetComponent<Text>().text = "RECORDING!";
+                GameObject.Find("ButtonRecordText").GetComponent<Text>().text = "RECORDING!";
 
                 //RECORD ACCEL AND GYRO VECTORS
                 Vector3 accelData = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
@@ -99,7 +103,7 @@ public class RecorderButton : MonoBehaviour
 
         else {
             GetComponent<Image>().color = bluegray;
-            GameObject.Find("ButtonText").GetComponent<Text>().text = "Record";
+            GameObject.Find("ButtonRecordText").GetComponent<Text>().text = "Record";
             timeRemaining = countdown;
         }
     }
@@ -108,7 +112,6 @@ public class RecorderButton : MonoBehaviour
 
         if (record == true)
         {
-            
             record = false;
         }
 
@@ -119,10 +122,4 @@ public class RecorderButton : MonoBehaviour
         
     }
 
-    public Quaternion RecordMotion() {
-
-        Quaternion recordedmotion = new Quaternion();
-
-        return recordedmotion;
-    }
 }
