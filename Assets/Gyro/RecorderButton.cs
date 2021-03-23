@@ -82,8 +82,7 @@ public class RecorderButton : MonoBehaviour
                 Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
                 gyroList.Add(gyroData);
 
-                Debug.Log("Accel" + accelData);
-                Debug.Log("Gyro" + gyroData);
+
 
             }
         }

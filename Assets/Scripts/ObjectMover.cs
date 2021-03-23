@@ -11,8 +11,6 @@ public class ObjectMover : MonoBehaviour
     {
         accel = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
 
-        Debug.Log("POSITION" + accel);
-
         GetComponent<Transform>().position += accel;
     }
 }
