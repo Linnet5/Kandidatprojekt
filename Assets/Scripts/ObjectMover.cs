@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class AccelText : MonoBehaviour
+public class ObjectMover : MonoBehaviour
 {
-
     Vector3 accel;
+
+    // Update is called once per frame
     void Update()
     {
         accel = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
-        GetComponent<Text>().text = accel.ToString();
 
+        Debug.Log("POSITION" + accel);
+
+        GetComponent<Transform>().position = accel;
     }
 }

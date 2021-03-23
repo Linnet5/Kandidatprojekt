@@ -24,7 +24,7 @@ public class RecorderButton : MonoBehaviour
     void Start()
     {
 
-        GameObject recorder = new GameObject("RECORDER");
+        GameObject recorder = new GameObject("Recorder");
         recorder.AddComponent<FollowGyro>();
         recorder.AddComponent<FollowAccel>();
 
@@ -76,10 +76,10 @@ public class RecorderButton : MonoBehaviour
                 GameObject.Find("ButtonText").GetComponent<Text>().text = "RECORDING!";
 
                 //RECORD ACCEL AND GYRO VECTORS
-                Vector3 accelData = GameObject.Find("RECORDER").GetComponent<FollowAccel>().GetAccel();
+                Vector3 accelData = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
                 accelList.Add(accelData);
 
-                Vector3 gyroData = GameObject.Find("RECORDER").GetComponent<FollowGyro>().GetGyro();
+                Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
                 gyroList.Add(gyroData);
 
                 Debug.Log("Accel" + accelData);
