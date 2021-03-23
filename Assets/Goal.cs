@@ -9,6 +9,10 @@ public class Goal : MonoBehaviour
     private int repGoal = 0;
     [SerializeField] private GameObject gm;
     [SerializeField] private GameObject playerObj;
+    public AudioClip success;
+    public AudioClip fail;
+    public AudioSource audioSource; 
+
     private GameMaster gmScript;
     // Start is called before the first frame update
     void Start()
@@ -36,10 +40,15 @@ public class Goal : MonoBehaviour
         if (repProgress == repGoal)
         {
             gmScript.IncrementScore();
-
+            audioSource.PlayOneShot(success);
+        }
+        else
+        {
+            audioSource.PlayOneShot(fail);
         }
         repProgress = 0;
         playerObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        
 
     }
 
