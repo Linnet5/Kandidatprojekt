@@ -9,7 +9,8 @@ public class AccelText : MonoBehaviour
     Vector3 accel;
     void Update()
     {
-        accel = GameObject.Find("Cube").GetComponent<FollowAccel>().GetAccel();
+        accel = GameObject.Find("RECORDER").GetComponent<FollowAccel>().GetAccel();
         GetComponent<Text>().text = accel.ToString();
+
     }
 }

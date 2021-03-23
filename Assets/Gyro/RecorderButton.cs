@@ -14,9 +14,20 @@ public class RecorderButton : MonoBehaviour
     float timeRemaining;
     float countdown;
 
+    //List
+    //private ArrayList arrayList;
+    private List<Vector3> accelList;
+    private List<Vector3> gyroList;
+
+
     // Start is called before the first frame update
     void Start()
     {
+
+        GameObject recorder = new GameObject("RECORDER");
+        recorder.AddComponent<FollowGyro>();
+        recorder.AddComponent<FollowAccel>();
+
         record = false;
         red = new Color(255, 0, 0);
         green = new Color(0, 255, 0);
@@ -32,7 +43,10 @@ public class RecorderButton : MonoBehaviour
         countdown = 3.4f;
         timeRemaining = countdown;
 
-        
+        //List
+        accelList = new List<Vector3>();
+        gyroList = new List<Vector3>();
+
 
     }
 
@@ -57,10 +71,20 @@ public class RecorderButton : MonoBehaviour
 
             }
             else {
-
+                
                 GetComponent<Image>().color = red;
                 GameObject.Find("ButtonText").GetComponent<Text>().text = "RECORDING!";
-                
+
+                //RECORD ACCEL AND GYRO VECTORS
+                Vector3 accelData = GameObject.Find("RECORDER").GetComponent<FollowAccel>().GetAccel();
+                accelList.Add(accelData);
+
+                Vector3 gyroData = GameObject.Find("RECORDER").GetComponent<FollowGyro>().GetGyro();
+                gyroList.Add(gyroData);
+
+                Debug.Log("Accel" + accelData);
+                Debug.Log("Gyro" + gyroData);
+
             }
         }
 
