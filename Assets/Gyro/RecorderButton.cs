@@ -18,6 +18,7 @@ public class RecorderButton : MonoBehaviour
     //private ArrayList arrayList;
     private List<Vector3> accelList;
     private List<Vector3> gyroList;
+    Vector3 gyroSnapshot;
 
 
     // Start is called before the first frame update
@@ -62,16 +63,23 @@ public class RecorderButton : MonoBehaviour
                 {
                     GetComponent<Image>().color = green;
                 }
-                else {
+                else
+                {
                     GetComponent<Image>().color = yellow;
                 }
-                
+
                 GameObject.Find("ButtonText").GetComponent<Text>().text = Mathf.RoundToInt(timeRemaining).ToString();
                 timeRemaining -= Time.deltaTime;
 
             }
-            else {
-                
+
+            else if (timeRemaining > 1) {
+                gyroSnapshot = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
+            }
+
+            else
+            {
+
                 GetComponent<Image>().color = red;
                 GameObject.Find("ButtonText").GetComponent<Text>().text = "RECORDING!";
 
@@ -82,8 +90,8 @@ public class RecorderButton : MonoBehaviour
                 Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
                 gyroList.Add(gyroData);
 
-
-
+                Debug.Log("GYRO: " + gyroData);
+                Debug.Log("KALIBRERAD GYRO: " + (gyroData-gyroSnapshot));
             }
         }
 

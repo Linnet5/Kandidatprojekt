@@ -25,6 +25,10 @@ public class FollowGyro : MonoBehaviour
     {
         return gyro;
     }
+
+    //private Vector3 GetCalibrationRef(Vector3 input) {
+    //    return -input;
+    //}
 }
 
 
