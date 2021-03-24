@@ -32,10 +32,7 @@ public class Analyzer : MonoBehaviour
             output.Add(inputSum / ((float)samplesPerMean));
 
         }
-
         return output;
-        
-        
     }
 
     private void Analyze(List<Vector3> accel, List<Vector3> gyro, List<Vector3> referenceAccel, List<Vector3> referenceGyro) {

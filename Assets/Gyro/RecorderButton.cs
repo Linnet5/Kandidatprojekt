@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class RecorderButton : MonoBehaviour
 {
 
     bool record;
+    bool save;
     Color red;
     Color green;
     Color yellow;
@@ -31,6 +33,7 @@ public class RecorderButton : MonoBehaviour
         recorder.AddComponent<FollowAccel>();
 
         record = false;
+        save = false;
         red = new Color(255, 0, 0);
         green = new Color(0, 255, 0);
         yellow = new Color(255,255,0);
@@ -57,7 +60,6 @@ public class RecorderButton : MonoBehaviour
     {
         if (record == true)
         {
-            
 
             if (timeRemaining > 0)
             {
@@ -96,6 +98,9 @@ public class RecorderButton : MonoBehaviour
                 gyroList.Add(gyroData);
                 Debug.Log("GYRO: " + gyroData);
                 Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
+
+                save = true;
+
             }
 
 
@@ -105,7 +110,28 @@ public class RecorderButton : MonoBehaviour
             GetComponent<Image>().color = bluegray;
             GameObject.Find("ButtonRecordText").GetComponent<Text>().text = "Record";
             timeRemaining = countdown;
+
+            if (save == true) {
+                SaveData(accelList, "accelData");
+                SaveData(gyroList, "gyroData");
+            }
+
         }
+
+        
+    }
+
+    private void SaveData(List<Vector3> list, string fileName) {
+        string path = Application.persistentDataPath + "/" + fileName + ".txt";
+        string lineOutput = "";
+
+        for(int i = 0; i < list.Count; i++)
+        {
+            lineOutput += list[i].ToString() + "\n"; 
+        }
+
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.Write(lineOutput);
     }
 
     public void ButtonPressed() {
