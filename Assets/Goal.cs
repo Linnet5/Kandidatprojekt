@@ -6,7 +6,7 @@ public class Goal : MonoBehaviour
 {
 
     private int repProgress = 0;
-    private int repGoal = 0;
+    [SerializeField] private int repGoal;
     [SerializeField] private GameObject gm;
     [SerializeField] private GameObject playerObj;
     public AudioClip success;
@@ -20,7 +20,7 @@ public class Goal : MonoBehaviour
     void Start()
     {
         //repGoal changes depending on excerisize
-        repGoal = 2;
+        
 
         gmScript = gm.GetComponent<GameMaster>();
     }
@@ -64,6 +64,7 @@ public class Goal : MonoBehaviour
         }
         repProgress = 0;
         playerObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        
         
 
     }
