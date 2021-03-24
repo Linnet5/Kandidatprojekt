@@ -1,0 +1,12 @@
+
+
+%%
+% För att titta på datan som sparas i mobilen
+
+
+clear;
+clc;
+
+
+
+[accelX, accelY, accelZ] = textread('accelData.txt', )

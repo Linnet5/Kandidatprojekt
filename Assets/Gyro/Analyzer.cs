@@ -22,7 +22,7 @@ public class Analyzer : MonoBehaviour
         List<Vector3> output = new List<Vector3>();
 
         samplesPerMean = Mathf.FloorToInt(input.Count / numberOfMeans);
-
+        
         for(int i = 0; i < numberOfMeans; i++)
         {
             for (int j = i*samplesPerMean; j < (i+1)*samplesPerMean; j++)
@@ -30,7 +30,7 @@ public class Analyzer : MonoBehaviour
                 inputSum += input[j];
             }
             output.Add(inputSum / ((float)samplesPerMean));
-
+            
         }
         return output;
     }
@@ -41,6 +41,12 @@ public class Analyzer : MonoBehaviour
         meanGyro = CreateMeans(gyro);
         meanReferenceAccel = CreateMeans(referenceAccel);
         meanReferenceGyro = CreateMeans(referenceGyro);
+
+    }
+
+    public List<Vector3> GetMeans(List<Vector3> input) {
+        
+        return CreateMeans(input);
 
     }
 

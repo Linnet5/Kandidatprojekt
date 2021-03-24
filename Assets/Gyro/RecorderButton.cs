@@ -20,17 +20,23 @@ public class RecorderButton : MonoBehaviour
     //private ArrayList arrayList;
     private List<Vector3> accelList;
     private List<Vector3> gyroList;
+    private List<Vector3> meanAccelList;
+    private List<Vector3> meanGyroList;
     Vector3 gyroSnapshot;
+    GameObject recorder;
+    GameObject analyzer;
 
 
     // Start is called before the first frame update
     void Start()
     {
 
-        GameObject recorder = new GameObject("Recorder");
-        GameObject analyzer = new GameObject("Analyzer");
+        recorder = new GameObject("Recorder");
         recorder.AddComponent<FollowGyro>();
         recorder.AddComponent<FollowAccel>();
+        analyzer = new GameObject("Analyzer");
+        analyzer.AddComponent<Analyzer>();
+        
 
         record = false;
         save = false;
@@ -51,7 +57,8 @@ public class RecorderButton : MonoBehaviour
         //List
         accelList = new List<Vector3>();
         gyroList = new List<Vector3>();
-
+        meanAccelList = new List<Vector3>();
+        meanAccelList = new List<Vector3>();
 
     }
 
@@ -95,9 +102,9 @@ public class RecorderButton : MonoBehaviour
                 accelList.Add(accelData);
 
                 Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
-                gyroList.Add(gyroData);
-                Debug.Log("GYRO: " + gyroData);
-                Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
+                gyroList.Add(gyroData-gyroSnapshot);
+                //Debug.Log("GYRO: " + gyroData);
+                //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
 
                 save = true;
 
@@ -112,8 +119,13 @@ public class RecorderButton : MonoBehaviour
             timeRemaining = countdown;
 
             if (save == true) {
-                SaveData(accelList, "accelData");
-                SaveData(gyroList, "gyroData");
+                //SaveData(accelList, "accelData");
+                //SaveData(gyroList, "gyroData");
+                meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
+                meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
+                SaveData(meanAccelList, "meanAccelData");
+                SaveData(meanGyroList, "meanGyroData");
+                save = false;
             }
 
         }
@@ -127,7 +139,8 @@ public class RecorderButton : MonoBehaviour
 
         for(int i = 0; i < list.Count; i++)
         {
-            lineOutput += list[i].ToString() + "\n"; 
+            lineOutput += list[i].ToString() + "\n";
+            Debug.Log(list[i].ToString());
         }
 
         StreamWriter writer = new StreamWriter(path, true);
