@@ -15,10 +15,12 @@ public class Analyzer : MonoBehaviour
     private List<Vector3> meanAccel;
     private List<Vector3> meanGyro;
     Vector3 inputSum = Vector3.zero;
+    private float floatConversion;
+    
 
     private List<Vector3> CreateMeans(List<Vector3> input)
     {
-        
+
         List<Vector3> output = new List<Vector3>();
 
         samplesPerMean = Mathf.FloorToInt(input.Count / numberOfMeans);
@@ -29,7 +31,8 @@ public class Analyzer : MonoBehaviour
             {
                 inputSum += input[j];
             }
-            output.Add(inputSum / ((float)samplesPerMean));
+            floatConversion = (float)samplesPerMean;
+            output.Add(inputSum / samplesPerMean);
             
         }
         return output;

@@ -123,6 +123,8 @@ public class RecorderButton : MonoBehaviour
                 //SaveData(gyroList, "gyroData");
                 meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
                 meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
+                //meanAccelList = accelList;
+                //meanGyroList = gyroList;
                 SaveData(meanAccelList, "meanAccelData");
                 SaveData(meanGyroList, "meanGyroData");
                 save = false;
@@ -140,7 +142,6 @@ public class RecorderButton : MonoBehaviour
         for(int i = 0; i < list.Count; i++)
         {
             lineOutput += list[i].ToString() + "\n";
-            Debug.Log(list[i].ToString());
         }
 
         StreamWriter writer = new StreamWriter(path, true);
