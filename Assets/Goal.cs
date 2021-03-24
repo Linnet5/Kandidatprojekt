@@ -11,6 +11,8 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject playerObj;
     public AudioClip success;
     public AudioClip fail;
+    public AudioClip greatJob;
+    public AudioClip victory;
     public AudioSource audioSource; 
 
     private GameMaster gmScript;
@@ -37,10 +39,24 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (repProgress == repGoal)
         {
+            //Successful rep
             gmScript.IncrementScore();
-            audioSource.PlayOneShot(success);
+            if(gmScript.score == 3)
+            {
+                //Win the game
+                audioSource.PlayOneShot(victory);
+                audioSource.PlayOneShot(greatJob);
+                Vibration.Vibrate(1000);
+                playerObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+            }
+            else
+            { 
+                Vibration.Vibrate(100);
+                audioSource.PlayOneShot(success);
+            }
         }
         else
         {
