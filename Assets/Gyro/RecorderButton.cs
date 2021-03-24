@@ -60,6 +60,9 @@ public class RecorderButton : MonoBehaviour
         meanAccelList = new List<Vector3>();
         meanAccelList = new List<Vector3>();
 
+        //File counter
+        
+
     }
 
     // Update is called once per frame
@@ -134,7 +137,15 @@ public class RecorderButton : MonoBehaviour
     }
 
     private void SaveData(List<Vector3> list, string fileName) {
-        string path = Application.persistentDataPath + "/" + fileName + ".txt";
+        int counter = 0;
+        string path = Application.persistentDataPath + "/" + fileName + counter.ToString() + ".txt";
+        while (System.IO.File.Exists(path))
+        {
+            counter++;
+            path = Application.persistentDataPath + "/" + fileName + counter.ToString() + ".txt";
+        }
+
+        
         string lineOutput = "";
 
         for(int i = 0; i < list.Count; i++)

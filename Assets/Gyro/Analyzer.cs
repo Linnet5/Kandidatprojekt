@@ -45,6 +45,8 @@ public class Analyzer : MonoBehaviour
         meanReferenceAccel = CreateMeans(referenceAccel);
         meanReferenceGyro = CreateMeans(referenceGyro);
 
+
+
     }
 
     public List<Vector3> GetMeans(List<Vector3> input) {
