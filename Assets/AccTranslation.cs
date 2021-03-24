@@ -28,23 +28,49 @@ public class AccTranslation : MonoBehaviour
             dt += ae.deltaTime;
         }
         float m = a_avg.magnitude;
-        a_avg.y += 1.005f;
+        a_avg.y += 1.0f;
         a_avg *= (dt * dt);
         // Debug.Log(a_avg.x + ", " + a_avg.y + ", " + a_avg.z);
         a_avg = RemoveNoise(a_avg);
-
         if (dt > 0.2 )
         {
             if (onlyDown)
             {
-
+                if(a_avg.y < 0.0f)
+                {
+                    Vector3 v = new Vector3(0, 10.0f * a_avg.y * m * m, 0);
+                    transform.Translate(v);
+                    dt = 0.0f;
+                }
+                else
+                {
+                    Vector3 v = new Vector3(0, 0, 0);
+                    transform.Translate(v);
+                    dt = 0.0f;
+                }
             }
-            Vector3 v = new Vector3(0, 10.0f * a_avg.y * m * m, 0);
-            transform.Translate(v);
-            dt = 0.0f;
+            else if (onlyUp)
+            {
+                if (a_avg.y > 0.0f)
+                {
+                    Vector3 v = new Vector3(0, 10.0f * a_avg.y * m * m, 0);
+                    transform.Translate(v);
+                    dt = 0.0f;
+                }
+                else
+                {
+                    Vector3 v = new Vector3(0, 0, 0);
+                    transform.Translate(v);
+                    dt = 0.0f;
+                }
+            }
+            else
+            {
+                Vector3 v = new Vector3(0, 10.0f * a_avg.y * m * m, 0);
+                transform.Translate(v);
+                dt = 0.0f;
+            }
         }
-
-
     }
 
     void OnTriggerEnter(Collider other)
@@ -55,11 +81,13 @@ public class AccTranslation : MonoBehaviour
         {
             Debug.Log("Bottom");
             onlyUp = true;
+            onlyDown = false;
         }
         else if (other.name == "CollisionTop")
         {
             Debug.Log("Top");
             onlyDown = true;
+            onlyUp = false;
         }
     }
 
