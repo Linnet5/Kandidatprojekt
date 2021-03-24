@@ -32,7 +32,7 @@ public class Analyzer : MonoBehaviour
                 inputSum += input[j];
             }
             floatConversion = (float)samplesPerMean;
-            output.Add(inputSum / samplesPerMean);
+            output.Add(inputSum / floatConversion);
             
         }
         return output;

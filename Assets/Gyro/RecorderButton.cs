@@ -119,14 +119,12 @@ public class RecorderButton : MonoBehaviour
             timeRemaining = countdown;
 
             if (save == true) {
-                //SaveData(accelList, "accelData");
-                //SaveData(gyroList, "gyroData");
+                SaveData(accelList, "accelData");
+                SaveData(gyroList, "gyroData");
                 meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
                 meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
-                //meanAccelList = accelList;
-                //meanGyroList = gyroList;
-                SaveData(meanAccelList, "meanAccelData");
-                SaveData(meanGyroList, "meanGyroData");
+                SaveData(meanAccelList, "meanAccelList");
+                SaveData(meanGyroList, "meanGyroList");
                 save = false;
             }
 
@@ -146,6 +144,8 @@ public class RecorderButton : MonoBehaviour
 
         StreamWriter writer = new StreamWriter(path, true);
         writer.Write(lineOutput);
+        writer.Flush();
+        writer.Close();
     }
 
     public void ButtonPressed() {
