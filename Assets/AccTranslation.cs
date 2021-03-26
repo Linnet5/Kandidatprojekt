@@ -8,6 +8,9 @@ public class AccTranslation : MonoBehaviour
     public Rigidbody rb;
     bool onlyDown = false;
     bool onlyUp = false;
+    bool stage1 = false;
+    bool stage2 = false;
+    int i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,7 @@ public class AccTranslation : MonoBehaviour
         a_avg *= (dt * dt);
         // Debug.Log(a_avg.x + ", " + a_avg.y + ", " + a_avg.z);
         a_avg = RemoveNoise(a_avg);
+
         if (dt > 0.2 )
         {
             if (onlyDown)
@@ -71,6 +75,14 @@ public class AccTranslation : MonoBehaviour
                 dt = 0.0f;
             }
         }
+
+        if (stage1 && stage2)
+        {
+            i++;
+            stage1 = false;
+            stage2 = false;
+            Debug.Log(i);
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -82,14 +94,21 @@ public class AccTranslation : MonoBehaviour
             Debug.Log("Bottom");
             onlyUp = true;
             onlyDown = false;
+            stage1 = true;
+
         }
         else if (other.name == "CollisionTop")
         {
             Debug.Log("Top");
             onlyDown = true;
             onlyUp = false;
+            if (stage1)
+            {
+                stage2 = true;
+            }
         }
     }
+
 
 
     // Ignore small accelerometer inputs
