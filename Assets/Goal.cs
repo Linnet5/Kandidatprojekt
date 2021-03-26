@@ -8,7 +8,7 @@ public class Goal : MonoBehaviour
     private int repProgress = 0;
     [SerializeField] private int repGoal;
     [SerializeField] private GameObject gm;
-    [SerializeField] private GameObject playerObj;
+    [SerializeField] private GameObject calibrationParentObj;
     public AudioClip success;
     public AudioClip fail;
     public AudioClip greatJob;
@@ -50,7 +50,7 @@ public class Goal : MonoBehaviour
                 audioSource.PlayOneShot(victory);
                 audioSource.PlayOneShot(greatJob);
                 Vibration.Vibrate(1000);
-                playerObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+                calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
             }
             else
             { 
@@ -63,7 +63,7 @@ public class Goal : MonoBehaviour
             audioSource.PlayOneShot(fail);
         }
         repProgress = 0;
-        playerObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        calibrationParentObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         
         
 

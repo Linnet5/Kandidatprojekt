@@ -6,16 +6,19 @@ public class ParentCoordinates : MonoBehaviour
 {
     GyroManager gm;
     private float initialYAngle = 0f;
+    private GameObject target;
     void Start()
     {
         StartCoroutine("Calibrate");
         initialYAngle = transform.rotation.y;
+        target = GameObject.Find("Target");
     }
 
     IEnumerator Calibrate()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
         gm = GameObject.Find("Spawned GyroManager").GetComponent<GyroManager>();
-        transform.Rotate(0f, initialYAngle -gm.GetGyroRotation().eulerAngles.y, 0f, Space.World);
+        transform.LookAt(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
+        gameObject.GetComponent<Movement>().canMove = true;
     }
 }

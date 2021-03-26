@@ -5,17 +5,21 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
+    public bool canMove;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        canMove = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = transform.position + new Vector3(movementSpeed * Time.deltaTime, 0, 0);
+        if(canMove)
+        {
+            transform.position = transform.position + new Vector3(movementSpeed * Time.deltaTime, 0, 0);
+        }
     }
 
     public void SetMovementSpeed(int inSpeed)
