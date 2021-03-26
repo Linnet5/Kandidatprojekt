@@ -41,13 +41,14 @@ public class Analyzer : MonoBehaviour
 
         Debug.Log(numberOfMeans);
 
-        inputSum = Vector3.zero;
+        
         List<Vector3> output = new List<Vector3>();
 
         samplesPerMean = Mathf.FloorToInt(input.Count / numberOfMeans);
         
         for(int i = 0; i < numberOfMeans; i++)
         {
+            inputSum = Vector3.zero;
             for (int j = i*samplesPerMean; j < (i+1)*samplesPerMean; j++)
             {
                 inputSum += input[j];
