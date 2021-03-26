@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Analyzer : MonoBehaviour
 {
 
     private bool result;
-    private int numberOfMeans = 5; //FIXA I UI
+    private int standardNom = 10; //
+    private int numberOfMeans;
     int samplesPerMean;
     private List<Vector3> referenceAccel;
     private List<Vector3> referenceGyro;
@@ -14,13 +16,32 @@ public class Analyzer : MonoBehaviour
     private List<Vector3> meanReferenceGyro;
     private List<Vector3> meanAccel;
     private List<Vector3> meanGyro;
-    Vector3 inputSum = Vector3.zero;
+    Vector3 inputSum;
     private float floatConversion;
-    
+    private GameObject NomInputField;
+
+
+
+    private void Start()
+    {
+        NomInputField = GameObject.Find("NomInputField");
+        numberOfMeans = standardNom;
+    }
 
     private List<Vector3> CreateMeans(List<Vector3> input)
     {
+        if (!(NomInputField.GetComponent<InputField>().text == ""))
+        {
+            numberOfMeans = int.Parse(NomInputField.GetComponent<InputField>().text);
+        }
 
+        else {
+            numberOfMeans = standardNom;
+        }
+
+        Debug.Log(numberOfMeans);
+
+        inputSum = Vector3.zero;
         List<Vector3> output = new List<Vector3>();
 
         samplesPerMean = Mathf.FloorToInt(input.Count / numberOfMeans);
@@ -53,6 +74,11 @@ public class Analyzer : MonoBehaviour
         
         return CreateMeans(input);
 
+    }
+
+    public int GetNom()
+    {
+        return numberOfMeans;
     }
 
     public bool GetResult() {

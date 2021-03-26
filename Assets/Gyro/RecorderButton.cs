@@ -25,6 +25,9 @@ public class RecorderButton : MonoBehaviour
     Vector3 gyroSnapshot;
     GameObject recorder;
     GameObject analyzer;
+    GameObject nameInputField;
+    GameObject nomInputField;
+    private int nomInput;
 
 
     // Start is called before the first frame update
@@ -36,6 +39,7 @@ public class RecorderButton : MonoBehaviour
         recorder.AddComponent<FollowAccel>();
         analyzer = new GameObject("Analyzer");
         analyzer.AddComponent<Analyzer>();
+        nameInputField = GameObject.Find("NameInputField");
         
 
         record = false;
@@ -121,13 +125,18 @@ public class RecorderButton : MonoBehaviour
             GameObject.Find("ButtonRecordText").GetComponent<Text>().text = "Record";
             timeRemaining = countdown;
 
+            //ADD NAME INPUT
+            string nameInput = nameInputField.GetComponent<InputField>().text;
+            
+
             if (save == true) {
-                SaveData(accelList, "accelData");
-                SaveData(gyroList, "gyroData");
                 meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
                 meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
-                SaveData(meanAccelList, "meanAccelList");
-                SaveData(meanGyroList, "meanGyroList");
+                nomInput = analyzer.GetComponent<Analyzer>().GetNom();
+                SaveData(accelList, nameInput+"-" + nomInput + "accelList-");
+                SaveData(gyroList, nameInput+"-" + nomInput + "gyroList-");
+                SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
+                SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
                 save = false;
             }
 

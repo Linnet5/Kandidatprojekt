@@ -8,9 +8,10 @@ clear;
 clc;
 
 
+figure;
+[par1, accelX, koma1, accelY, koma2, accelZ, par2] = textread('meanGyroList4.txt', '%c %f %c %f %c %f  %c');
 
-[par1, accelX, koma1, accelY, koma2, accelZ, par2] = textread('accelData.txt', '%c %f %c %f %c %f  %c');
 
-t = 1:1:179;
+t = 1:1:length(accelY);
 
 plot(t,accelY);
