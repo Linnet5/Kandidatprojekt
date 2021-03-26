@@ -159,7 +159,7 @@ public class RecorderButton : MonoBehaviour
 
         for(int i = 0; i < list.Count; i++)
         {
-            lineOutput += list[i].ToString() + "\n";
+            lineOutput += list[i].ToString("F9") + "\n";
         }
 
         StreamWriter writer = new StreamWriter(path, true);

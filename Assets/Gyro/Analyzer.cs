@@ -7,7 +7,7 @@ public class Analyzer : MonoBehaviour
 {
 
     private bool result;
-    private int standardNom = 10; //
+    private int standardNom = 100; //
     private int numberOfMeans;
     int samplesPerMean;
     private List<Vector3> referenceAccel;
@@ -51,11 +51,11 @@ public class Analyzer : MonoBehaviour
             inputSum = Vector3.zero;
             for (int j = i*samplesPerMean; j < (i+1)*samplesPerMean; j++)
             {
-                inputSum += input[j];
+                inputSum = inputSum + input[j];
             }
             floatConversion = (float)samplesPerMean;
             output.Add(inputSum / floatConversion);
-            
+            //Debug.Log((inputSum/floatConversion).ToString("F9"));
         }
         return output;
     }
