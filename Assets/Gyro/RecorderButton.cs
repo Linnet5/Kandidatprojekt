@@ -73,10 +73,7 @@ public class RecorderButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (frameCounter == 200) {
-            record = false;
-            frameCounter = 0;
-        }
+        
         if (record == true)
         {
 
@@ -119,6 +116,11 @@ public class RecorderButton : MonoBehaviour
                 //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
                
                 save = true;
+                if (frameCounter > 200)
+                {
+                    record = false;
+                    frameCounter = 0;
+                }
                 frameCounter++;
             }
 

@@ -21,7 +21,11 @@ public class Analyzer : MonoBehaviour
     private float floatConversion;
     private GameObject NomInputField;
 
-
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
 
     private void Start()
     {
@@ -47,12 +51,13 @@ public class Analyzer : MonoBehaviour
 
         
         samplesPerMean = Mathf.CeilToInt(input.Count / numberOfMeans);
-        samplesPerMeanF = input.Count / numberOfMeans;
+        //samplesPerMeanF = input.Count / numberOfMeans;
         //samplesPerMean = input.Count / (float)numberOfMeans;
         int totalSamples = samplesPerMean * numberOfMeans;
         int kompIterations = totalSamples - input.Count;
 
-        for (int i = 0; i < kompIterations; i++) {
+        for (int i = 0; i < kompIterations; i++)
+        {
             input.Add(Vector3.zero);
         }
 
