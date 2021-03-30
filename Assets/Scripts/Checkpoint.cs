@@ -5,6 +5,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private GameObject goal;
+    [SerializeField] private Collider otherCollider;
     private Goal goalScript;
     public AudioClip ding;
     public AudioSource audioSource;
@@ -22,7 +23,10 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        goalScript.IncrementProgress();
-        audioSource.PlayOneShot(ding);
+        if(other == otherCollider)
+        {
+            goalScript.IncrementProgress();
+            audioSource.PlayOneShot(ding);
+        }
     }
 }

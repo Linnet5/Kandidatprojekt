@@ -7,6 +7,7 @@ public class SoundTrigger : MonoBehaviour
 
     public AudioClip clip;
     public AudioSource audioSource;
+    [SerializeField] private Collider otherCollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class SoundTrigger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.PlayOneShot(clip);
+        if(other == otherCollider)
+            audioSource.PlayOneShot(clip);
     }
 }
