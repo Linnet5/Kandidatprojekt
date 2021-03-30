@@ -28,6 +28,7 @@ public class RecorderButton : MonoBehaviour
     GameObject nameInputField;
     GameObject nomInputField;
     private int nomInput;
+    int frameCounter = 0;
 
 
     // Start is called before the first frame update
@@ -72,6 +73,10 @@ public class RecorderButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (frameCounter == 200) {
+            record = false;
+            frameCounter = 0;
+        }
         if (record == true)
         {
 
@@ -112,9 +117,9 @@ public class RecorderButton : MonoBehaviour
                 gyroList.Add(gyroData-gyroSnapshot);
                 //Debug.Log("GYRO: " + gyroData);
                 //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
-
+               
                 save = true;
-
+                frameCounter++;
             }
 
 

@@ -10,6 +10,7 @@ public class Analyzer : MonoBehaviour
     private int standardNom = 100; //
     private int numberOfMeans;
     int samplesPerMean;
+    float samplesPerMeanF;
     private List<Vector3> referenceAccel;
     private List<Vector3> referenceGyro;
     private List<Vector3> meanReferenceAccel;
@@ -39,17 +40,27 @@ public class Analyzer : MonoBehaviour
             numberOfMeans = standardNom;
         }
 
-        Debug.Log(numberOfMeans);
+        //Debug.Log(numberOfMeans);
 
         
         List<Vector3> output = new List<Vector3>();
 
-        samplesPerMean = Mathf.FloorToInt(input.Count / numberOfMeans);
         
-        for(int i = 0; i < numberOfMeans; i++)
+        samplesPerMean = Mathf.CeilToInt(input.Count / numberOfMeans);
+        samplesPerMeanF = input.Count / numberOfMeans;
+        //samplesPerMean = input.Count / (float)numberOfMeans;
+        int totalSamples = samplesPerMean * numberOfMeans;
+        int kompIterations = totalSamples - input.Count;
+
+        for (int i = 0; i < kompIterations; i++) {
+            input.Add(Vector3.zero);
+        }
+
+
+        for (int i = 0; i < numberOfMeans; i++)
         {
             inputSum = Vector3.zero;
-            for (int j = i*samplesPerMean; j < (i+1)*samplesPerMean; j++)
+            for (int j = i * samplesPerMean; j < (i + 1) * samplesPerMean; j++)
             {
                 inputSum = inputSum + input[j];
             }
@@ -57,6 +68,9 @@ public class Analyzer : MonoBehaviour
             output.Add(inputSum / floatConversion);
             //Debug.Log((inputSum/floatConversion).ToString("F9"));
         }
+
+
+
         return output;
     }
 
