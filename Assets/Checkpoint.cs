@@ -6,6 +6,9 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField] private GameObject goal;
     private Goal goalScript;
+    public AudioClip ding;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +23,6 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         goalScript.IncrementProgress();
+        audioSource.PlayOneShot(ding);
     }
 }
