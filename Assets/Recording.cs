@@ -27,6 +27,7 @@ public class Recording : MonoBehaviour
         timeRemaining = countdown;
         y_pos_test = new List<float>(); 
         y_pos_ideal = new List<float>();
+        Debug.Log(Application.persistentDataPath);
 
     }
 
@@ -46,7 +47,7 @@ public class Recording : MonoBehaviour
             {
                 GameObject.Find("Text").GetComponent<Text>().text = "RECORDING!";
                 float y_pos_data_test = GameObject.Find("AccTest").transform.position.y;
-                float y_pos_data_ideal = GameObject.Find("AccTest").transform.position.y;
+                float y_pos_data_ideal = GameObject.Find("Ideal").transform.position.y;
                 y_pos_test.Add(y_pos_data_test);
                 y_pos_ideal.Add(y_pos_data_ideal);
                 save = true;
@@ -58,7 +59,9 @@ public class Recording : MonoBehaviour
             timeRemaining = countdown;
             if (save)
             {
-
+                SaveData(y_pos_test, "Test");
+                SaveData(y_pos_ideal, "Ideal");
+                save = false;
             }
         }
     }
