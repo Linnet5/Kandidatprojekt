@@ -5,10 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Squats.unity
-    guid: 175be8eb365fb7e489f7e64dd56061ae
+  - enabled: 1
+    path: Assets/Scenes/UserTestInfo.unity
+    guid: fd7a93c1381a0f140af16eb74d23d8c1
   - enabled: 1
     path: Assets/Scenes/SitUpsRotation.unity
     guid: 690d53429d3b59e4e979f01900dc5508
+  - enabled: 1
+    path: Assets/Scenes/Results.unity
+    guid: b463be7210d7d0943b423a749b59433a
   m_configObjects: {}

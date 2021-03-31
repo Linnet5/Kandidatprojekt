@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    private const int scoreGoal = 3;
 
     private int repProgress = 0;
+    private int attempts = 0;
+
     [SerializeField] private int repGoal;
     [SerializeField] private GameObject gm;
     [SerializeField] private GameObject calibrationParentObj;
+
     public AudioClip success;
     public AudioClip fail;
     public AudioClip greatJob;
@@ -16,6 +20,11 @@ public class Goal : MonoBehaviour
     public AudioSource audioSource; 
 
     private GameMaster gmScript;
+
+    [SerializeField] private GameObject gameCanvas;
+    [SerializeField] private GameObject resultsCanvas;
+    [SerializeField] private GameObject bodyText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,18 +48,24 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        attempts++;
 
         if (repProgress == repGoal)
         {
             //Successful rep
             gmScript.IncrementScore();
-            if(gmScript.score == 3)
+            if(gmScript.score == scoreGoal)
             {
                 //Win the game
                 audioSource.PlayOneShot(victory);
                 audioSource.PlayOneShot(greatJob);
                 Vibration.Vibrate(1000);
                 calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+
+                //Display results
+                gameCanvas.SetActive(false);
+                resultsCanvas.SetActive(true);
+                bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Succesful reps: " + scoreGoal + "\n Failed reps: " + (attempts - scoreGoal));
             }
             else
             { 
