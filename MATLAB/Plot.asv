@@ -1,4 +1,0 @@
-fileID = fopen('ideal0.txt', 'r');
-ideal = fscanf(fileID, '%f');
-
-
