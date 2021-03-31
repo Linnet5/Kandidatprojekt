@@ -116,12 +116,14 @@ public class RecorderButton : MonoBehaviour
                 //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
                
                 save = true;
-                if (frameCounter > 200)
+                frameCounter++;
+                
+                if (frameCounter > 230)
                 {
                     record = false;
                     frameCounter = 0;
                 }
-                frameCounter++;
+                
             }
 
 

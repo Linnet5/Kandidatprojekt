@@ -17,11 +17,6 @@ figure;
 
 t = 1:1:length(accelZ_4);
 
-mn = (accelZ_1 + accelZ_2 + accelZ_3 + accelZ_4)./4;
+mn = (accelZ_1 + accelZ_2 + accelZ_3 + accelZ_4;
 
-delta = sum(abs(mn-accelZ_3))/20;
-
-hold on;
 plot(t,mn);
-plot(t,mn-delta);
-plot(t,mn+delta);
