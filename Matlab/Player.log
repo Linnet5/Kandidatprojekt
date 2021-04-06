@@ -1,0 +1,46 @@
+Mono path[0] = 'D:/Kandidat Builds/Dator/Kandidatprojekt_Data/Managed'
+Mono config path = 'D:/Kandidat Builds/Dator/MonoBleedingEdge/etc'
+PlayerConnection initialized from D:/Kandidat Builds/Dator/Kandidatprojekt_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55088
+Multi-casting "[IP] 192.168.0.103 [Port] 55088 [Flags] 2 [Guid] 725761926 [EditorId] 1611394950 [Version] 1048832 [Id] WindowsPlayer(hue) [Debug] 0 [PackageName] WindowsPlayer [ProjectName] Kandidatprojekt" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55088]
+PlayerConnection already initialized - listening to [0.0.0.0:55088]
+Initialize engine version: 2020.2.2f1 (068178b99f32)
+[Subsystems] Discovering subsystems at path D:/Kandidat Builds/Dator/Kandidatprojekt_Data/UnitySubsystems
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 770 (ID=0x1184)
+    Vendor:   
+    VRAM:     2007 MB
+    Driver:   27.21.14.5671
+Begin MonoManager ReloadAssembly
+- Completed reload, in  1.119 seconds
+D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.917100 ms
+KcpTransport initialized!
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+kcp2k.KcpTransport:Awake () (at C:/Users/Max/Documents/GitHub/Kandidatprojekt/Assets/Mirror/Runtime/Transport/KCP/MirrorTransport/KcpTransport.cs:80)
+
+(Filename: C:/Users/Max/Documents/GitHub/Kandidatprojekt/Assets/Mirror/Runtime/Transport/KCP/MirrorTransport/KcpTransport.cs Line: 80)
+
+GreetingText (UnityEngine.GameObject)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+Greeting:Start () (at C:/Users/Max/Documents/GitHub/Kandidatprojekt/Assets/Greeting.cs:13)
+
+(Filename: C:/Users/Max/Documents/GitHub/Kandidatprojekt/Assets/Greeting.cs Line: 13)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 35e8 -> priority: 1 
+  Thread -> id: 6730 -> priority: 1 
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1614695551873,"processId":14692,"allocatedMemory":268967,"memoryLabels":[{"Permanent":40},{"NewDelete":216},{"Thread":72},{"Manager":1328},{"GfxDevice":210584},{"Serialization":40},{"WebCam":32},{"String":231},{"DynamicArray":48784},{"HashMap":5632},{"PoolAlloc":56},{"GI":296},{"VR":1560},{"Subsystems":96}]}
+

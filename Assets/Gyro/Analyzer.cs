@@ -31,6 +31,9 @@ public class Analyzer : MonoBehaviour
     {
         NomInputField = GameObject.Find("NomInputField");
         numberOfMeans = standardNom;
+
+        
+
     }
 
     private List<Vector3> CreateMeans(List<Vector3> input)
@@ -79,12 +82,11 @@ public class Analyzer : MonoBehaviour
         return output;
     }
 
-    private void Analyze(List<Vector3> accel, List<Vector3> gyro, List<Vector3> referenceAccel, List<Vector3> referenceGyro) {
+    private void Analyze(List<Vector3> accel, List<Vector3> gyro) {
 
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
-        meanReferenceAccel = CreateMeans(referenceAccel);
-        meanReferenceGyro = CreateMeans(referenceGyro);
+
 
 
 
