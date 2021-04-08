@@ -1,6 +1,6 @@
-% Användbar data: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12
-[n, c, d] = textread('Ideal12.txt', '%f %c %.9f');
-[n_1, c_1, d_1] = textread('Test12.txt', '%f %c %.9f');
+% Användbar data: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 
+[n, c, d] = textread('Ideal11.txt', '%f %c %.9f');
+[n_1, c_1, d_1] = textread('Test11.txt', '%f %c %.9f');
 
 dec_ideal = vpa(d) ./ 10^9;
 ideal_0_num = n + vpa(dec_ideal);
