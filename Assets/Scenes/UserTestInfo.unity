@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &228079293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,10 +991,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Before the exercise, turn your phone counter-clockwise so that it has
-    a horizontal orientation. Put your phone on your chest and hold it with both
-    your hands during the exercise. \n\nThe exercise is divided into individual steps.
-    Listen to the audio cues and follow the video example above."
+  m_text: 'The exercise is divided into individual steps. Listen to the audio cues
+    and follow the video example above. If you do a step correctly, you will hear
+    a short beep, as shown in the video above.
+
+
+    Make sure to not lift your torso
+    too high.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
   m_sharedMaterial: {fileID: 7149118540675284414, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
@@ -1262,7 +1265,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I AM IN POSITION!
+  m_text: I am seated!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
   m_sharedMaterial: {fileID: 7149118540675284414, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
@@ -1289,8 +1292,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.73
-  m_fontSizeBase: 7.73
+  m_fontSize: 6.87
+  m_fontSizeBase: 6.87
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1396,7 +1399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Get in  position!
+  m_text: Sit down and hold your phone vertically in front of you.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
   m_sharedMaterial: {fileID: 7149118540675284414, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
