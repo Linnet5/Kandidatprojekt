@@ -41,6 +41,27 @@ figure;
 %Scattel scatter(x,y) plotar endast punkter
 t = 1:1:length(EaccelZ_4);
 
+%Tot
+Emn = (EaccelZ_1 + EaccelZ_2 + EaccelZ_3 + EaccelZ_4)./4;
+Jmn = (JaccelZ_1 + JaccelZ_2 + JaccelZ_3 + JaccelZ_4)./4;
+Mmn = (MaccelZ_1 + MaccelZ_2 + MaccelZ_3 + MaccelZ_4)./4;
+Lmn = (LaccelZ_1 + LaccelZ_2 + LaccelZ_3 + LaccelZ_4)./4;
+Rmn = (RaccelZ_1 + RaccelZ_2 + RaccelZ_3 + RaccelZ_4)./4;
+
+Edelta = sum(abs(Emn-EaccelZ_3))/20;
+
+figure(1);
+title('Tot')
+hold on;
+plot(t,Emn);
+plot(t,Jmn);
+plot(t,Mmn);
+plot(t,Lmn);
+plot(t,Rmn);
+
+legend('Elin','Julius','Max', 'Linus', 'Ruben')
+hold off;
+
 %Elin
 Emn = (EaccelZ_1 + EaccelZ_2 + EaccelZ_3 + EaccelZ_4)./4;
 
@@ -48,7 +69,7 @@ Edelta = sum(abs(Emn-EaccelZ_3))/20;
 
 
 
-figure(1);
+figure(2);
 title('Elin')
 hold on;
 plot(t,Emn+Edelta);
@@ -64,7 +85,7 @@ Jmn = (JaccelZ_1 + JaccelZ_2 + JaccelZ_3 + JaccelZ_4)./4;
 Jdelta = sum(abs(Jmn-JaccelZ_3))/20;
 
 
-figure(2);
+figure(3);
 title('Julius')
 hold on;
 plot(t,Jmn+Jdelta);
@@ -81,7 +102,7 @@ Mmn = (MaccelZ_1 + MaccelZ_2 + MaccelZ_3 + MaccelZ_4)./4;
 Mdelta = sum(abs(Mmn-MaccelZ_3))/20;
 
 
-figure(3);
+figure(4);
 title('Max')
 hold on;
 plot(t,Mmn+Mdelta);
@@ -98,7 +119,7 @@ Lmn = (LaccelZ_1 + LaccelZ_2 + LaccelZ_3 + LaccelZ_4)./4;
 Ldelta = sum(abs(Lmn-LaccelZ_3))/20;
 
 
-figure(4);
+figure(5);
 title('Linus')
 hold on;
 plot(t,Lmn+Ldelta);
@@ -115,7 +136,7 @@ Rmn = (RaccelZ_1 + RaccelZ_2 + RaccelZ_3 + RaccelZ_4)./4;
 Rdelta = sum(abs(Rmn-RaccelZ_3))/20;
 
 
-figure(5);
+figure(6);
 title('Ruben')
 hold on;
 plot(t,Rmn+Rdelta);
@@ -126,7 +147,8 @@ legend('ÖvreFel','Medel','UndreFel')
 hold off;
 
 %%
-%Godkänt om ex 3/20 medelvärden är innanför
+%Godkänt om ex 17/20 medelvärden är innanför ett intervall.
+%Endast 3st utanför
 
 
 
@@ -190,6 +212,10 @@ hold off;
 %%
 %Vilken typ av effecter ger bäst?
 %Ljud, visuell eller haptic?
+
+%% Jämför olika antal means. Vilket antal på means ger bäst resultat?
+%
+
 
 
 %% Frågor att jobba vidare med
