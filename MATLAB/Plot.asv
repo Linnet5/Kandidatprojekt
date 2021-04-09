@@ -1,6 +1,6 @@
-% Användbar data: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 
-[n, c, d] = textread('Ideal11.txt', '%f %c %.9f');
-[n_1, c_1, d_1] = textread('Test11.txt', '%f %c %.9f');
+% Användbar data: 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12
+[n, c, d] = textread('Ideal10.txt', '%f %c %.9f');
+[n_1, c_1, d_1] = textread('Test10.txt', '%f %c %.9f');
 
 dec_ideal = vpa(d) ./ 10^9;
 ideal_0_num = n + vpa(dec_ideal);
@@ -15,6 +15,21 @@ figure;
 
 t_test = 1:1:length(test_0_num);
 plot(t_test, test_0_num(:,1));
+
+err = test_0_num(:,1) ./ ideal_0_num(:,1);
+err_abs = abs(err - 1);
+err_avg = sum(err_abs) / length(err_abs);
+
+% Avg err 1: 0.25476533101604735427687374566303
+% Avg err 2: 0.17839837224407973512173737184581
+% Avg err 3: 0.29384774517025072397069205894173
+% Avg err 4: 0.29253011435442181520632489641308
+% Avg err 5: 0.25697918771487751437244070820331
+% Avg err 7: 0.18118574845927546995776892489794
+% Avg err 8: 0.19031509776378723889342748754797
+% Avg err 9: 0.1540742148905339459976140251357
+% Avg err 9: 
+
 
 
 
