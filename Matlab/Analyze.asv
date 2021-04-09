@@ -66,12 +66,12 @@ mnTOT(:,3) = mnZ;
 %FID = fopen('meanReferenceAccel.txt', 'w');
 %fprintf(FID,'%0.4f %1.4f %1.4f\n',mnTOT);
 
-delta = sum(abs(mnY-abs(accelY_23)))/20;
+delta = sum(abs(mnZ-accelZ_34))/20;
 %delta = 0.09;
 hold on;
 
-scatter(t,abs(accelY_23)); 
-plot(t,mnY);
+scatter(t,abs(accelZ_34)); 
+plot(t,mnZ);
 %plot(t,mnX-delta);
 %plot(t,mnX+delta);
 

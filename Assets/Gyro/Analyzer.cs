@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Globalization;
+
 
 public class Analyzer : MonoBehaviour
 {
@@ -34,32 +36,42 @@ public class Analyzer : MonoBehaviour
         NomInputField = GameObject.Find("NomInputField");
         numberOfMeans = standardNom;
 
+        meanReferenceAccel = new List<Vector3>();
+        meanReferenceGyro = new List<Vector3>();
+
         string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
 
         string gyroFileName = filePath + "meanReferenceGyro.txt";
         string accelFileName = filePath + "meanReferenceAccel.txt";
         string[] vectorString;
-        StreamReader sr = new StreamReader(gyroFileName);
-        string txt = sr.ReadLine();
-        int counter = 0;
+        StreamReader srGyro = new StreamReader(gyroFileName);
+        StreamReader srAccel = new StreamReader(accelFileName);
+        string txtGyro = srGyro.ReadLine();
+        string txtAccel = srAccel.ReadLine();
 
-        while (txt != null) {
+
+        while (txtGyro != null) {
 
             
-            vectorString = txt.Split(' ');
+            vectorString = txtGyro.Split(' ');
 
-            float x = float.Parse(vectorString[0]);
-            float y = float.Parse(vectorString[1]);
-            float z = float.Parse(vectorString[2]);
-
-            meanReferenceGyro.Add(new Vector3(0.0f,0.0f,0.0f);  //Fixa konvertering!
-            txt = sr.ReadLine();
-            counter++;
+            meanReferenceGyro.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
+            txtGyro = srGyro.ReadLine();
             
-        } 
+        }
 
-        //for (int i = 0; i < meanReferenceGyro.Count; i++) {
-        //    Debug.Log(meanReferenceGyro[i].ToString());
+        while (txtAccel != null)
+        {
+
+            vectorString = txtAccel.Split(' ');
+
+            meanReferenceAccel.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
+            txtAccel = srAccel.ReadLine();
+
+        }
+
+        //for (int i = 0; i < meanReferenceAccel.Count; i++) {
+        //    Debug.Log(meanReferenceAccel[i].ToString("F4"));
         //}
 
     }
@@ -110,14 +122,33 @@ public class Analyzer : MonoBehaviour
         return output;
     }
 
-    private void Analyze(List<Vector3> accel, List<Vector3> gyro) {
+    private bool Analyze(List<Vector3> accel, List<Vector3> gyro) {
 
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
 
-        
+        Vector3 deltaAccel = Vector3.zero;
+        Vector3 deltaGyro = Vector3.zero;
+
+        for (int i = 0; i < meanReferenceAccel.Count; i++)
+        {
+            deltaAccel += (meanReferenceAccel[i] - meanAccel[i]);
+        }
+        deltaAccel /= meanReferenceAccel.Count;
+
+        for (int i = 0; i < meanReferenceGyro.Count; i++) {
+            deltaGyro += (meanReferenceGyro[i] - new Vector3(Mathf.Abs(meanAccel[i].x), Mathf.Abs(meanAccel[i].y), Mathf.Abs(meanAccel[i].z)));
+        }
+        deltaGyro /= (float)(meanReferenceGyro.Count);
 
 
+        if(deltaGyro.y < 0.18f)
+        {
+            Debug.Log("YOU MADE IT");
+            return true;
+        }
+
+        return false;
     }
 
     public List<Vector3> GetMeans(List<Vector3> input) {
@@ -131,8 +162,8 @@ public class Analyzer : MonoBehaviour
         return numberOfMeans;
     }
 
-    public bool GetResult() {
-        return result;
+    public bool GetResult(List<Vector3> accel, List<Vector3> gyro) {
+        return Analyze(accel, gyro);
     }
 
 }
