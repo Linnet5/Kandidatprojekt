@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class Analyzer : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Analyzer : MonoBehaviour
     private float floatConversion;
     private GameObject NomInputField;
 
+
     private void Awake()
     {
         QualitySettings.vSyncCount = 0;
@@ -32,7 +34,33 @@ public class Analyzer : MonoBehaviour
         NomInputField = GameObject.Find("NomInputField");
         numberOfMeans = standardNom;
 
-        
+        string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
+
+        string gyroFileName = filePath + "meanReferenceGyro.txt";
+        string accelFileName = filePath + "meanReferenceAccel.txt";
+        string[] vectorString;
+        StreamReader sr = new StreamReader(gyroFileName);
+        string txt = sr.ReadLine();
+        int counter = 0;
+
+        while (txt != null) {
+
+            
+            vectorString = txt.Split(' ');
+
+            float x = float.Parse(vectorString[0]);
+            float y = float.Parse(vectorString[1]);
+            float z = float.Parse(vectorString[2]);
+
+            meanReferenceGyro.Add(new Vector3(0.0f,0.0f,0.0f);  //Fixa konvertering!
+            txt = sr.ReadLine();
+            counter++;
+            
+        } 
+
+        //for (int i = 0; i < meanReferenceGyro.Count; i++) {
+        //    Debug.Log(meanReferenceGyro[i].ToString());
+        //}
 
     }
 
@@ -87,7 +115,7 @@ public class Analyzer : MonoBehaviour
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
 
-
+        
 
 
     }
