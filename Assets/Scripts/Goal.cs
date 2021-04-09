@@ -17,6 +17,7 @@ public class Goal : MonoBehaviour
     public AudioClip fail;
     public AudioClip greatJob;
     public AudioClip victory;
+    public AudioClip tip;
     public AudioSource audioSource; 
 
     private GameMaster gmScript;
@@ -75,7 +76,19 @@ public class Goal : MonoBehaviour
         }
         else
         {
-            audioSource.PlayOneShot(fail);
+            if(attempts - gmScript.score == 3)
+            {
+                calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+                audioSource.PlayOneShot(tip);
+                StartCoroutine(SoundPlayed());
+               
+
+            }
+
+            else
+            {
+                audioSource.PlayOneShot(fail);
+            }
         }
         repProgress = 0;
         calibrationParentObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
@@ -83,5 +96,10 @@ public class Goal : MonoBehaviour
         
 
     }
-
+    IEnumerator SoundPlayed()
+    {
+        yield return new WaitForSeconds(7);
+        calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(4); //unpauses player movement
+    }
 }
+    
