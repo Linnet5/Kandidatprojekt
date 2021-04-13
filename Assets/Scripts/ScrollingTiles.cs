@@ -7,7 +7,7 @@ public class ScrollingTiles : MonoBehaviour
 
     RawImage sprite;
 
-    [Range(0.0f, 10.0f)]
+    [Range(0.0f, 0.05f)]
     public float speed;
 
     // Start is called before the first frame update
@@ -19,9 +19,9 @@ public class ScrollingTiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sprite.uvRect = new Rect(sprite.uvRect.x * speed* Time.deltaTime, 
-            sprite.uvRect.y * speed * Time.deltaTime, 
+        sprite.uvRect = new Rect(sprite.uvRect.x + speed* Time.deltaTime,
+            sprite.uvRect.y+ speed * Time.deltaTime, 
             sprite.uvRect.width, 
-            sprite.uvRect.height); ; ;
+            sprite.uvRect.height);
     }
 }
