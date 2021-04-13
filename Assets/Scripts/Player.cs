@@ -12,6 +12,7 @@ public class Player : NetworkBehaviour
     {
         if (!hasAuthority) { return; }
         Instantiate(ControllerUI);
+
     }
 
     //Moves Player Forward

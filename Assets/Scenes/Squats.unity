@@ -511,7 +511,11 @@ MonoBehaviour:
   fail: {fileID: 8300000, guid: 11b86e90070f67940a190d884796c3c3, type: 3}
   greatJob: {fileID: 8300000, guid: 4dff86495bae2e84a849293b13c69e8c, type: 3}
   victory: {fileID: 8300000, guid: 4e0eee78892b15144a4209ee8d423430, type: 3}
+  tip: {fileID: 0}
   audioSource: {fileID: 793112347}
+  gameCanvas: {fileID: 0}
+  resultsCanvas: {fileID: 0}
+  bodyText: {fileID: 0}
 --- !u!65 &793112343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -983,6 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 4
+  canMove: 0
 --- !u!114 &1058332396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -995,6 +1000,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa0120416d988644bb7dac05826b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
+  three: {fileID: 0}
+  two: {fileID: 0}
+  one: {fileID: 0}
+  go: {fileID: 0}
+  bodyText: {fileID: 0}
 --- !u!1 &1145656652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1039,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 793112341}
+  otherCollider: {fileID: 0}
+  ding: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!23 &1145656654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1262,6 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 897057afea0e8284fb9c50493da13e5d, type: 3}
   audioSource: {fileID: 1712340673}
+  otherCollider: {fileID: 0}
 --- !u!65 &1712340669
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1469,6 +1484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: d0eb028a7098ded488a29ba00ed558a4, type: 3}
   audioSource: {fileID: 1797324835}
+  otherCollider: {fileID: 0}
 --- !u!82 &1797324835
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1750,6 +1766,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 793112341}
+  otherCollider: {fileID: 0}
+  ding: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &1970925450
 GameObject:
   m_ObjectHideFlags: 0
