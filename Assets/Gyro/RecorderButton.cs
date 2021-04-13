@@ -141,11 +141,14 @@ public class RecorderButton : MonoBehaviour
             if (save == true) {
                 meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
                 meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
-                nomInput = analyzer.GetComponent<Analyzer>().GetNom();
-                SaveData(accelList, nameInput+"-" + nomInput + "accelList-");
-                SaveData(gyroList, nameInput+"-" + nomInput + "gyroList-");
-                SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
-                SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
+                //nomInput = analyzer.GetComponent<Analyzer>().GetNom();
+                //SaveData(accelList, nameInput+"-" + nomInput + "accelList-");
+                //SaveData(gyroList, nameInput+"-" + nomInput + "gyroList-");
+                //SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
+                //SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
+
+                analyzer.GetComponent<Analyzer>().GetResult(accelList, gyroList);
+
                 save = false;
             }
 
