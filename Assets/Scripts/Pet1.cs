@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
-public class Pet : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
     private string petName;
     private int level;
@@ -12,16 +12,14 @@ public class Pet : MonoBehaviour
     private bool chosen;
     private bool unlocked;
     private int id;
-    private UnityEngine.UI.Image image_1;
-    GameObject displayName;
-
+    GameObject pet1; 
     // Start is called before the first frame update
     void Start()
     {
+        pet1 = GameObject.Find("Pet 1");
         ReadData("pet_1.txt");
-        displayName = GameObject.Find("Name");
-        displayName.GetComponent<UnityEngine.UI.Text>().text = PlayerPrefs.GetString("pet1Name");
-        if (id == 1 || unlocked) 
+        Debug.Log(pet1);
+        if (unlocked)
         {
 
         }
@@ -33,22 +31,7 @@ public class Pet : MonoBehaviour
         
     }
 
-    public Pet()
-    {
-        
-    }
-
-    public void AddXp(int amount)
-    {
-        xp += amount;
-        if (xp >= 100)
-        {
-            level += 1;
-            xp -= 100;
-        }
-    }
-
-    void ReadData(string pet) 
+    void ReadData(string pet)
     {
         string file_path = "Assets/Petdata/" + pet;
         StreamReader inp_stm = new StreamReader(file_path);
@@ -84,7 +67,4 @@ public class Pet : MonoBehaviour
             ln_counter++;
         }
     }
-
-
-   
 }
