@@ -39,7 +39,8 @@ public class Analyzer : MonoBehaviour
         meanReferenceAccel = new List<Vector3>();
         meanReferenceGyro = new List<Vector3>();
 
-        string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
+        //string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
+        string filePath = "C:/Users/elidj/OneDrive/Skrivbord/Elin/Skola/MT3/LP3/TNM094-Kandidat/Kandidatprojekt/Kandidatprojekt/Matlab/";
 
         string gyroFileName = filePath + "meanReferenceGyro.txt";
         string accelFileName = filePath + "meanReferenceAccel.txt";

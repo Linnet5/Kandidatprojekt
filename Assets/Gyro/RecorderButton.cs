@@ -118,10 +118,29 @@ public class RecorderButton : MonoBehaviour
                 save = true;
                 frameCounter++;
                 
+                //Elin
+                Debug.Log("Down!!!!!!!!!");
+                AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource.clip = Resources.Load("Assets/Audio/Assets_Sound_down") as AudioClip;
+                audioSource.Play();
+                
+
+                if (frameCounter > 115)
+                {
+                    /*
+                    AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+                    audioSource1.clip = Resources.Load("Assets_Sound_up") as AudioClip;
+                    audioSource1.Play();
+                    Debug.Log("UP??????");
+                    */
+                }
+                //Här spelar in ca 3sek
                 if (frameCounter > 230)
                 {
+                   
                     record = false;
                     frameCounter = 0;
+                    
                 }
                 
             }
