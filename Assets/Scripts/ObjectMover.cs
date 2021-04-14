@@ -11,6 +11,7 @@ public class ObjectMover : MonoBehaviour
     {
         accel = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
 
-        GetComponent<Transform>().position += accel;
+        GetComponent<Transform>().rotation = Quaternion.Euler(90, 0, 180)*Input.gyro.attitude;
+        //GetComponent<Transform>().position += accel;
     }
 }

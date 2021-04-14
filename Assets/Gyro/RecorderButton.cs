@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class RecorderButton : MonoBehaviour
 {
 
@@ -110,11 +111,18 @@ public class RecorderButton : MonoBehaviour
                 Vector3 accelData = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
                 accelList.Add(accelData);
 
-                Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
-                gyroList.Add(gyroData-gyroSnapshot);
+                //Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();
+                //gyroList.Add(gyroData-gyroSnapshot);
+                Vector3 gyroData = Input.gyro.gravity;
+                gyroList.Add(gyroData);
+
+
+                //Vector3 gravity = new Vector3(0.0f,-1.0f,0.0f);
+                //float angle = (Vector3.Dot(gyroData,gravity))/(gravity.magnitude*gyroData.magnitude);
+                //Debug.Log(angle);
                 //Debug.Log("GYRO: " + gyroData);
                 //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
-               
+
                 save = true;
                 frameCounter++;
                 
@@ -141,13 +149,13 @@ public class RecorderButton : MonoBehaviour
             if (save == true) {
                 meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
                 meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
-                //nomInput = analyzer.GetComponent<Analyzer>().GetNom();
-                //SaveData(accelList, nameInput+"-" + nomInput + "accelList-");
-                //SaveData(gyroList, nameInput+"-" + nomInput + "gyroList-");
-                //SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
-                //SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
+                nomInput = analyzer.GetComponent<Analyzer>().GetNom();
+                SaveData(accelList, nameInput+"-" + nomInput + "accelList-");
+                SaveData(gyroList, nameInput+"-" + nomInput + "gyroList-");
+                SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
+                SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
 
-                analyzer.GetComponent<Analyzer>().GetResult(accelList, gyroList);
+                //analyzer.GetComponent<Analyzer>().GetResult(accelList, gyroList);
 
                 save = false;
             }
