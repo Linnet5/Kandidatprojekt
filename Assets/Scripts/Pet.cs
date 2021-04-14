@@ -9,7 +9,9 @@ public class Pet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        image.sprite = Resources.Load<Sprite>("Assets/Art/Characters/character_2.png");
+        // image.sprite = Resources.Load<Sprite>("Assets/Art/Characters/character_2.png");
+        ReadData("pet_1.txt");
+        Debug.Log(petName);
     }
 
     // Update is called once per frame
@@ -20,7 +22,6 @@ public class Pet : MonoBehaviour
 
     public Pet()
     {
-        ReadData("pet_1");
         
     }
 
@@ -45,17 +46,28 @@ public class Pet : MonoBehaviour
             string inp_ln = inp_stm.ReadLine();
             if (ln_counter == 0)
             {
-                level = int.Parse(inp_ln);
+                petName = inp_ln;
             }
             else if (ln_counter == 1)
             {
+                level = int.Parse(inp_ln);
+            }
+            else if (ln_counter == 2)
+            {
                 xp = int.Parse(inp_ln);
+            }
+            else if (ln_counter == 3)
+            {
+                chosen = bool.Parse(inp_ln);
             }
             ln_counter++;
         }
     }
 
+    private string petName;
     private int level;
     private int xp;
+    private bool chosen;
+
     [SerializeField] private UnityEngine.UI.Image image;
 }
