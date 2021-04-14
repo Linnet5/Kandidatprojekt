@@ -1682,6 +1682,7 @@ MonoBehaviour:
   fail: {fileID: 8300000, guid: f212c70ab1ebc544683ab034796166d3, type: 3}
   greatJob: {fileID: 8300000, guid: fd1a37454485c30478f62a9f7dfb191e, type: 3}
   victory: {fileID: 8300000, guid: 4e0eee78892b15144a4209ee8d423430, type: 3}
+  tip: {fileID: 0}
   audioSource: {fileID: 652234756}
   gameCanvas: {fileID: 1402949734}
   resultsCanvas: {fileID: 1617532752}
