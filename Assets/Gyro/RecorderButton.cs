@@ -34,6 +34,7 @@ public class RecorderButton : MonoBehaviour
     AudioSource audioData;
     bool Up_Play = false;
     bool Down_Play = false;
+    int frame = 130;
 
 
     // Start is called before the first frame update
@@ -135,7 +136,7 @@ public class RecorderButton : MonoBehaviour
                 }
 
 
-                if (frameCounter > (230/2))
+                if (frameCounter > (frame/2))
                 {
                     //Up
                     //Debug.Log("Up!");
@@ -153,7 +154,7 @@ public class RecorderButton : MonoBehaviour
                 frameCounter++;
                 
 
-                if (frameCounter > 230)
+                if (frameCounter > frame)
                 {
                     record = false;
                     frameCounter = 0;
