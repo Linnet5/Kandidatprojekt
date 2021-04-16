@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,20 +40,11 @@ public class Analyzer : MonoBehaviour
         meanReferenceGyro = new List<Vector3>();
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-<<<<<<< HEAD
         //Read TextAssets with two loops
         string filePath = "Assets/Resources/Reference Moves/Squat/";
         TextAsset gyro = Resources.Load("Reference Moves/Squat/meanReferenceGyro.txt") as TextAsset;
         TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel.txt") as TextAsset;
         
-=======
-
-        // string filePath = "F:/!JuliusHalldan/Uni/TNM094/PROJEKT/Kandidatprojekt/Matlab/";
-        string filePath = "C:/Users/elidj/OneDrive/Skrivbord/Elin/Skola/MT3/LP3/TNM094-Kandidat/Kandidatprojekt/Kandidatprojekt/Matlab/";
-
-        string gyroFileName = filePath + "meanReferenceGyro.txt";
-        string accelFileName = filePath + "meanReferenceAccel.txt";
->>>>>>> ec3d45502fae9da34d9b22334ed1affe75454138
         string[] vectorString;
         StreamReader srGyro = new StreamReader(gyro);
         StreamReader srAccel = new StreamReader(accelFileName);
@@ -155,7 +146,7 @@ public class Analyzer : MonoBehaviour
 
         if (deltaGyro.y < 0.13f)
         {
-            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU´RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();
+            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOUï¿½RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();
             GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
             Debug.Log("YOU MADE IT");
             Debug.Log(deltaGyro.y);
