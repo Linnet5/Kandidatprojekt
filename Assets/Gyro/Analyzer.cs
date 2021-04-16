@@ -39,6 +39,8 @@ public class Analyzer : MonoBehaviour
         meanReferenceAccel = new List<Vector3>();
         meanReferenceGyro = new List<Vector3>();
 
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
+
         //string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
 
         //string gyroFileName = filePath + "meanReferenceGyro.txt";
