@@ -46,8 +46,8 @@ public class Analyzer : MonoBehaviour
         TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel.txt") as TextAsset;
         
         string[] vectorString;
-        StreamReader srGyro = new StreamReader(gyro);
-        StreamReader srAccel = new StreamReader(accelFileName);
+        //StreamReader srGyro = new StreamReader(gyro);
+        //StreamReader srAccel = new StreamReader(accelFileName);
         //string txtGyro = srGyro.ReadLine();
         
         //string txtAccel = srAccel.ReadLine();
