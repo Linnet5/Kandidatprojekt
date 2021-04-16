@@ -81,14 +81,14 @@ mnTOT(:,3) = mnZ;
 %FID = fopen('meanReferenceGyro.txt', 'w');
 %fprintf(FID,'%0.4f %1.4f %1.4f\n',mnTOT);
 
-delta = sum(abs(mnY-abs(accelY_23)))/20;
+delta = sum(abs(mnY-abs(accelY_33)))/20;
 %delta = 0.09;
 hold on;
 
-scatter(t,abs(accelY_23)); 
+scatter(t,abs(accelY_33)); 
 plot(t,mnY);
-%plot(t,mnX-delta);
-%plot(t,mnX+delta);
+%plot(t,mnY-delta);
+%plot(t,mnY+delta);
 
 
 %% Accel
@@ -163,11 +163,11 @@ mnTOT(:,3) = mnZ;
 %FID = fopen('meanReferenceAccel.txt', 'w');
 %fprintf(FID,'%0.4f %1.4f %1.4f\n',mnTOT);
 
-delta = sum(mnY-accelY_23)/20;
+delta = sum(abs(mnY-accelY_3))/20;
 %delta = 0.09;
 hold on;
 
-scatter(t,accelY_23); 
+scatter(t,accelY_3); 
 plot(t,mnY);
 %plot(t,mnX-delta);
 %plot(t,mnX+delta);
