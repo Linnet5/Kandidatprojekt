@@ -13,13 +13,14 @@ public class DisplayNameChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nameInput = GameObject.Find("NameInput");
+        nameInput = GameObject.Find("NameInputPet1");
+        Debug.Log(nameInput);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void changeName()
@@ -30,4 +31,4 @@ public class DisplayNameChange : MonoBehaviour
         PlayerPrefs.SetString("pet1Name", nameInputField.text);
         Debug.Log(PlayerPrefs.GetString("pet1Name"));
     }
- }
+}
