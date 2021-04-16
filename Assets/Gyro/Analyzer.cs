@@ -41,7 +41,8 @@ public class Analyzer : MonoBehaviour
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
 
-        string filePath = "F:/!JuliusHalldan/Uni/TNM094/PROJEKT/Kandidatprojekt/Matlab/";
+        // string filePath = "F:/!JuliusHalldan/Uni/TNM094/PROJEKT/Kandidatprojekt/Matlab/";
+        string filePath = "C:/Users/elidj/OneDrive/Skrivbord/Elin/Skola/MT3/LP3/TNM094-Kandidat/Kandidatprojekt/Kandidatprojekt/Matlab/";
 
         string gyroFileName = filePath + "meanReferenceGyro.txt";
         string accelFileName = filePath + "meanReferenceAccel.txt";
