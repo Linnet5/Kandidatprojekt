@@ -3,11 +3,87 @@
 %%
 % FÃ¶r att titta pÃ¥ datan som sparas i mobilen
 
+clear;
+clc;
+%45grader
 
+[Epar1_1, EaccelX_1, Ekoma1_1, EaccelY_1, Ekoma2_1, EaccelZ_1, Epar2_1] = textread('Testfram-20meanGyroList-1.txt', '%c %f %c %f %c %f %c');
+[Epar1_2, EaccelX_2, Ekoma1_2, EaccelY_2, Ekoma2_2, EaccelZ_2, Epar2_2] = textread('Fyrtiofemgrader-20meanGyroList-0.txt', '%c %f %c %f %c %f %c');
+%[Epar1_3, EaccelX_3, Ekoma1_3, EaccelY_3, Ekoma2_3, EaccelZ_3, Epar2_3] = textread('Testdoor-20meanGyroList-0.txt', '%c %f %c %f %c %f %c');
+%[Epar1_4, EaccelX_4, Ekoma1_4, EaccelY_4, Ekoma2_4, EaccelZ_4, Epar2_4] = textread('Testwall-20meanGyroList-1.txt', '%c %f %c %f %c %f %c');
+
+
+t = 1:1:length(EaccelZ_1);
+
+figure(1);
+title('X-axel. Horizontell/45°')
+hold on;
+plot(t,EaccelX_1);
+plot(t,EaccelX_2);
+legend('Horisontell','45°')
+hold off;
+
+figure(2);
+title('Y-axel. Horizontell/45°')
+hold on;
+plot(t,EaccelY_1);
+plot(t,EaccelY_2);
+legend('Horisontell','45°')
+hold off;
+
+
+figure(3);
+title('Z-axel. Horizontell/45°')
+hold on;
+plot(t,EaccelZ_1);
+plot(t,EaccelZ_2);
+legend('Horisontell','45°')
+hold off;
+%% Rakt fram
 clear;
 clc;
 
+[Epar1_1, EaccelX_1, Ekoma1_1, EaccelY_1, Ekoma2_1, EaccelZ_1, Epar2_1] = textread('Testfram-20meanGyroList-1.txt', '%c %f %c %f %c %f %c');
+[Epar1_2, EaccelX_2, Ekoma1_2, EaccelY_2, Ekoma2_2, EaccelZ_2, Epar2_2] = textread('Testwindow-20meanGyroList-2.txt', '%c %f %c %f %c %f %c');
+[Epar1_3, EaccelX_3, Ekoma1_3, EaccelY_3, Ekoma2_3, EaccelZ_3, Epar2_3] = textread('Testdoor-20meanGyroList-0.txt', '%c %f %c %f %c %f %c');
+[Epar1_4, EaccelX_4, Ekoma1_4, EaccelY_4, Ekoma2_4, EaccelZ_4, Epar2_4] = textread('Testwall-20meanGyroList-1.txt', '%c %f %c %f %c %f %c');
 
+
+t = 1:1:length(EaccelZ_4);
+
+figure(1);
+title('X-axel. Gyro-Medelvärde')
+hold on;
+plot(t,EaccelX_1);
+plot(t,EaccelX_2);
+plot(t,EaccelX_3);
+plot(t,EaccelX_4);
+legend('Framåt','Höger','Backåt', 'Vänster')
+hold off;
+
+figure(2);
+title('Y-axel. Gyro-Medelvärde')
+hold on;
+plot(t,EaccelY_1);
+plot(t,EaccelY_2);
+plot(t,EaccelY_3);
+plot(t,EaccelY_4);
+legend('Framåt','Höger','Backåt', 'Vänster')
+hold off;
+
+
+figure(3);
+title('Z-axel. Gyro-Medelvärde')
+hold on;
+plot(t,EaccelZ_1);
+plot(t,EaccelZ_2);
+plot(t,EaccelZ_3);
+plot(t,EaccelZ_4);
+legend('Framåt','Höger','Backåt', 'Vänster')
+hold off;
+%%
+clear;
+clc;
 figure;
 [Epar1_1, EaccelX_1, Ekoma1_1, EaccelY_1, Ekoma2_1, EaccelZ_1, Epar2_1] = textread('Elin-20meanAccelList-1.txt', '%c %f %c %f %c %f %c');
 [Epar1_2, EaccelX_2, Ekoma1_2, EaccelY_2, Ekoma2_2, EaccelZ_2, Epar2_2] = textread('Elin-20meanAccelList-2.txt', '%c %f %c %f %c %f %c');
