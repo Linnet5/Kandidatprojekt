@@ -27,7 +27,7 @@ public class DisplayNameChange : MonoBehaviour
     {
         nameInputField = nameInput.GetComponent<InputField>();
         txt = displayName.GetComponent<TextMeshProUGUI>();
-        txt.SetText();
+        txt.SetText(nameInputField.text);
         Debug.Log(txt.text);
     }
  }
