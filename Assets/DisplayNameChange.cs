@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class DisplayNameChange : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class DisplayNameChange : MonoBehaviour
     public void changeName()
     {
         nameInputField = nameInput.GetComponent<InputField>();
-        displayName.text = nameInputField.text;
+        txt = displayName.GetComponent<TextMeshProUGUI>();
+        txt.SetText();
+        Debug.Log(txt.text);
     }
  }
