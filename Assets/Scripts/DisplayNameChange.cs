@@ -13,7 +13,6 @@ public class DisplayNameChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(displayName);
         nameInput = GameObject.Find("NameInput");
     }
 
@@ -28,6 +27,7 @@ public class DisplayNameChange : MonoBehaviour
         nameInputField = nameInput.GetComponent<InputField>();
         txt = displayName.GetComponent<TextMeshProUGUI>();
         txt.SetText(nameInputField.text);
-        Debug.Log(txt.text);
+        PlayerPrefs.SetString("pet1Name", nameInputField.text);
+        Debug.Log(PlayerPrefs.GetString("pet1Name"));
     }
  }

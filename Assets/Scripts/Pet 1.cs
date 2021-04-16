@@ -16,22 +16,12 @@ public class Pet1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pet1 = GameObject.Find("Pet 1");
-        PlayerPrefs.SetString("pet1Name", "Greg");
-        PlayerPrefs.SetInt("pet1Level", 1);
-        PlayerPrefs.SetInt("pet1Xp", 0);
-        PlayerPrefs.SetString("pet1Chosen", "true");
-        PlayerPrefs.SetString("pet1Unlocked", "true");
-        PlayerPrefs.SetInt("pet1Id", 1);
-
         petName = PlayerPrefs.GetString("pet1Name");
         level = PlayerPrefs.GetInt("pet1Level");
         xp = PlayerPrefs.GetInt("pet1Xp");
         chosen = bool.Parse(PlayerPrefs.GetString("pet1Chosen"));
         unlocked = bool.Parse(PlayerPrefs.GetString("pet1Unlocked"));
         id = PlayerPrefs.GetInt("pet1Id");
-
-        Debug.Log(petName);
         
         if (unlocked)
         {
@@ -49,6 +39,31 @@ public class Pet1 : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Unlock() {
+        PlayerPrefs.SetString("pet1Name", "Pet 1");
+        PlayerPrefs.SetInt("pet1Level", 1);
+        PlayerPrefs.SetInt("pet1Xp", 0);
+        PlayerPrefs.SetString("pet1Chosen", "true");
+        PlayerPrefs.SetString("pet1Unlocked", "true");
+        PlayerPrefs.SetInt("pet1Id", 1);
+    }
+
+    void ChangeName (string name) {
+        PlayerPrefs.SetString("pet1Name", name);
+    }
+
+    void IncreaseLevel() {
+        PlayerPrefs.SetInt("pet1Level", level + 1);
+    }
+
+    void IncreaseXp(int addedXp) {
+        xp += addedXp;
+        if (xp >= 100) {
+            xp -= 100;
+            IncreaseLevel();
+        }
     }
 
 }

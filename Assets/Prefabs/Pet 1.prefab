@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5144907520894204830}
   - component: {fileID: 7459166580796748192}
   - component: {fileID: 6114174090490517374}
-  - component: {fileID: 458534527391821228}
+  - component: {fileID: 1627866080641870893}
   m_Layer: 5
   m_Name: Pet 1
   m_TagString: Untagged
@@ -73,7 +73,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &458534527391821228
+--- !u!114 &1627866080641870893
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
