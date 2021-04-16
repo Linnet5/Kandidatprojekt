@@ -18,8 +18,7 @@ clc;
 nom = '20';
 gyroOrAccel = 'meanGyro';
 
-%Append bygger ihop strukturen på namnet, så att man kan ändra det smidigt
-%midFileName = append('Elin-',nom,gyroOrAccel,'List-1.txt');
+midFileName = append('Julius-',nom,gyroOrAccel,'List-1.txt');
 
 figure;
 [par1_1, accelX_1, koma1_1, accelY_1, koma2_1, accelZ_1, par2_1] = textread(append('Max-',nom,gyroOrAccel,'List-1.txt'), '%c %f %c %f %c %f %c');
@@ -44,27 +43,27 @@ figure;
 [par1_19, accelX_19, koma1_19, accelY_19, koma2_19, accelZ_19, par2_19] = textread(append('Linus-',nom,gyroOrAccel,'List-9.txt'), '%c %f %c %f %c %f %c');
 [par1_20, accelX_20, koma1_20, accelY_20, koma2_20, accelZ_20, par2_20] = textread(append('Linus-',nom,gyroOrAccel,'List-10.txt'), '%c %f %c %f %c %f %c');
 
-[par1_21, accelX_21, koma1_21, accelY_21, koma2_21, accelZ_21, par2_21] = textread(append('Julius-',nom,gyroOrAccel,'List-1.txt'), '%c %f %c %f %c %f %c');
-[par1_22, accelX_22, koma1_22, accelY_22, koma2_22, accelZ_22, par2_22] = textread(append('Julius-',nom,gyroOrAccel,'List-2.txt'), '%c %f %c %f %c %f %c');
-[par1_23, accelX_23, koma1_23, accelY_23, koma2_23, accelZ_23, par2_23] = textread(append('Julius-',nom,gyroOrAccel,'List-3.txt'), '%c %f %c %f %c %f %c');
-[par1_24, accelX_24, koma1_24, accelY_24, koma2_24, accelZ_24, par2_24] = textread(append('Julius-',nom,gyroOrAccel,'List-4.txt'), '%c %f %c %f %c %f %c');
-[par1_25, accelX_25, koma1_25, accelY_25, koma2_25, accelZ_25, par2_25] = textread(append('Julius-',nom,gyroOrAccel,'List-5.txt'), '%c %f %c %f %c %f %c');
-[par1_26, accelX_26, koma1_26, accelY_26, koma2_26, accelZ_26, par2_26] = textread(append('Julius-',nom,gyroOrAccel,'List-6.txt'), '%c %f %c %f %c %f %c');
-[par1_27, accelX_27, koma1_27, accelY_27, koma2_27, accelZ_27, par2_27] = textread(append('Julius-',nom,gyroOrAccel,'List-7.txt'), '%c %f %c %f %c %f %c');
-[par1_28, accelX_28, koma1_28, accelY_28, koma2_28, accelZ_28, par2_28] = textread(append('Julius-',nom,gyroOrAccel,'List-8.txt'), '%c %f %c %f %c %f %c');
-[par1_29, accelX_29, koma1_29, accelY_29, koma2_29, accelZ_29, par2_29] = textread(append('Julius-',nom,gyroOrAccel,'List-9.txt'), '%c %f %c %f %c %f %c');
-[par1_30, accelX_30, koma1_30, accelY_30, koma2_30, accelZ_30, par2_30] = textread(append('Julius-',nom,gyroOrAccel,'List-10.txt'), '%c %f %c %f %c %f %c');
+[par1_21, accelX_21, koma1_21, accelY_21, koma2_21, accelZ_21, par2_21] = textread('Julius-20meanGyroList-1.txt', '%c %f %c %f %c %f %c');
+[par1_22, accelX_22, koma1_22, accelY_22, koma2_22, accelZ_22, par2_22] = textread('Julius-20meanGyroList-2.txt', '%c %f %c %f %c %f %c');
+[par1_23, accelX_23, koma1_23, accelY_23, koma2_23, accelZ_23, par2_23] = textread('Julius-20meanGyroList-3.txt', '%c %f %c %f %c %f %c');
+[par1_24, accelX_24, koma1_24, accelY_24, koma2_24, accelZ_24, par2_24] = textread('Julius-20meanGyroList-4.txt', '%c %f %c %f %c %f %c');
+[par1_25, accelX_25, koma1_25, accelY_25, koma2_25, accelZ_25, par2_25] = textread('Julius-20meanGyroList-5.txt', '%c %f %c %f %c %f %c');
+[par1_26, accelX_26, koma1_26, accelY_26, koma2_26, accelZ_26, par2_26] = textread('Julius-20meanGyroList-6.txt', '%c %f %c %f %c %f %c');
+[par1_27, accelX_27, koma1_27, accelY_27, koma2_27, accelZ_27, par2_27] = textread('Julius-20meanGyroList-7.txt', '%c %f %c %f %c %f %c');
+[par1_28, accelX_28, koma1_28, accelY_28, koma2_28, accelZ_28, par2_28] = textread('Julius-20meanGyroList-8.txt', '%c %f %c %f %c %f %c');
+[par1_29, accelX_29, koma1_29, accelY_29, koma2_29, accelZ_29, par2_29] = textread('Julius-20meanGyroList-9.txt', '%c %f %c %f %c %f %c');
+[par1_30, accelX_30, koma1_30, accelY_30, koma2_30, accelZ_30, par2_30] = textread('Julius-20meanGyroList-10.txt', '%c %f %c %f %c %f %c');
 
-[par1_31, accelX_31, koma1_31, accelY_31, koma2_31, accelZ_31, par2_31] = textread(append('Elin-',nom,gyroOrAccel,'List-1.txt'), '%c %f %c %f %c %f %c');
-[par1_32, accelX_32, koma1_32, accelY_32, koma2_32, accelZ_32, par2_32] = textread(append('Elin-',nom,gyroOrAccel,'List-2.txt'), '%c %f %c %f %c %f %c');
-[par1_33, accelX_33, koma1_33, accelY_33, koma2_33, accelZ_33, par2_33] = textread(append('Elin-',nom,gyroOrAccel,'List-3.txt'), '%c %f %c %f %c %f %c');
-[par1_34, accelX_34, koma1_34, accelY_34, koma2_34, accelZ_34, par2_34] = textread(append('Elin-',nom,gyroOrAccel,'List-4.txt'), '%c %f %c %f %c %f %c');
-[par1_35, accelX_35, koma1_35, accelY_35, koma2_35, accelZ_35, par2_35] = textread(append('Elin-',nom,gyroOrAccel,'List-5.txt'), '%c %f %c %f %c %f %c');
-[par1_36, accelX_36, koma1_36, accelY_36, koma2_36, accelZ_36, par2_36] = textread(append('Elin-',nom,gyroOrAccel,'List-6.txt'), '%c %f %c %f %c %f %c');
-[par1_37, accelX_37, koma1_37, accelY_37, koma2_37, accelZ_37, par2_37] = textread(append('Elin-',nom,gyroOrAccel,'List-7.txt'), '%c %f %c %f %c %f %c');
-[par1_38, accelX_38, koma1_38, accelY_38, koma2_38, accelZ_38, par2_38] = textread(append('Elin-',nom,gyroOrAccel,'List-8.txt'), '%c %f %c %f %c %f %c');
-[par1_39, accelX_39, koma1_39, accelY_39, koma2_39, accelZ_39, par2_39] = textread(append('Elin-',nom,gyroOrAccel,'List-9.txt'), '%c %f %c %f %c %f %c');
-[par1_40, accelX_40, koma1_40, accelY_40, koma2_40, accelZ_40, par2_40] = textread(append('Elin-',nom,gyroOrAccel,'List-10.txt'), '%c %f %c %f %c %f %c');
+[par1_31, accelX_31, koma1_31, accelY_31, koma2_31, accelZ_31, par2_31] = textread('Elin-20meanGyroList-1.txt', '%c %f %c %f %c %f %c');
+[par1_32, accelX_32, koma1_32, accelY_32, koma2_32, accelZ_32, par2_32] = textread('Elin-20meanGyroList-2.txt', '%c %f %c %f %c %f %c');
+[par1_33, accelX_33, koma1_33, accelY_33, koma2_33, accelZ_33, par2_33] = textread('Elin-20meanGyroList-3.txt', '%c %f %c %f %c %f %c');
+[par1_34, accelX_34, koma1_34, accelY_34, koma2_34, accelZ_34, par2_34] = textread('Elin-20meanGyroList-4.txt', '%c %f %c %f %c %f %c');
+[par1_35, accelX_35, koma1_35, accelY_35, koma2_35, accelZ_35, par2_35] = textread('Elin-20meanGyroList-5.txt', '%c %f %c %f %c %f %c');
+[par1_36, accelX_36, koma1_36, accelY_36, koma2_36, accelZ_36, par2_36] = textread('Elin-20meanGyroList-6.txt', '%c %f %c %f %c %f %c');
+[par1_37, accelX_37, koma1_37, accelY_37, koma2_37, accelZ_37, par2_37] = textread('Elin-20meanGyroList-7.txt', '%c %f %c %f %c %f %c');
+[par1_38, accelX_38, koma1_38, accelY_38, koma2_38, accelZ_38, par2_38] = textread('Elin-20meanGyroList-8.txt', '%c %f %c %f %c %f %c');
+[par1_39, accelX_39, koma1_39, accelY_39, koma2_39, accelZ_39, par2_39] = textread('Elin-20meanGyroList-9.txt', '%c %f %c %f %c %f %c');
+[par1_40, accelX_40, koma1_40, accelY_40, koma2_40, accelZ_40, par2_40] = textread('Elin-20meanGyroList-10.txt', '%c %f %c %f %c %f %c');
 
 t = 1:1:length(accelX_4);
 
