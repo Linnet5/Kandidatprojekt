@@ -12,19 +12,11 @@ public class Pet : MonoBehaviour
     private bool chosen;
     private bool unlocked;
     private int id;
-    private UnityEngine.UI.Image image_1;
-    GameObject displayName;
 
     // Start is called before the first frame update
     void Start()
     {
-        ReadData("pet_1.txt");
-        displayName = GameObject.Find("Name");
-        displayName.GetComponent<UnityEngine.UI.Text>().text = PlayerPrefs.GetString("pet1Name");
-        if (id == 1 || unlocked) 
-        {
 
-        }
     }
 
     // Update is called once per frame
