@@ -40,11 +40,20 @@ public class Analyzer : MonoBehaviour
         meanReferenceGyro = new List<Vector3>();
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
+<<<<<<< HEAD
         //Read TextAssets with two loops
         string filePath = "Assets/Resources/Reference Moves/Squat/";
         TextAsset gyro = Resources.Load("Reference Moves/Squat/meanReferenceGyro.txt") as TextAsset;
         TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel.txt") as TextAsset;
         
+=======
+
+        // string filePath = "F:/!JuliusHalldan/Uni/TNM094/PROJEKT/Kandidatprojekt/Matlab/";
+        string filePath = "C:/Users/elidj/OneDrive/Skrivbord/Elin/Skola/MT3/LP3/TNM094-Kandidat/Kandidatprojekt/Kandidatprojekt/Matlab/";
+
+        string gyroFileName = filePath + "meanReferenceGyro.txt";
+        string accelFileName = filePath + "meanReferenceAccel.txt";
+>>>>>>> ec3d45502fae9da34d9b22334ed1affe75454138
         string[] vectorString;
         StreamReader srGyro = new StreamReader(gyro);
         StreamReader srAccel = new StreamReader(accelFileName);
