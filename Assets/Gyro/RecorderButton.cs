@@ -30,6 +30,14 @@ public class RecorderButton : MonoBehaviour
     private int nomInput;
     int frameCounter = 0;
 
+    //Audio start
+    AudioSource m_MyAudioSource;
+
+    //Play the music
+    bool m_Play;
+    //Detect when you use the toggle, ensures music isn’t played multiple times
+    bool m_ToggleChange;
+    //Audio end
 
     // Start is called before the first frame update
     void Start()
@@ -66,14 +74,42 @@ public class RecorderButton : MonoBehaviour
         meanAccelList = new List<Vector3>();
 
         //File counter
-        
+
+        //Audio start
+        //Fetch the AudioSource from the GameObject
+        m_MyAudioSource = GetComponent<AudioSource>();
+        //Ensure the toggle is set to true for the music to play at start-up
+        m_Play = true;
+        //audio end
 
     }
+
+  
 
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        //Audio start
+        //Check to see if you just set the toggle to positive
+        if (m_Play == true && m_ToggleChange == true)
+        {
+            //Play the audio you attach to the AudioSource component
+            m_MyAudioSource.Play();
+            //Ensure audio doesn’t play more than once
+            m_ToggleChange = false;
+        }
+        //Check if you just set the toggle to false
+        if (m_Play == false && m_ToggleChange == true)
+        {
+            //Stop the audio
+            m_MyAudioSource.Stop();
+            //Ensure audio doesn’t play more than once
+            m_ToggleChange = false;
+        }
+        //Audio end
+        */
+
         if (record == true)
         {
 
@@ -117,16 +153,18 @@ public class RecorderButton : MonoBehaviour
                
                 save = true;
                 frameCounter++;
-                
+
+                /*
                 //Elin
                 Debug.Log("Down!!!!!!!!!");
                 AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-                audioSource.clip = Resources.Load("Assets/Audio/Assets_Sound_down") as AudioClip;
+                audioSource.clip = Resources.Load("Audio/Assets_Sound_down") as AudioClip;
                 audioSource.Play();
-                
+                */
 
-                if (frameCounter > 115)
+                if (frameCounter > (230/2))
                 {
+                    //UP
                     /*
                     AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
                     audioSource1.clip = Resources.Load("Assets_Sound_up") as AudioClip;
