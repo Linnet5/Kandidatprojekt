@@ -31,6 +31,10 @@ public class RecorderButton : MonoBehaviour
     private int nomInput;
     int frameCounter = 0;
 
+    AudioSource audioData;
+    bool Up_Play = false;
+    bool Down_Play = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -124,13 +128,37 @@ public class RecorderButton : MonoBehaviour
                 //Debug.Log("GYRO: " + gyroData);
                 //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
 
+                if (Down_Play == false)
+                {
+                    GameObject.Find("Down").GetComponent<AudioSource>().Play(0);
+                    Down_Play = true;
+                }
+
+
+                if (frameCounter > (230/2))
+                {
+                    //Up
+                    //Debug.Log("Up!");
+                   
+                    if (Up_Play == false)
+                    {
+                        GameObject.Find("Up").GetComponent<AudioSource>().Play(0);
+                        Up_Play = true;
+                    }
+                
+                    
+                }
+
                 save = true;
                 frameCounter++;
                 
+
                 if (frameCounter > 230)
                 {
                     record = false;
                     frameCounter = 0;
+                    Up_Play = false;
+                    Down_Play = false;
                 }
                 
             }
@@ -162,8 +190,8 @@ public class RecorderButton : MonoBehaviour
             }
 
         }
+       
 
-        
     }
 
     private void SaveData(List<Vector3> list, string fileName) {
