@@ -40,18 +40,19 @@ public class Analyzer : MonoBehaviour
         meanReferenceGyro = new List<Vector3>();
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        string filePath = "F:/!JuliusHalldan/Uni/TNM094/PROJEKT/Kandidatprojekt/Matlab/";
-
-        string gyroFileName = filePath + "meanReferenceGyro.txt";
-        string accelFileName = filePath + "meanReferenceAccel.txt";
+        //Read TextAssets with two loops
+        string filePath = "Assets/Resources/Reference Moves/Squat/";
+        TextAsset gyro = Resources.Load("Reference Moves/Squat/meanReferenceGyro.txt") as TextAsset;
+        TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel.txt") as TextAsset;
+        
         string[] vectorString;
-        StreamReader srGyro = new StreamReader(gyroFileName);
+        StreamReader srGyro = new StreamReader(gyro);
         StreamReader srAccel = new StreamReader(accelFileName);
-        string txtGyro = srGyro.ReadLine();
-        string txtAccel = srAccel.ReadLine();
+        //string txtGyro = srGyro.ReadLine();
+        
+        //string txtAccel = srAccel.ReadLine();
 
-
+        
         while (txtGyro != null)
         {
 
@@ -143,7 +144,6 @@ public class Analyzer : MonoBehaviour
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
 
-        deltaGyro.y = 0.1f;
         if (deltaGyro.y < 0.13f)
         {
             GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU´RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();

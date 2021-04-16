@@ -37,6 +37,7 @@ public class GyroText : MonoBehaviour
         Debug.DrawLine(offset,gravity+offset,Color.red);
         float angle = (Vector3.Dot(gyroData, gravity)) / (gravity.magnitude * gyroData.magnitude);
         angle = angle * Mathf.Rad2Deg;
+        
         GetComponent<Text>().text = angle.ToString();
 
     }
