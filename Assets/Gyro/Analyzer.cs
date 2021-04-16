@@ -143,18 +143,23 @@ public class Analyzer : MonoBehaviour
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
 
-        
+        deltaGyro.y = 0.1f;
         if (deltaGyro.y < 0.13f)
         {
+            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU´RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();
+            GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
             Debug.Log("YOU MADE IT");
             Debug.Log(deltaGyro.y);
             return true;
         }
 
         else {
+            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU SUCK! :(((\n" + "dE: " + deltaGyro.y.ToString();
+            GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
             Debug.Log("YOU FAILED");
         }
         Debug.Log(deltaGyro.y);
+
         return false;
     }
 
