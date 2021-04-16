@@ -108,7 +108,8 @@ public class RecorderButton : MonoBehaviour
                 GameObject.Find("ButtonRecordText").GetComponent<Text>().text = "RECORDING!";
 
                 //RECORD ACCEL AND GYRO VECTORS
-                Vector3 accelData = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
+                //Vector3 accelData = GameObject.Find("Recorder").GetComponent<FollowAccel>().GetAccel();
+                Vector3 accelData = Input.gyro.userAcceleration;
                 accelList.Add(accelData);
 
                 //Vector3 gyroData = GameObject.Find("Recorder").GetComponent<FollowGyro>().GetGyro();

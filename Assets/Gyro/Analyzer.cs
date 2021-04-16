@@ -39,39 +39,35 @@ public class Analyzer : MonoBehaviour
         meanReferenceAccel = new List<Vector3>();
         meanReferenceGyro = new List<Vector3>();
 
-        string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
+        //string filePath = "C:/Users/MeckBook/Documents/!TNM094/Kandidatprojekt/Matlab/";
 
-        string gyroFileName = filePath + "meanReferenceGyro.txt";
-        string accelFileName = filePath + "meanReferenceAccel.txt";
-        string[] vectorString;
-        StreamReader srGyro = new StreamReader(gyroFileName);
-        StreamReader srAccel = new StreamReader(accelFileName);
-        string txtGyro = srGyro.ReadLine();
-        string txtAccel = srAccel.ReadLine();
+        //string gyroFileName = filePath + "meanReferenceGyro.txt";
+        //string accelFileName = filePath + "meanReferenceAccel.txt";
+        //string[] vectorString;
+        //StreamReader srGyro = new StreamReader(gyroFileName);
+        //StreamReader srAccel = new StreamReader(accelFileName);
+        //string txtGyro = srGyro.ReadLine();
+        //string txtAccel = srAccel.ReadLine();
 
 
-        while (txtGyro != null) {
+        //while (txtGyro != null) {
 
             
-            vectorString = txtGyro.Split(' ');
+        //    vectorString = txtGyro.Split(' ');
 
-            meanReferenceGyro.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
-            txtGyro = srGyro.ReadLine();
+        //    meanReferenceGyro.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
+        //    txtGyro = srGyro.ReadLine();
             
-        }
+        //}
 
-        while (txtAccel != null)
-        {
+        //while (txtAccel != null)
+        //{
 
-            vectorString = txtAccel.Split(' ');
+        //    vectorString = txtAccel.Split(' ');
 
-            meanReferenceAccel.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
-            txtAccel = srAccel.ReadLine();
+        //    meanReferenceAccel.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
+        //    txtAccel = srAccel.ReadLine();
 
-        }
-
-        //for (int i = 0; i < meanReferenceAccel.Count; i++) {
-        //    Debug.Log(meanReferenceAccel[i].ToString("F4"));
         //}
 
     }
