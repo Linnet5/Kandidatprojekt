@@ -41,38 +41,21 @@ public class Analyzer : MonoBehaviour
 
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         //Read TextAssets with two loops
-        string filePath = "Assets/Resources/Reference Moves/Squat/";
-        TextAsset gyro = Resources.Load("Reference Moves/Squat/meanReferenceGyro.txt") as TextAsset;
-        TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel.txt") as TextAsset;
-        
-        string[] vectorString;
-        //StreamReader srGyro = new StreamReader(gyro);
-        //StreamReader srAccel = new StreamReader(accelFileName);
-        //string txtGyro = srGyro.ReadLine();
-        
-        //string txtAccel = srAccel.ReadLine();
+        //string filePath = "Assets/Resources/Reference Moves/Squat/";
+        TextAsset gyro = Resources.Load("Reference Moves/Squat/meanReferenceGyro") as TextAsset;
+        TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel") as TextAsset;
 
-        
-        while (txtGyro != null)
+        string[] lines = gyro.text.Split('\n');
+        string[] vectorString;
+
+        for (int i = 0; i < lines.Length; i++)
         {
 
-
-            vectorString = txtGyro.Split(' ');
+            vectorString = lines[i].Split(' ');
 
             meanReferenceGyro.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
-            txtGyro = srGyro.ReadLine();
-
         }
 
-        while (txtAccel != null)
-        {
-
-            vectorString = txtAccel.Split(' ');
-
-            meanReferenceAccel.Add(new Vector3(float.Parse(vectorString[0], CultureInfo.InvariantCulture), float.Parse(vectorString[1], CultureInfo.InvariantCulture), float.Parse(vectorString[2], CultureInfo.InvariantCulture)));
-            txtAccel = srAccel.ReadLine();
-
-        }
 
     }
 
