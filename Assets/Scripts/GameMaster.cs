@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public int score = 0; 
+    public int score = 0;
+    
 
     
     // Start is called before the first frame update
@@ -18,8 +19,9 @@ public class GameMaster : MonoBehaviour
     {
     }
 
-    public void IncrementScore() {
-        score++;
-        
+    public void IncrementScore(int i) {
+        score += i;
+
     }
+
 }
