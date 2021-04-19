@@ -35,14 +35,14 @@ public class ParentCoordinates : MonoBehaviour
         gm = GameObject.Find("Spawned GyroManager").GetComponent<GyroManager>();
         transform.LookAt(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
         bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
-            "Turn your phone counter-clockwise, put it against your chest and lay down. A countdown will indicate when exercise is about to start.");
+            "Turn your phone counter-clockwise, put it against your chest and lay down. A countdown will indicate when the exercise is about to start.");
         rotateIcon.SetActive(true);
         StartCoroutine("StartExercise");
     }
 
     IEnumerator StartExercise()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(10.0f);
         audioSource.PlayOneShot(three);
         yield return new WaitForSeconds(1.0f);
         audioSource.PlayOneShot(two);

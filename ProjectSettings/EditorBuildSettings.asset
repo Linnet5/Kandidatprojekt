@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UserTestInfo.unity
-    guid: fd7a93c1381a0f140af16eb74d23d8c1
+    path: Assets/Scenes/TitleScreen.unity
+    guid: 06d4cf11dac72c241ab6fa34afea6f9a
+  - enabled: 1
+    path: Assets/Scenes/LevelSelect.unity
+    guid: 4c92faf87d021084bbd6ed2519f49a4a
+  - enabled: 1
+    path: Assets/Scenes/ForestLevel.unity
+    guid: 19a3051ad7529e347ad38ae70f5e9a24
+  - enabled: 1
+    path: Assets/Scenes/SitUpsRotation_Instructions.unity
+    guid: db86108428fc583498b473d0d4fd8e7d
   - enabled: 1
     path: Assets/Scenes/SitUpsRotation.unity
     guid: 690d53429d3b59e4e979f01900dc5508
