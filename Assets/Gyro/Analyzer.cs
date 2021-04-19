@@ -121,15 +121,15 @@ public class Analyzer : MonoBehaviour
 
         for (int i = 0; i < meanReferenceGyro.Count; i++) {
             //deltaGyro += (meanReferenceGyro[i] - new Vector3(Mathf.Abs(meanAccel[i].x), Mathf.Abs(meanAccel[i].y), Mathf.Abs(meanAccel[i].z)));
-            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - Mathf.Abs(meanAccel[i].x));
-            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - Mathf.Abs(meanAccel[i].y));
-            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - Mathf.Abs(meanAccel[i].z));
+            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - Mathf.Abs(meanGyro[i].x));
+            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - Mathf.Abs(meanGyro[i].y));
+            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - Mathf.Abs(meanGyro[i].z));
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
 
         if (deltaGyro.y < 0.13f)
         {
-            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU�RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();
+            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU'RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();
             GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
             Debug.Log("YOU MADE IT");
             Debug.Log(deltaGyro.y);
