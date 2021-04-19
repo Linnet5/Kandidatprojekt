@@ -19,43 +19,25 @@ public class Pet1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find game objects attached to pet
         pet1 = GameObject.Find("Pet 1");
         pet1Name = GameObject.Find("NamePet1");
         pet1Level = GameObject.Find("LevelPet1");
         pet1Xp = GameObject.Find("XpPet1");
+
+        // Set private variables
         petName = PlayerPrefs.GetString("pet1Name");
         level = PlayerPrefs.GetInt("pet1Level");
         xp = PlayerPrefs.GetInt("pet1Xp");
         chosen = bool.Parse(PlayerPrefs.GetString("pet1Chosen"));
         unlocked = bool.Parse(PlayerPrefs.GetString("pet1Unlocked"));
         id = PlayerPrefs.GetInt("pet1Id");
-
-        if (unlocked)
-        {
-            pet1.GetComponent<RawImage>().enabled = true;
-        }
-        else
-        {
-            pet1.GetComponent<RawImage>().enabled = false;
-        }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
-    }
-
-    void Unlock()
-    {
-        PlayerPrefs.SetString("pet1Name", "Pet 1");
-        PlayerPrefs.SetInt("pet1Level", 1);
-        PlayerPrefs.SetInt("pet1Xp", 0);
-        PlayerPrefs.SetString("pet1Chosen", "true");
-        PlayerPrefs.SetString("pet1Unlocked", "true");
-        PlayerPrefs.SetInt("pet1Id", 1);
+        
     }
 
     public void DisplayName()
