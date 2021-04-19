@@ -30,15 +30,6 @@ public class Pet1 : MonoBehaviour
         unlocked = bool.Parse(PlayerPrefs.GetString("pet1Unlocked"));
         id = PlayerPrefs.GetInt("pet1Id");
 
-        if (unlocked)
-        {
-            pet1.GetComponent<RawImage>().enabled = true;
-        }
-        else
-        {
-            pet1.GetComponent<RawImage>().enabled = false;
-        }
-
 
     }
 
