@@ -14,6 +14,10 @@ public class Analyzer : MonoBehaviour
     private int numberOfMeans;
     int samplesPerMean;
     float samplesPerMeanF;
+
+    List<Vector3> accelBuffer;
+    List<Vector3> gyroBuffer;
+
     private List<Vector3> referenceAccel;
     private List<Vector3> referenceGyro;
     private List<Vector3> meanReferenceAccel;
@@ -23,6 +27,8 @@ public class Analyzer : MonoBehaviour
     Vector3 inputSum;
     private float floatConversion;
     private GameObject NomInputField;
+    bool movement = false;
+    bool record = false;
 
 
     private void Awake()
@@ -35,6 +41,14 @@ public class Analyzer : MonoBehaviour
     {
         NomInputField = GameObject.Find("NomInputField");
         numberOfMeans = standardNom;
+
+        accelBuffer = new List<Vector3>();
+        gyroBuffer = new List<Vector3>();
+
+        for (int i = 0; i < 130; i++) {
+            accelBuffer.Add(Vector3.zero);
+            gyroBuffer.Add(Vector3.zero);
+        }
 
         meanReferenceAccel = new List<Vector3>();
         meanReferenceGyro = new List<Vector3>();
@@ -57,6 +71,15 @@ public class Analyzer : MonoBehaviour
         }
 
 
+    }
+
+    private void Update()
+    {
+        accelBuffer.RemoveAt(129);
+        accelBuffer.Insert(0, Input.gyro.userAcceleration);
+
+        gyroBuffer.RemoveAt(129);
+        gyroBuffer.Insert(0, Input.gyro.userAcceleration);
     }
 
     private List<Vector3> CreateMeans(List<Vector3> input)
@@ -105,7 +128,8 @@ public class Analyzer : MonoBehaviour
         return output;
     }
 
-    private bool Analyze(List<Vector3> accel, List<Vector3> gyro) {
+    //RECRODERBUTTON KOMMER INTE COMPILEA PGA DATATYP
+    private float Analyze(List<Vector3> accel, List<Vector3> gyro) {
 
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
@@ -133,17 +157,19 @@ public class Analyzer : MonoBehaviour
             GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
             Debug.Log("YOU MADE IT");
             Debug.Log(deltaGyro.y);
-            return true;
         }
 
-        else {
+        else
+        {
             GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU SUCK! :(((\n" + "dE: " + deltaGyro.y.ToString();
             GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
             Debug.Log("YOU FAILED");
         }
         Debug.Log(deltaGyro.y);
 
-        return false;
+        return deltaGyro.y;
+
+
     }
 
     public List<Vector3> GetMeans(List<Vector3> input) {
@@ -157,8 +183,22 @@ public class Analyzer : MonoBehaviour
         return numberOfMeans;
     }
 
-    public bool GetResult(List<Vector3> accel, List<Vector3> gyro) {
-        return Analyze(accel, gyro);
+    public float GetResult() {
+
+        float ret = 0;
+
+        ret = Analyze(accelBuffer,gyroBuffer);
+
+        accelBuffer = new List<Vector3>();
+        gyroBuffer = new List<Vector3>();
+
+        for (int i = 0; i < 130; i++)
+        {
+            accelBuffer.Add(Vector3.zero);
+            gyroBuffer.Add(Vector3.zero);
+        }
+
+        return ret;
     }
 
 }

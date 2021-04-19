@@ -73,7 +73,6 @@ public class RecorderButton : MonoBehaviour
 
         //File counter
         
-
     }
 
     // Update is called once per frame
@@ -185,7 +184,9 @@ public class RecorderButton : MonoBehaviour
                 //SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
                 //SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
 
-                analyzer.GetComponent<Analyzer>().GetResult(accelList, gyroList);
+                analyzer.GetComponent<Analyzer>().GetResult();
+
+
 
                 save = false;
             }
