@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 10;
+    private const int attemptGoal = 1;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -29,6 +29,7 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject gameCanvas;
     [SerializeField] private GameObject resultsCanvas;
     [SerializeField] private GameObject bodyText;
+    [SerializeField] private GameObject scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -115,7 +116,8 @@ public class Goal : MonoBehaviour
             //Display results
             gameCanvas.SetActive(false);
             resultsCanvas.SetActive(true);
-            bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n ok: " + ok + "\n miss: " + miss + "\n SCORE: " + gmScript.score/attemptGoal);
+            bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n ok: " + ok + "\n miss: " + miss + "\n \n SCORE ");
+            scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" +gmScript.score / attemptGoal);
         }
 
         repProgress = 0;
