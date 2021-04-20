@@ -79,7 +79,7 @@ public class Analyzer : MonoBehaviour
         accelBuffer.Insert(0, Input.gyro.userAcceleration);
 
         gyroBuffer.RemoveAt(129);
-        gyroBuffer.Insert(0, Input.gyro.userAcceleration);
+        gyroBuffer.Insert(0, Input.gyro.gravity);
     }
 
     private List<Vector3> CreateMeans(List<Vector3> input)
@@ -128,7 +128,7 @@ public class Analyzer : MonoBehaviour
         return output;
     }
 
-    //RECRODERBUTTON KOMMER INTE COMPILEA PGA DATATYP
+    
     private float Analyze(List<Vector3> accel, List<Vector3> gyro) {
 
         meanAccel = CreateMeans(accel);
