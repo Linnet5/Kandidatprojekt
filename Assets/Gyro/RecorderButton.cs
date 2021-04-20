@@ -195,17 +195,17 @@ public class RecorderButton : MonoBehaviour
                     Debug.Log(result);
                 }
 
-                else if (result < 0.75f && result > 0.64f)
+                else if (result > 0.70f)
                 {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "GOOD! :)))\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "GREAT! :)))\n" + "dE: " + result;
                     GameObject.Find("VerificationText").GetComponent<Text>().color = Color.white;
                     Debug.Log("YOU MADE IT");
                     Debug.Log(result);
                 }
 
-                else if (result <= 0.64f && result > 0.50f)
+                else if (result > 0.65f)
                 {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "OK! :)))\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "GOOD! :)\n" + "dE: " + result;
                     GameObject.Find("VerificationText").GetComponent<Text>().color = Color.yellow;
                     Debug.Log("YOU MADE IT");
                     Debug.Log(result);
@@ -213,7 +213,7 @@ public class RecorderButton : MonoBehaviour
 
                 else
                 {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU SUCK! :(((\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "MISS! :(((\n" + "dE: " + result;
                     GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
                     Debug.Log("YOU FAILED");
                 }
