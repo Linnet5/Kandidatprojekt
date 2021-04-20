@@ -10,7 +10,7 @@ public class Analyzer : MonoBehaviour
 {
 
     private bool result;
-    private int standardNom = 100; 
+    private int standardNom = 20; 
     private int numberOfMeans;
     int samplesPerMean;
     float samplesPerMeanF;
@@ -151,22 +151,6 @@ public class Analyzer : MonoBehaviour
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
 
-        if (deltaGyro.y < 0.13f)
-        {
-            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU'RE AWESOME! :)))\n" + "dE: " + deltaGyro.y.ToString();
-            GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
-            Debug.Log("YOU MADE IT");
-            Debug.Log(deltaGyro.y);
-        }
-
-        else
-        {
-            GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU SUCK! :(((\n" + "dE: " + deltaGyro.y.ToString();
-            GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
-            Debug.Log("YOU FAILED");
-        }
-        Debug.Log(deltaGyro.y);
-
         return deltaGyro.y;
 
 
@@ -185,9 +169,13 @@ public class Analyzer : MonoBehaviour
 
     public float GetResult() {
 
-        float ret = 0;
+        float result = 0;
 
-        ret = Analyze(accelBuffer,gyroBuffer);
+        result = 1 - Analyze(accelBuffer,gyroBuffer);
+        result -= 0.2f;
+
+        result *= 1.124f;
+
 
         accelBuffer = new List<Vector3>();
         gyroBuffer = new List<Vector3>();
@@ -198,7 +186,7 @@ public class Analyzer : MonoBehaviour
             gyroBuffer.Add(Vector3.zero);
         }
 
-        return ret;
+        return result;
     }
 
 }

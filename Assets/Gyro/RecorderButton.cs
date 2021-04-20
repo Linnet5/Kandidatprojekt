@@ -184,7 +184,41 @@ public class RecorderButton : MonoBehaviour
                 //SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
                 //SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
 
-                analyzer.GetComponent<Analyzer>().GetResult();
+
+                float result = analyzer.GetComponent<Analyzer>().GetResult();
+
+                if (result >= 0.75f)
+                {
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "PERFECT! :DDD\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
+                    Debug.Log("YOU MADE IT");
+                    Debug.Log(result);
+                }
+
+                else if (result < 0.75f && result > 0.64f)
+                {
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "GOOD! :)))\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.white;
+                    Debug.Log("YOU MADE IT");
+                    Debug.Log(result);
+                }
+
+                else if (result <= 0.64f && result > 0.50f)
+                {
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "OK! :)))\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.yellow;
+                    Debug.Log("YOU MADE IT");
+                    Debug.Log(result);
+                }
+
+                else
+                {
+                    GameObject.Find("VerificationText").GetComponent<Text>().text = "YOU SUCK! :(((\n" + "dE: " + result;
+                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
+                    Debug.Log("YOU FAILED");
+                }
+
+                Debug.Log(result);
 
 
 

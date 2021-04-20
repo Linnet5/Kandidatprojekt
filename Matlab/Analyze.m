@@ -86,7 +86,7 @@ delta = sum(abs(mnY-abs(accelY_33)))/20;
 hold on;
 
 scatter(t,abs(accelY_33)); 
-plot(t,mnY);
+plot(t,mnY); ylim([0,1]);
 %plot(t,mnY-delta);
 %plot(t,mnY+delta);
 
