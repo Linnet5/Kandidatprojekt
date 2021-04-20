@@ -8,8 +8,6 @@ using System.Linq;
 // Make a scrollable list in unity, instantiate objects depending on unlocked status
 public class PetManager : MonoBehaviour
 {
-    List<GameObject> pets = new List<GameObject>();
-    List<GameObject> availablePets = new List<GameObject>();
     public GameObject pet1;
     public GameObject pet2;
     public GameObject pet3;
@@ -43,15 +41,32 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetInt("pet3Id", 3);
         }
 
-        pets.Add(pet1);
-        availablePets.Add(pet1);
-
+        // Enabling and displaying pet objects depending on unlocked status
         if (SceneManager.GetActiveScene().name == "Pet Menu")
         {
-            foreach (GameObject pet in availablePets)
-            {
-                pet.GetComponent<Pet1>().DisplayInfo();
-                pet.GetComponent<Pet1>().DisplayName();
+            if (pet1.GetComponent<Pet1>().GetUnlocked()) {
+                pet1.SetActive(true);                
+                pet1.GetComponent<Pet1>().DisplayInfo();
+                pet1.GetComponent<Pet1>().DisplayName();
+            }
+            else {
+                pet1.SetActive(false);
+            }
+            if (pet2.GetComponent<Pet2>().GetUnlocked()) {
+                pet2.SetActive(true);                
+                pet2.GetComponent<Pet2>().DisplayInfo();
+                pet2.GetComponent<Pet2>().DisplayName();
+            }
+            else {
+                pet2.SetActive(false);
+            }
+            if (!pet3.GetComponent<Pet3>().GetUnlocked()) {
+                pet3.SetActive(true);                
+                pet3.GetComponent<Pet3>().DisplayInfo();
+                pet3.GetComponent<Pet3>().DisplayName();
+            }
+            else {
+                pet3.SetActive(false);
             }
         }
     }

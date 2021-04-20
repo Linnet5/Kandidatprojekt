@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
-public class Pet1 : MonoBehaviour
+public class Pet2 : MonoBehaviour
 {
     private string petName;
     private int level;
@@ -12,26 +12,26 @@ public class Pet1 : MonoBehaviour
     private bool chosen;
     private bool unlocked;
     private int id;
-    GameObject pet1;
-    GameObject pet1Name;
-    GameObject pet1Level;
-    GameObject pet1Xp;
+    GameObject pet2;
+    GameObject pet2Name;
+    GameObject pet2Level;
+    GameObject pet2Xp;
     // Start is called before the first frame update
     void Start()
     {
         // Find game objects attached to pet
-        pet1 = GameObject.Find("Pet 1");
-        pet1Name = GameObject.Find("NamePet1");
-        pet1Level = GameObject.Find("LevelPet1");
-        pet1Xp = GameObject.Find("XpPet1");
+        pet2 = GameObject.Find("Pet 2");
+        pet2Name = GameObject.Find("NamePet2");
+        pet2Level = GameObject.Find("LevelPet2");
+        pet2Xp = GameObject.Find("XpPet2");
 
         // Set private variables
-        petName = PlayerPrefs.GetString("pet1Name");
-        level = PlayerPrefs.GetInt("pet1Level");
-        xp = PlayerPrefs.GetInt("pet1Xp");
-        chosen = bool.Parse(PlayerPrefs.GetString("pet1Chosen"));
-        unlocked = bool.Parse(PlayerPrefs.GetString("pet1Unlocked"));
-        id = PlayerPrefs.GetInt("pet1Id");
+        petName = PlayerPrefs.GetString("pet2Name");
+        level = PlayerPrefs.GetInt("pet2Level");
+        xp = PlayerPrefs.GetInt("pet2Xp");
+        chosen = bool.Parse(PlayerPrefs.GetString("pet2Chosen"));
+        unlocked = bool.Parse(PlayerPrefs.GetString("pet2Unlocked"));
+        id = PlayerPrefs.GetInt("pet2Id");
     }
 
     // Update is called once per frame
@@ -42,15 +42,15 @@ public class Pet1 : MonoBehaviour
 
     public void DisplayName()
     {
-        TextMeshProUGUI txt = pet1Name.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI txt = pet2Name.GetComponent<TextMeshProUGUI>();
         txt.text = petName;
         txt.enabled = true;
     }
 
     public void DisplayInfo()
     {
-        TextMeshProUGUI lvl = pet1Level.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Xp = pet1Xp.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI lvl = pet2Level.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Xp = pet2Xp.GetComponent<TextMeshProUGUI>();
         lvl.text = "Level: " + level;
         Xp.text = "XP: " + xp;
     }
@@ -76,12 +76,12 @@ public class Pet1 : MonoBehaviour
 
     void ChangeName(string name)
     {
-        PlayerPrefs.SetString("pet1Name", name);
+        PlayerPrefs.SetString("pet2Name", name);
     }
 
     void IncreaseLevel()
     {
-        PlayerPrefs.SetInt("pet1Level", level + 1);
+        PlayerPrefs.SetInt("pet2Level", level + 1);
     }
 
     void IncreaseXp(int addedXp)
