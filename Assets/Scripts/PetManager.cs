@@ -52,7 +52,7 @@ public class PetManager : MonoBehaviour
             else {
                 pet1.SetActive(false);
             }
-            if (pet2.GetComponent<Pet2>().GetUnlocked()) {
+            if (!pet2.GetComponent<Pet2>().GetUnlocked()) {
                 pet2.SetActive(true);                
                 pet2.GetComponent<Pet2>().DisplayInfo();
                 pet2.GetComponent<Pet2>().DisplayName();
@@ -74,6 +74,6 @@ public class PetManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

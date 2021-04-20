@@ -17,7 +17,7 @@ public class Pet2 : MonoBehaviour
     GameObject pet2Level;
     GameObject pet2Xp;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Find game objects attached to pet
         pet2 = GameObject.Find("Pet 2");

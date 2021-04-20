@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using UnityEngine.EventSystems;
 public class Pet1 : MonoBehaviour
 {
     private string petName;
@@ -16,14 +17,19 @@ public class Pet1 : MonoBehaviour
     GameObject pet1Name;
     GameObject pet1Level;
     GameObject pet1Xp;
+    UnityEngine.UI.RawImage pet1Image;
+    GameObject petViewer;
+    GameObject pet1Page;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // Find game objects attached to pet
         pet1 = GameObject.Find("Pet 1");
         pet1Name = GameObject.Find("NamePet1");
         pet1Level = GameObject.Find("LevelPet1");
         pet1Xp = GameObject.Find("XpPet1");
+        pet1Image = pet1.GetComponent<RawImage>();
+        pet1Page = transform.Find("Pet1Page").gameObject;
 
         // Set private variables
         petName = PlayerPrefs.GetString("pet1Name");
@@ -38,6 +44,13 @@ public class Pet1 : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.pointerCurrentRaycast.gameObject.GetComponent<RawImage>()) {
+            petViewer.SetActive(false);
+            pet1Page.SetActive(true); 
+        }
     }
 
     public void DisplayName()
