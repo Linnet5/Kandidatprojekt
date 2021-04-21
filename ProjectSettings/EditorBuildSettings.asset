@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Results.unity
     guid: b463be7210d7d0943b423a749b59433a
+  - enabled: 1
+    path: Assets/Scenes/Pet Menu.unity
+    guid: 8195ee289c31bdb4a9336df3bf6de83d
   m_configObjects: {}
