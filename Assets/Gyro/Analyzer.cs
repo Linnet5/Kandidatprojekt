@@ -172,19 +172,18 @@ public class Analyzer : MonoBehaviour
         float result = 0;
 
         result = 1 - Analyze(accelBuffer,gyroBuffer);
+        
         result -= 0.2f;
+        result *= 1.45f;
 
-        result *= 1.124f;
+        //accelBuffer = new List<Vector3>();
+        //gyroBuffer = new List<Vector3>();
 
-
-        accelBuffer = new List<Vector3>();
-        gyroBuffer = new List<Vector3>();
-
-        for (int i = 0; i < 130; i++)
-        {
-            accelBuffer.Add(Vector3.zero);
-            gyroBuffer.Add(Vector3.zero);
-        }
+        //for (int i = 0; i < 130; i++)
+        //{
+        //    accelBuffer.Add(Vector3.zero);
+        //    gyroBuffer.Add(Vector3.zero);
+        //}
 
         return result;
     }
