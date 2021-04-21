@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 3;
+    private const int attemptGoal = 5;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -47,7 +47,7 @@ public class Goal : MonoBehaviour
     {
         
     }
-    //När börjar boxens update?
+    
     public void IncrementProgress()
     {
         repProgress++;
@@ -132,6 +132,8 @@ public class Goal : MonoBehaviour
         attempts++;
 
         float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
+
+        GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
 
         if (accuracy > 0.75f)
         {

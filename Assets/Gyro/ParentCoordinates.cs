@@ -16,7 +16,7 @@ public class ParentCoordinates : MonoBehaviour
     public AudioClip one;
     public AudioClip go;
 
-    [SerializeField] private GameObject bodyText;
+    [SerializeField] public GameObject bodyText;
     void Start()
     {
         rotateIcon = GameObject.Find("counter-clockwise-icon");
@@ -32,11 +32,11 @@ public class ParentCoordinates : MonoBehaviour
     IEnumerator Calibrate()
     {
         yield return new WaitForSeconds(3.0f);
-        gm = GameObject.Find("Spawned GyroManager").GetComponent<GyroManager>();
-        transform.LookAt(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
-        bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
-            "Turn your phone counter-clockwise, put it against your chest and lay down. A countdown will indicate when the exercise is about to start.");
-        rotateIcon.SetActive(true);
+        //gm = GameObject.Find("Spawned GyroManager").GetComponent<GyroManager>();
+        //transform.LookAt(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
+        //bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
+        //    "Turn your phone counter-clockwise, put it against your chest and lay down. A countdown will indicate when the exercise is about to start.");
+        //rotateIcon.SetActive(true);
         StartCoroutine("StartExercise");
     }
 
@@ -51,8 +51,11 @@ public class ParentCoordinates : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         audioSource.PlayOneShot(go);
 
+        //bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
+        //"CURRENTLY IN A TRAINING SESSION. REMEMBER TO HAVE THE PHONE IN THE CORRECT POSITION AND FOLLOW THE INSTRUCTIONS.");
         bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
-        "CURRENTLY IN A TRAINING SESSION. REMEMBER TO HAVE THE PHONE IN THE CORRECT POSITION AND FOLLOW THE INSTRUCTIONS.");
+        "dE: ");
+
         rotateIcon.SetActive(false);
         gameObject.GetComponent<Movement>().canMove = true;
     }
