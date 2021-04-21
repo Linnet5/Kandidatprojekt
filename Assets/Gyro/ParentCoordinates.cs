@@ -42,7 +42,7 @@ public class ParentCoordinates : MonoBehaviour
 
     IEnumerator StartExercise()
     {
-        yield return new WaitForSeconds(10.0f);
+        //yield return new WaitForSeconds(10.0f);
         audioSource.PlayOneShot(three);
         yield return new WaitForSeconds(1.0f);
         audioSource.PlayOneShot(two);

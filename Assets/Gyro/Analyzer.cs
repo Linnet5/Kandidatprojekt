@@ -84,14 +84,14 @@ public class Analyzer : MonoBehaviour
 
     private List<Vector3> CreateMeans(List<Vector3> input)
     {
-        if (!(NomInputField.GetComponent<InputField>().text == ""))
-        {
-            numberOfMeans = int.Parse(NomInputField.GetComponent<InputField>().text);
-        }
+        //if (!(NomInputField.GetComponent<InputField>().text == ""))
+        //{
+        //    numberOfMeans = int.Parse(NomInputField.GetComponent<InputField>().text);
+        //}
 
-        else {
-            numberOfMeans = standardNom;
-        }
+        //else {
+        //    numberOfMeans = standardNom;
+        //}
 
         //Debug.Log(numberOfMeans);
 

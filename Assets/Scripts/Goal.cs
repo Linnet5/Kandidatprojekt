@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 1;
+    private const int attemptGoal = 3;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -127,11 +127,13 @@ public class Goal : MonoBehaviour
 
     //}
 
-    private void SquatGame()
+    public void SquatGame()
     {
         attempts++;
 
-        if (repProgress == repGoal)
+        float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
+
+        if (accuracy > 0.75f)
         {
             //Successful rep
 
@@ -143,7 +145,7 @@ public class Goal : MonoBehaviour
                 audioSource.PlayOneShot(greatSound);
             }
         }
-        else if (repProgress == repGoal - 1)
+        else if (accuracy > 0.65f)
         {
             //ok rep
             gmScript.IncrementScore(200);
@@ -160,19 +162,22 @@ public class Goal : MonoBehaviour
             miss++;
             if (attempts != attemptGoal)
             {
-                if (attempts - great == 5)
-                {
-                    calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
-                    audioSource.PlayOneShot(tip);
-                    StartCoroutine(SoundPlayed(7));
+
+                audioSource.PlayOneShot(missSound);
+
+                //if (attempts - great == 5)
+                //{
+                //    calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+                //    audioSource.PlayOneShot(tip);
+                //    StartCoroutine(SoundPlayed(7));
 
 
-                }
+                //}
 
-                else
-                {
-                    audioSource.PlayOneShot(missSound);
-                }
+                //else
+                //{
+                //    audioSource.PlayOneShot(missSound);
+                //}
             }
         }
 
@@ -185,7 +190,8 @@ public class Goal : MonoBehaviour
                 audioSource.PlayOneShot(greatJob);
             }
             Vibration.Vibrate(1000);
-            calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+            //calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+            GameObject.Find("Calibration").GetComponent<Movement>().canMove = false;
 
             //Display results
             gameCanvas.SetActive(false);
