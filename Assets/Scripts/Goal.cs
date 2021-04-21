@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 5;
+    private const int attemptGoal = 3;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -132,13 +132,14 @@ public class Goal : MonoBehaviour
         attempts++;
 
         float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
+        Debug.Log(accuracy);
 
         GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
 
-        if (accuracy > 0.87f)
+        if (accuracy > 0.85f)
         {
             //Successful rep
-
+            Debug.Log("Greate!!");
             gmScript.IncrementScore(500);
             great++;
             if (attempts != attemptGoal)
@@ -147,9 +148,10 @@ public class Goal : MonoBehaviour
                 audioSource.PlayOneShot(greatSound);
             }
         }
-        else if (accuracy > 0.83f)
+        else if (accuracy > 0.75f)
         {
             //ok rep
+            Debug.Log("Ok!");
             gmScript.IncrementScore(200);
             ok++;
             if (attempts != attemptGoal)
@@ -161,6 +163,7 @@ public class Goal : MonoBehaviour
         else
         {
             //failed rep
+            Debug.Log("Miss");
             miss++;
             if (attempts != attemptGoal)
             {
