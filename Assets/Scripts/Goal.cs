@@ -49,7 +49,10 @@ public class Goal : MonoBehaviour
     public void IncrementProgress()
     {
         repProgress++;
-        gmScript.IncrementScore(100);
+        if (repGoal > 2)
+        {
+            gmScript.IncrementScore(500 / repGoal);
+        }
         Debug.Log(repProgress);
     }
 
@@ -60,8 +63,14 @@ public class Goal : MonoBehaviour
         if (repProgress == repGoal)
         {
             //Successful rep
-
-            gmScript.IncrementScore(500);
+            if (repGoal > 2)
+            {
+                gmScript.IncrementScore(500);
+            }
+            else
+            {
+                gmScript.IncrementScore(1000);
+            }
             great++;
             if (attempts != attemptGoal)
             {
@@ -69,7 +78,7 @@ public class Goal : MonoBehaviour
                 audioSource.PlayOneShot(greatSound);
             }
         }
-        else if (repProgress == repGoal - 1)
+        else if (repProgress == repGoal - 1 && repProgress != 1)
         {
             //ok rep
             gmScript.IncrementScore(200);
