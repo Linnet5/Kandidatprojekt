@@ -14,10 +14,17 @@ public class PetManager : MonoBehaviour
     public GameObject pet1Inspect;
     public GameObject pet2Inspect;
     public GameObject pet3Inspect;
+    public GameObject backToList;
+    public GameObject back;
+    public GameObject pet1Button;
+    public GameObject pet2Button;
+    public GameObject pet3Button;
 
     // Start is called before the first frame update
     void Start()
     {
+        backToList.SetActive(false);
+        back.SetActive(true);
         // Setting default values for first time startup
         if (PlayerPrefs.GetString("pet1Unlocked", "notUnlocked").Equals("notUnlocked")) {
             PlayerPrefs.SetString("pet1Name", "Pet 1");
@@ -49,29 +56,35 @@ public class PetManager : MonoBehaviour
         {
             pet1Inspect.SetActive(false);
 
-            if (pet1.GetComponent<Pet1>().GetUnlocked()) {
+            if (!pet1.GetComponent<Pet1>().GetUnlocked()) {
                 pet1.SetActive(true);                
                 pet1.GetComponent<Pet1>().DisplayInfo();
                 pet1.GetComponent<Pet1>().DisplayName();
+                pet1Button.SetActive(true);
             }
             else {
                 pet1.SetActive(false);
+                pet1Button.SetActive(false);
             }
             if (!pet2.GetComponent<Pet2>().GetUnlocked()) {
                 pet2.SetActive(true);                
                 pet2.GetComponent<Pet2>().DisplayInfo();
                 pet2.GetComponent<Pet2>().DisplayName();
+                pet2Button.SetActive(true);
             }
             else {
                 pet2.SetActive(false);
+                pet2Button.SetActive(false);
             }
             if (!pet3.GetComponent<Pet3>().GetUnlocked()) {
                 pet3.SetActive(true);                
                 pet3.GetComponent<Pet3>().DisplayInfo();
                 pet3.GetComponent<Pet3>().DisplayName();
+                pet3Button.SetActive(true);
             }
             else {
                 pet3.SetActive(false);
+                pet3Button.SetActive(false);
             }
         }
     }

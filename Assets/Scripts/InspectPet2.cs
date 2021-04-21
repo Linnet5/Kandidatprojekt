@@ -6,11 +6,13 @@ public class InspectPet2 : MonoBehaviour
 {
     GameObject petList;
     public GameObject pet2Inspect;
+
+    public GameObject backToList;
+    public GameObject back;
     // Start is called before the first frame update
     void Start()
     {
         petList = GameObject.Find("PetList");
-        Debug.Log(pet2Inspect);
     }
 
     // Update is called once per frame
@@ -24,5 +26,7 @@ public class InspectPet2 : MonoBehaviour
         pet2Inspect.SetActive(true);
         pet2Inspect.GetComponent<Pet2>().DisplayName();
         pet2Inspect.GetComponent<Pet2>().DisplayInfo();
+        backToList.SetActive(true);
+        back.SetActive(false);
     }
 }

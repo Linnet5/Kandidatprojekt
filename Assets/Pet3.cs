@@ -48,7 +48,7 @@ public class Pet3 : MonoBehaviour
     public void DisplayName()
     {
         TextMeshProUGUI txt = pet3Name.GetComponent<TextMeshProUGUI>();
-        txt.text = petName;
+        txt.SetText(PlayerPrefs.GetString("pet3Name"));
         txt.enabled = true;
     }
 
