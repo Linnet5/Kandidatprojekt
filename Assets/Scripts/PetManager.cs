@@ -11,6 +11,9 @@ public class PetManager : MonoBehaviour
     public GameObject pet1;
     public GameObject pet2;
     public GameObject pet3;
+    public GameObject pet1Inspect;
+    public GameObject pet2Inspect;
+    public GameObject pet3Inspect;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +47,8 @@ public class PetManager : MonoBehaviour
         // Enabling and displaying pet objects depending on unlocked status
         if (SceneManager.GetActiveScene().name == "Pet Menu")
         {
+            pet1Inspect.SetActive(false);
+
             if (pet1.GetComponent<Pet1>().GetUnlocked()) {
                 pet1.SetActive(true);                
                 pet1.GetComponent<Pet1>().DisplayInfo();

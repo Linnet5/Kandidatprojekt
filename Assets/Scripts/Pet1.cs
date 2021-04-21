@@ -18,18 +18,18 @@ public class Pet1 : MonoBehaviour
     GameObject pet1Level;
     GameObject pet1Xp;
     UnityEngine.UI.RawImage pet1Image;
-    GameObject petViewer;
-    GameObject pet1Page;
+    GameObject petList;
+    GameObject pet1Inspect;
     // Start is called before the first frame update
     void Awake()
     {
         // Find game objects attached to pet
         pet1 = GameObject.Find("Pet 1");
-        pet1Name = GameObject.Find("NamePet1");
-        pet1Level = GameObject.Find("LevelPet1");
-        pet1Xp = GameObject.Find("XpPet1");
+        pet1Name = transform.Find("NamePet1").gameObject;
+        pet1Level = transform.Find("LevelPet1").gameObject;
+        pet1Xp = transform.Find("XpPet1").gameObject;
         pet1Image = pet1.GetComponent<RawImage>();
-        pet1Page = transform.Find("Pet1Page").gameObject;
+        petList = GameObject.Find("PetList");
 
         // Set private variables
         petName = PlayerPrefs.GetString("pet1Name");
@@ -48,8 +48,8 @@ public class Pet1 : MonoBehaviour
 
     public void OnPointerClick(PointerEventData eventData) {
         if (eventData.pointerCurrentRaycast.gameObject.GetComponent<RawImage>()) {
-            petViewer.SetActive(false);
-            pet1Page.SetActive(true); 
+            pet1Inspect.SetActive(true);
+            petList.SetActive(false);
         }
     }
 
@@ -68,7 +68,7 @@ public class Pet1 : MonoBehaviour
         Xp.text = "XP: " + xp;
     }
 
-    string GetName()
+    public string GetName()
     {
         return petName;
     }

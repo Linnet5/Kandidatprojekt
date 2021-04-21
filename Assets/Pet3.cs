@@ -16,14 +16,19 @@ public class Pet3 : MonoBehaviour
     GameObject pet3Name;
     GameObject pet3Level;
     GameObject pet3Xp;
+    UnityEngine.UI.RawImage pet3Image;
+    GameObject petList;
+    GameObject pet3Inspect;
     // Start is called before the first frame update
     void Awake()
     {
         // Find game objects attached to pet
         pet3 = GameObject.Find("Pet 3");
-        pet3Name = GameObject.Find("NamePet3");
-        pet3Level = GameObject.Find("LevelPet3");
-        pet3Xp = GameObject.Find("XpPet3");
+        pet3Name = transform.Find("NamePet3").gameObject;
+        pet3Level = transform.Find("LevelPet3").gameObject;
+        pet3Xp = transform.Find("XpPet3").gameObject;
+        pet3Image = pet3.GetComponent<RawImage>();
+        petList = GameObject.Find("PetList");
 
         // Set private variables
         petName = PlayerPrefs.GetString("pet3Name");
