@@ -30,6 +30,10 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetString("pet1Name", "Pet 1");
             PlayerPrefs.SetInt("pet1Level", 1);
             PlayerPrefs.SetInt("pet1Xp", 0);
+            PlayerPrefs.SetInt("pet1Atk", 5);
+            PlayerPrefs.SetInt("pet1Def", 3);
+            PlayerPrefs.SetInt("pet1Hp", 10);
+            PlayerPrefs.SetInt("pet1Mp", 10);
             PlayerPrefs.SetString("pet1Chosen", "true");
             PlayerPrefs.SetString("pet1Unlocked", "true");
             PlayerPrefs.SetInt("pet1Id", 1);
@@ -38,6 +42,10 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetString("pet2Name", "Pet 2");
             PlayerPrefs.SetInt("pet2Level", 1);
             PlayerPrefs.SetInt("pet2Xp", 0);
+            PlayerPrefs.SetInt("pet2Atk", 4);
+            PlayerPrefs.SetInt("pet2Def", 5);
+            PlayerPrefs.SetInt("pet2Hp", 25);
+            PlayerPrefs.SetInt("pet2Mp", 3);
             PlayerPrefs.SetString("pet2Chosen", "false");
             PlayerPrefs.SetString("pet2Unlocked", "false");
             PlayerPrefs.SetInt("pet2Id", 2);
@@ -46,6 +54,10 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetString("pet3Name", "Pet 3");
             PlayerPrefs.SetInt("pet3Level", 1);
             PlayerPrefs.SetInt("pet3Xp", 0);
+            PlayerPrefs.SetInt("pet3Atk", 9);
+            PlayerPrefs.SetInt("pet3Def", 3);
+            PlayerPrefs.SetInt("pet3Hp", 15);
+            PlayerPrefs.SetInt("pet3Mp", 2);
             PlayerPrefs.SetString("pet3Chosen", "false");
             PlayerPrefs.SetString("pet3Unlocked", "false");
             PlayerPrefs.SetInt("pet3Id", 3);
@@ -56,7 +68,7 @@ public class PetManager : MonoBehaviour
         {
             pet1Inspect.SetActive(false);
 
-            if (!pet1.GetComponent<Pet1>().GetUnlocked()) {
+            if (pet1.GetComponent<Pet1>().GetUnlocked()) {
                 pet1.SetActive(true);                
                 pet1.GetComponent<Pet1>().DisplayInfo();
                 pet1.GetComponent<Pet1>().DisplayName();

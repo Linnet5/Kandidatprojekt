@@ -13,10 +13,18 @@ public class Pet1 : MonoBehaviour
     private bool chosen;
     private bool unlocked;
     private int id;
+    private int atk;
+    private int def;
+    private int hp;
+    private int mp;
     GameObject pet1;
     GameObject pet1Name;
     GameObject pet1Level;
     GameObject pet1Xp;
+    public GameObject pet1Atk;
+    public GameObject pet1Def;
+    public GameObject pet1Hp;
+    public GameObject pet1Mp;
     UnityEngine.UI.RawImage pet1Image;
     GameObject petList;
     GameObject pet1Inspect;
@@ -38,6 +46,10 @@ public class Pet1 : MonoBehaviour
         chosen = bool.Parse(PlayerPrefs.GetString("pet1Chosen"));
         unlocked = bool.Parse(PlayerPrefs.GetString("pet1Unlocked"));
         id = PlayerPrefs.GetInt("pet1Id");
+        atk = PlayerPrefs.GetInt("pet1Atk");
+        def = PlayerPrefs.GetInt("pet1Def");
+        hp = PlayerPrefs.GetInt("pet1Hp");
+        mp = PlayerPrefs.GetInt("pet1Mp");
     }
 
     // Update is called once per frame
@@ -64,8 +76,16 @@ public class Pet1 : MonoBehaviour
     {
         TextMeshProUGUI lvl = pet1Level.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI Xp = pet1Xp.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Atk = pet1Atk.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Def = pet1Def.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Hp = pet1Hp.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Mp = pet1Mp.GetComponent<TextMeshProUGUI>();
         lvl.text = "Level: " + level;
         Xp.text = "XP: " + xp;
+        Atk.text = "Atk: " + PlayerPrefs.GetInt("pet1Atk");
+        Def.text = "Def: " + PlayerPrefs.GetInt("pet1Def");
+        Hp.text = "Hp: " + PlayerPrefs.GetInt("pet1Hp");
+        Mp.text = "Mp: " + PlayerPrefs.GetInt("pet1Mp");
     }
 
     public string GetName()
@@ -99,12 +119,18 @@ public class Pet1 : MonoBehaviour
 
     void IncreaseXp(int addedXp)
     {
+        xp = PlayerPrefs.GetInt("pet1Xp");
+        level = PlayerPrefs.GetInt("pet1Level");
         xp += addedXp;
-        if (xp >= 100)
+        if (xp >= (450 + level * 50) && level < 10)
         {
-            xp -= 100;
+            xp -= (450 + level * 50);
             IncreaseLevel();
         }
+        else {
+            
+        }
+
     }
 
 }

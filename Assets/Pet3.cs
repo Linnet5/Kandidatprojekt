@@ -12,10 +12,18 @@ public class Pet3 : MonoBehaviour
     private bool chosen;
     private bool unlocked;
     private int id;
+    private int atk;
+    private int def;
+    private int hp;
+    private int mp;
     GameObject pet3;
     GameObject pet3Name;
     GameObject pet3Level;
     GameObject pet3Xp;
+    public GameObject pet3Atk;
+    public GameObject pet3Def;
+    public GameObject pet3Hp;
+    public GameObject pet3Mp;
     UnityEngine.UI.RawImage pet3Image;
     GameObject petList;
     GameObject pet3Inspect;
@@ -37,6 +45,10 @@ public class Pet3 : MonoBehaviour
         chosen = bool.Parse(PlayerPrefs.GetString("pet3Chosen"));
         unlocked = bool.Parse(PlayerPrefs.GetString("pet3Unlocked"));
         id = PlayerPrefs.GetInt("pet3Id");
+        atk = PlayerPrefs.GetInt("pet3Atk");
+        def = PlayerPrefs.GetInt("pet3Def");
+        hp = PlayerPrefs.GetInt("pet3Hp");
+        mp = PlayerPrefs.GetInt("pet3Mp");
     }
 
     // Update is called once per frame
@@ -56,8 +68,16 @@ public class Pet3 : MonoBehaviour
     {
         TextMeshProUGUI lvl = pet3Level.GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI Xp = pet3Xp.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Atk = pet3Atk.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Def = pet3Def.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Hp = pet3Hp.GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI Mp = pet3Mp.GetComponent<TextMeshProUGUI>();
         lvl.text = "Level: " + level;
         Xp.text = "XP: " + xp;
+        Atk.text = "Atk: " + PlayerPrefs.GetInt("pet3Atk");
+        Def.text = "Def: " + PlayerPrefs.GetInt("pet3Def");
+        Hp.text = "Hp: " + PlayerPrefs.GetInt("pet3Hp");
+        Mp.text = "Mp: " + PlayerPrefs.GetInt("pet3Mp");
     }
 
     string GetName()
