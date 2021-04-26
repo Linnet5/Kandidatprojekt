@@ -31,7 +31,7 @@ midFileName = append('Max-',nom,gyroOrAccel,'List-1.txt');
 [par1_39, accelX_39, koma1_39, accelY_39, koma2_39, accelZ_39, par2_39] = textread(append('Elin-',nom,gyroOrAccel,'List-9.txt'), '%c %f %c %f %c %f %c');
 [par1_40, accelX_40, koma1_40, accelY_40, koma2_40, accelZ_40, par2_40] = textread(append('Elin-',nom,gyroOrAccel,'List-10.txt'), '%c %f %c %f %c %f %c');
 
-t = 1:1:length(accelX_21);
+t = 1:1:length(accelZ_21);
 scatter(t,accelX_21); ylim([-1;1]);
 
 %% Gyro
