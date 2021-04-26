@@ -30,6 +30,7 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject resultsCanvas;
     [SerializeField] private GameObject bodyText;
     [SerializeField] private GameObject scoreText;
+    [SerializeField] private bool showTips;
 
     // Start is called before the first frame update
     void Start()
@@ -95,7 +96,7 @@ public class Goal : MonoBehaviour
             miss++;
             if (attempts != attemptGoal)
             {
-                if (attempts - great == 5)
+                if (attempts - great == 5 && showTips)
                 {
                     calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
                     audioSource.PlayOneShot(tip);
