@@ -4,7 +4,7 @@ clear;
 clc;
 
 nom = '50';
-gyroOrAccel = 'gyro';
+gyroOrAccel = 'meanGyro';
 
 midFileName = append('Max-',nom,gyroOrAccel,'List-1.txt');
 % X och Z ska testas
@@ -21,7 +21,7 @@ midFileName = append('Max-',nom,gyroOrAccel,'List-1.txt');
 [par1_40, accelX_40, koma1_40, accelY_40, koma2_40, accelZ_40, par2_40] = textread(append('Elin-',nom,gyroOrAccel,'List-10.txt'), '%c %f %c %f %c %f %c');
 
 t = 1:1:length(accelX_31);
-scatter(t,accelX_31); 
+scatter(t,accelX_31); ylim([-1;1]);
 
 %% Gyro
 % För att titta på datan som sparas i mobilen
