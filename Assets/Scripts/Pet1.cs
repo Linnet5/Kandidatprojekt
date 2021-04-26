@@ -17,6 +17,7 @@ public class Pet1 : MonoBehaviour
     private int def;
     private int hp;
     private int mp;
+    private bool imageChanged = false;
     GameObject pet1;
     GameObject pet1Name;
     GameObject pet1Level;
@@ -26,8 +27,9 @@ public class Pet1 : MonoBehaviour
     public GameObject pet1Hp;
     public GameObject pet1Mp;
     UnityEngine.UI.RawImage pet1Image;
+    public Texture2D pet1UpgradeImage;
     GameObject petList;
-    GameObject pet1Inspect;
+    public GameObject pet1Inspect;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,6 +39,8 @@ public class Pet1 : MonoBehaviour
         pet1Level = transform.Find("LevelPet1").gameObject;
         pet1Xp = transform.Find("XpPet1").gameObject;
         pet1Image = pet1.GetComponent<RawImage>();
+
+        Debug.Log(pet1UpgradeImage);
         petList = GameObject.Find("PetList");
 
         // Set private variables
@@ -74,18 +78,25 @@ public class Pet1 : MonoBehaviour
 
     public void DisplayInfo()
     {
-        TextMeshProUGUI lvl = pet1Level.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Xp = pet1Xp.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Atk = pet1Atk.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Def = pet1Def.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Hp = pet1Hp.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Mp = pet1Mp.GetComponent<TextMeshProUGUI>();
-        lvl.text = "Level: " + level;
-        Xp.text = "XP: " + xp;
-        Atk.text = "Atk: " + PlayerPrefs.GetInt("pet1Atk");
-        Def.text = "Def: " + PlayerPrefs.GetInt("pet1Def");
-        Hp.text = "Hp: " + PlayerPrefs.GetInt("pet1Hp");
-        Mp.text = "Mp: " + PlayerPrefs.GetInt("pet1Mp");
+        if (pet1Inspect.activeSelf) {
+            TextMeshProUGUI lvl = pet1Level.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Xp = pet1Xp.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Atk = pet1Atk.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Def = pet1Def.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Hp = pet1Hp.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Mp = pet1Mp.GetComponent<TextMeshProUGUI>();
+            lvl.text = "Level: " + PlayerPrefs.GetInt("pet1Level");
+            Xp.text = "XP: " + PlayerPrefs.GetInt("pet1Xp");
+            Atk.text = "Atk: " + PlayerPrefs.GetInt("pet1Atk");
+            Def.text = "Def: " + PlayerPrefs.GetInt("pet1Def");
+            Hp.text = "Hp: " + PlayerPrefs.GetInt("pet1Hp");
+            Mp.text = "Mp: " + PlayerPrefs.GetInt("pet1Mp");
+        }
+
+        if (level >= 15 && imageChanged) {
+            pet1Image.texture = pet1UpgradeImage;
+            imageChanged = true;
+        }
     }
 
     public string GetName()
@@ -114,23 +125,47 @@ public class Pet1 : MonoBehaviour
 
     void IncreaseLevel()
     {
-        PlayerPrefs.SetInt("pet1Level", level + 1);
+        level = PlayerPrefs.GetInt("pet1Level");
+        atk = PlayerPrefs.GetInt("pet1Atk");
+        def = PlayerPrefs.GetInt("pet1Def");
+        hp = PlayerPrefs.GetInt("pet1Hp");
+        mp = PlayerPrefs.GetInt("pet1Mp");
+        level += 1;
+        if (level < 15) {
+            atk += 1;
+            def += 1;
+            hp  += 1;
+            mp  += 3;
+        }
+        else {
+            atk += 2;
+            def += 1;
+            hp  += 2;
+            mp  += 4;
+        }
+        PlayerPrefs.SetInt("pet1Level", level);
+        PlayerPrefs.SetInt("pet1Atk", atk);
+        PlayerPrefs.SetInt("pet1Def", def);
+        PlayerPrefs.SetInt("pet1Hp", hp);
+        PlayerPrefs.SetInt("pet1Mp", mp);
+        DisplayInfo();
     }
 
-    void IncreaseXp(int addedXp)
+    public void IncreaseXp(int addedXp)
     {
         xp = PlayerPrefs.GetInt("pet1Xp");
         level = PlayerPrefs.GetInt("pet1Level");
         xp += addedXp;
-        if (xp >= (450 + level * 50) && level < 10)
+        if (xp >= (450 + level * 50) && level < 15)
         {
             xp -= (450 + level * 50);
             IncreaseLevel();
         }
-        else {
-            
+        else if (xp >= (750 + level * 50)) {
+            xp -= (750 + level * 50);
+            IncreaseLevel();
         }
-
+        PlayerPrefs.SetInt("pet1Xp", xp);
     }
 
 }

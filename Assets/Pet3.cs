@@ -16,6 +16,7 @@ public class Pet3 : MonoBehaviour
     private int def;
     private int hp;
     private int mp;
+    private bool imageChanged = false;
     GameObject pet3;
     GameObject pet3Name;
     GameObject pet3Level;
@@ -25,8 +26,9 @@ public class Pet3 : MonoBehaviour
     public GameObject pet3Hp;
     public GameObject pet3Mp;
     UnityEngine.UI.RawImage pet3Image;
+    public Texture2D pet3UpgradeImage;
     GameObject petList;
-    GameObject pet3Inspect;
+    public GameObject pet3Inspect;
     // Start is called before the first frame update
     void Awake()
     {
@@ -66,18 +68,25 @@ public class Pet3 : MonoBehaviour
 
     public void DisplayInfo()
     {
-        TextMeshProUGUI lvl = pet3Level.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Xp = pet3Xp.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Atk = pet3Atk.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Def = pet3Def.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Hp = pet3Hp.GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI Mp = pet3Mp.GetComponent<TextMeshProUGUI>();
-        lvl.text = "Level: " + level;
-        Xp.text = "XP: " + xp;
-        Atk.text = "Atk: " + PlayerPrefs.GetInt("pet3Atk");
-        Def.text = "Def: " + PlayerPrefs.GetInt("pet3Def");
-        Hp.text = "Hp: " + PlayerPrefs.GetInt("pet3Hp");
-        Mp.text = "Mp: " + PlayerPrefs.GetInt("pet3Mp");
+        if (pet3Inspect.activeSelf) {
+            TextMeshProUGUI lvl = pet3Level.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Xp = pet3Xp.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Atk = pet3Atk.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Def = pet3Def.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Hp = pet3Hp.GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI Mp = pet3Mp.GetComponent<TextMeshProUGUI>();
+            lvl.text = "Level: " + level;
+            Xp.text = "XP: " + xp;
+            Atk.text = "Atk: " + PlayerPrefs.GetInt("pet3Atk");
+            Def.text = "Def: " + PlayerPrefs.GetInt("pet3Def");
+            Hp.text = "Hp: " + PlayerPrefs.GetInt("pet3Hp");
+            Mp.text = "Mp: " + PlayerPrefs.GetInt("pet3Mp");
+        }
+
+        if (level >= 12 && !imageChanged) {
+            pet3Image.texture = pet3UpgradeImage;
+            imageChanged = true;
+        }
     }
 
     string GetName()
@@ -106,17 +115,50 @@ public class Pet3 : MonoBehaviour
 
     void IncreaseLevel()
     {
-        PlayerPrefs.SetInt("pet3Level", level + 1);
+        level = PlayerPrefs.GetInt("pet3Level");
+        atk = PlayerPrefs.GetInt("pet3Atk");
+        def = PlayerPrefs.GetInt("pet3Def");
+        hp = PlayerPrefs.GetInt("pet3Hp");
+        mp = PlayerPrefs.GetInt("pet3Mp");
+        level += 1;
+        if (level >= 12) {
+
+        }
+        if (level < 12) {
+            atk += 2;
+            def += 1;
+            hp  += 1;
+            mp  += 1;
+        }
+        else {
+            atk += 3;
+            def += 1;
+            hp  += 2;
+            mp  += 1;
+        }
+        PlayerPrefs.SetInt("pet3Level", level);
+        PlayerPrefs.SetInt("pet3Atk", atk);
+        PlayerPrefs.SetInt("pet3Def", def);
+        PlayerPrefs.SetInt("pet3Hp", hp);
+        PlayerPrefs.SetInt("pet3Mp", mp);
+        DisplayInfo();
     }
 
-    void IncreaseXp(int addedXp)
+    public void IncreaseXp(int addedXp)
     {
+        xp = PlayerPrefs.GetInt("pet3Xp");
+        level = PlayerPrefs.GetInt("pet3Level");
         xp += addedXp;
-        if (xp >= 100)
+        if (xp >= (400 + level * 40) && level < 12)
         {
-            xp -= 100;
+            xp -= (400 + level * 40);
             IncreaseLevel();
         }
+        else if (xp >= (600 + level * 40)) {
+            xp -= (600 + level * 40);
+            IncreaseLevel();
+        }
+        PlayerPrefs.SetInt("pet3Xp", xp);
     }
 
 }
