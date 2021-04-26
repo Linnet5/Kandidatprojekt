@@ -4,10 +4,24 @@ clear;
 clc;
 
 nom = '20';
-gyroOrAccel = 'meanAccel';
+gyroOrAccel = 'gyro';
 
 midFileName = append('Max-',nom,gyroOrAccel,'List-1.txt');
+% X och Z ska testas
 
+[par1_31, accelX_31, koma1_31, accelY_31, koma2_31, accelZ_31, par2_31] = textread(append('Elin-',nom,gyroOrAccel,'List-1.txt'), '%c %f %c %f %c %f %c');
+[par1_32, accelX_32, koma1_32, accelY_32, koma2_32, accelZ_32, par2_32] = textread(append('Elin-',nom,gyroOrAccel,'List-2.txt'), '%c %f %c %f %c %f %c');
+[par1_33, accelX_33, koma1_33, accelY_33, koma2_33, accelZ_33, par2_33] = textread(append('Elin-',nom,gyroOrAccel,'List-3.txt'), '%c %f %c %f %c %f %c');
+[par1_34, accelX_34, koma1_34, accelY_34, koma2_34, accelZ_34, par2_34] = textread(append('Elin-',nom,gyroOrAccel,'List-4.txt'), '%c %f %c %f %c %f %c');
+[par1_35, accelX_35, koma1_35, accelY_35, koma2_35, accelZ_35, par2_35] = textread(append('Elin-',nom,gyroOrAccel,'List-5.txt'), '%c %f %c %f %c %f %c');
+[par1_36, accelX_36, koma1_36, accelY_36, koma2_36, accelZ_36, par2_36] = textread(append('Elin-',nom,gyroOrAccel,'List-6.txt'), '%c %f %c %f %c %f %c');
+[par1_37, accelX_37, koma1_37, accelY_37, koma2_37, accelZ_37, par2_37] = textread(append('Elin-',nom,gyroOrAccel,'List-7.txt'), '%c %f %c %f %c %f %c');
+[par1_38, accelX_38, koma1_38, accelY_38, koma2_38, accelZ_38, par2_38] = textread(append('Elin-',nom,gyroOrAccel,'List-8.txt'), '%c %f %c %f %c %f %c');
+[par1_39, accelX_39, koma1_39, accelY_39, koma2_39, accelZ_39, par2_39] = textread(append('Elin-',nom,gyroOrAccel,'List-9.txt'), '%c %f %c %f %c %f %c');
+[par1_40, accelX_40, koma1_40, accelY_40, koma2_40, accelZ_40, par2_40] = textread(append('Elin-',nom,gyroOrAccel,'List-10.txt'), '%c %f %c %f %c %f %c');
+
+t = 1:1:length(accelX_31);
+scatter(t,accelX_31); 
 
 %% Gyro
 % För att titta på datan som sparas i mobilen
