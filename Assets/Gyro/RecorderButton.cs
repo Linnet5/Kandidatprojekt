@@ -30,11 +30,16 @@ public class RecorderButton : MonoBehaviour
     GameObject nomInputField;
     private int nomInput;
     int frameCounter = 0;
+    int stageLength;
+    int frame;
 
     AudioSource audioData;
     bool Up_Play = false;
     bool Down_Play = false;
-    int frame = 130;
+    bool Right_Play = false;
+    bool Left_Play = false;
+    bool Middle_Play = false;
+
 
 
     // Start is called before the first frame update
@@ -64,6 +69,9 @@ public class RecorderButton : MonoBehaviour
         //Timer
         countdown = 3.4f;
         timeRemaining = countdown;
+
+        stageLength = 65;
+        frame = stageLength * 5;
 
         //List
         accelList = new List<Vector3>();
@@ -128,25 +136,67 @@ public class RecorderButton : MonoBehaviour
                 //Debug.Log("GYRO: " + gyroData);
                 //Debug.Log("GYRO KALI: " + (gyroData - gyroSnapshot));
 
-                if (Down_Play == false)
+                if (Up_Play == false)
                 {
-                    GameObject.Find("Down").GetComponent<AudioSource>().Play(0);
-                    Down_Play = true;
+                    GameObject.Find("Up").GetComponent<AudioSource>().Play(0);
+                    Up_Play = true;
                 }
 
 
-                if (frameCounter > (frame/2))
+                if (frameCounter > stageLength)
                 {
                     //Up
                     //Debug.Log("Up!");
                    
-                    if (Up_Play == false)
+                    if (Right_Play == false)
                     {
-                        GameObject.Find("Up").GetComponent<AudioSource>().Play(0);
-                        Up_Play = true;
+                        GameObject.Find("Right").GetComponent<AudioSource>().Play(0);
+                        Right_Play = true;
                     }
                 
                     
+                }
+
+                if (frameCounter > stageLength*2)
+                {
+                    //Up
+                    //Debug.Log("Up!");
+
+                    if (Left_Play == false)
+                    {
+                        GameObject.Find("Left").GetComponent<AudioSource>().Play(0);
+                        Left_Play = true;
+                    }
+
+
+                }
+
+                if (frameCounter > stageLength * 3)
+                {
+                    //Up
+                    //Debug.Log("Up!");
+
+                    if (Middle_Play == false)
+                    {
+                        GameObject.Find("Middle").GetComponent<AudioSource>().Play(0);
+                        Middle_Play = true;
+                    }
+
+
+                }
+
+                if (frameCounter > stageLength * 4)
+                {
+                    //Up
+                    //Debug.Log("Up!");
+
+                    if (Down_Play == false)
+                    {
+                        GameObject.Find("Down").GetComponent<AudioSource>().Play(0);
+                        Down_Play = true;
+                    }
+
+
                 }
 
                 save = true;
@@ -155,10 +205,13 @@ public class RecorderButton : MonoBehaviour
 
                 if (frameCounter > frame)
                 {
-                    record = false;
                     frameCounter = 0;
+                    record = false;
                     Up_Play = false;
                     Down_Play = false;
+                    Right_Play = false;
+                    Left_Play = false;
+                    Middle_Play = false;
                 }
                 
             }
@@ -176,49 +229,49 @@ public class RecorderButton : MonoBehaviour
             
 
             if (save == true) {
-                //meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
-                //meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
-                //nomInput = analyzer.GetComponent<Analyzer>().GetNom();
-                //SaveData(accelList, nameInput+"-" + nomInput + "accelList-");
-                //SaveData(gyroList, nameInput+"-" + nomInput + "gyroList-");
-                //SaveData(meanAccelList, nameInput+"-" + nomInput +"meanAccelList-");
-                //SaveData(meanGyroList, nameInput+"-" + nomInput + "meanGyroList-");
+                meanAccelList = analyzer.GetComponent<Analyzer>().GetMeans(accelList);
+                meanGyroList = analyzer.GetComponent<Analyzer>().GetMeans(gyroList);
+                nomInput = analyzer.GetComponent<Analyzer>().GetNom();
+                SaveData(accelList, nameInput + "-" + nomInput + "accelList-");
+                SaveData(gyroList, nameInput + "-" + nomInput + "gyroList-");
+                SaveData(meanAccelList, nameInput + "-" + nomInput + "meanAccelList-");
+                SaveData(meanGyroList, nameInput + "-" + nomInput + "meanGyroList-");
 
 
-                float result = analyzer.GetComponent<Analyzer>().GetResult();
+                //float result = analyzer.GetComponent<Analyzer>().GetResult();
 
-                if (result >= 0.75f)
-                {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "PERFECT! :DDD\n" + "dE: " + result;
-                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
-                    Debug.Log("YOU MADE IT");
-                    Debug.Log(result);
-                }
+                //if (result >= 0.75f)
+                //{
+                //    GameObject.Find("VerificationText").GetComponent<Text>().text = "PERFECT! :DDD\n" + "dE: " + result;
+                //    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.green;
+                //    Debug.Log("YOU MADE IT");
+                //    Debug.Log(result);
+                //}
 
-                else if (result > 0.70f)
-                {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "GREAT! :)))\n" + "dE: " + result;
-                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.white;
-                    Debug.Log("YOU MADE IT");
-                    Debug.Log(result);
-                }
+                //else if (result > 0.70f)
+                //{
+                //    GameObject.Find("VerificationText").GetComponent<Text>().text = "GREAT! :)))\n" + "dE: " + result;
+                //    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.white;
+                //    Debug.Log("YOU MADE IT");
+                //    Debug.Log(result);
+                //}
 
-                else if (result > 0.65f)
-                {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "GOOD! :)\n" + "dE: " + result;
-                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.yellow;
-                    Debug.Log("YOU MADE IT");
-                    Debug.Log(result);
-                }
+                //else if (result > 0.65f)
+                //{
+                //    GameObject.Find("VerificationText").GetComponent<Text>().text = "GOOD! :)\n" + "dE: " + result;
+                //    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.yellow;
+                //    Debug.Log("YOU MADE IT");
+                //    Debug.Log(result);
+                //}
 
-                else
-                {
-                    GameObject.Find("VerificationText").GetComponent<Text>().text = "MISS! :(((\n" + "dE: " + result;
-                    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
-                    Debug.Log("YOU FAILED");
-                }
+                //else
+                //{
+                //    GameObject.Find("VerificationText").GetComponent<Text>().text = "MISS! :(((\n" + "dE: " + result;
+                //    GameObject.Find("VerificationText").GetComponent<Text>().color = Color.red;
+                //    Debug.Log("YOU FAILED");
+                //}
 
-                Debug.Log(result);
+                //Debug.Log(result);
 
 
 
