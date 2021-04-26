@@ -579,6 +579,8 @@ MonoBehaviour:
   one: {fileID: 8300000, guid: b1c85b396a245cb43a9a75541da3ea55, type: 3}
   go: {fileID: 8300000, guid: 4000aa5c6329b8747859801cb7100134, type: 3}
   bodyText: {fileID: 334782245}
+  instructionText: Turn your phone counter-clockwise, put it against your chest and
+    lay down. A countdown will indicate when the exercise is about to start.
 --- !u!4 &232190360
 Transform:
   m_ObjectHideFlags: 0
@@ -1790,6 +1792,7 @@ MonoBehaviour:
   resultsCanvas: {fileID: 1617532752}
   bodyText: {fileID: 293913571}
   scoreText: {fileID: 1559758611}
+  showTips: 1
 --- !u!65 &652234758
 BoxCollider:
   m_ObjectHideFlags: 0

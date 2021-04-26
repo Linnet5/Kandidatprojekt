@@ -1943,6 +1943,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManagerNextLevel
       objectReference: {fileID: 0}
+    - target: {fileID: 3096122457845054162, guid: 5da4ba3c9b7694d43ae1f90fde6289a8, type: 3}
+      propertyPath: sceneName
+      value: BackLiftInstructions
+      objectReference: {fileID: 0}
     - target: {fileID: 3096122457845054163, guid: 5da4ba3c9b7694d43ae1f90fde6289a8, type: 3}
       propertyPath: m_RootOrder
       value: 3
