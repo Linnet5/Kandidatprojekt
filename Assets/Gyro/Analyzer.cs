@@ -10,7 +10,7 @@ public class Analyzer : MonoBehaviour
 {
 
     private bool result;
-    private int standardNom = 20; 
+    private int standardNom = 50; 
     private int numberOfMeans;
     int samplesPerMean;
     float samplesPerMeanF;
