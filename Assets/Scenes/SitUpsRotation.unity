@@ -938,7 +938,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Calibrating...
+  m_text: Get ready!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
   m_sharedMaterial: {fileID: 7149118540675284414, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
@@ -1015,6 +1015,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334782245}
   m_CullTransparentMesh: 1
+--- !u!114 &336394942 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3096122457845054162, guid: 5da4ba3c9b7694d43ae1f90fde6289a8, type: 3}
+  m_PrefabInstance: {fileID: 322877251}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 945311484d38075428d0c4bea256cc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &346240611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SIT-UPS
+  m_text: SQUATS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
   m_sharedMaterial: {fileID: 7149118540675284414, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
@@ -3269,9 +3280,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 945311484d38075428d0c4bea256cc7c, type: 3}
+      - m_Target: {fileID: 336394942}
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SwitchScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3435,7 +3446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945311484d38075428d0c4bea256cc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: ForestLevel
+  sceneName: Results
 --- !u!1 &1402949734
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,7 +4413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SIT-UPS
+  m_text: SQUATS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
   m_sharedMaterial: {fileID: 7149118540675284414, guid: ee3f284f176b2694eadc797b92b1f73c, type: 2}
