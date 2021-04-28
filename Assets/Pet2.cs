@@ -16,7 +16,7 @@ public class Pet2 : MonoBehaviour
     private int def;
     private int hp;
     private int mp;
-    private bool imageChanged = false;
+    private bool pet2Upgraded;
     GameObject pet2;
     GameObject pet2Name;
     GameObject pet2Level;
@@ -83,9 +83,12 @@ public class Pet2 : MonoBehaviour
             Mp.text = "Mp: " + PlayerPrefs.GetInt("pet2Mp");
         }
 
-        if (level >= 10 && !imageChanged) {
+        pet2Upgraded = bool.Parse(PlayerPrefs.GetString("pet2Upgraded"));
+        pet2 = GameObject.Find("Pet 2");
+        pet2Image = pet2.GetComponent<RawImage>();
+
+        if (pet2Upgraded) {
             pet2Image.texture = pet2UpgradeImage;
-            imageChanged = true;
         }
     }
 
@@ -121,6 +124,10 @@ public class Pet2 : MonoBehaviour
         hp = PlayerPrefs.GetInt("pet2Hp");
         mp = PlayerPrefs.GetInt("pet2Mp");
         level += 1;
+        if (level >= 10)
+        {
+            PlayerPrefs.SetString("pet2Upgraded", "true");
+        }
         if (level < 10) {
             atk += 2;
             def += 2;
