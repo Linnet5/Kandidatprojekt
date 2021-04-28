@@ -26,7 +26,7 @@ public class PetManager : MonoBehaviour
         backToList.SetActive(false);
         back.SetActive(true);
         // Setting default values for first time startup
-        if (!PlayerPrefs.GetString("pet1Unlocked", "notUnlocked").Equals("notUnlocked")) {
+        if (PlayerPrefs.GetString("pet1Unlocked", "notUnlocked").Equals("notUnlocked")) {
             PlayerPrefs.SetString("pet1Name", "Pet 1");
             PlayerPrefs.SetInt("pet1Level", 1);
             PlayerPrefs.SetInt("pet1Xp", 0);
@@ -39,7 +39,7 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetInt("pet1Id", 1);
             PlayerPrefs.SetString("pet1Upgraded", "false");
         }
-        if (!PlayerPrefs.GetString("pet2Unlocked", "notUnlocked").Equals("notUnlocked")) {
+        if (PlayerPrefs.GetString("pet2Unlocked", "notUnlocked").Equals("notUnlocked") && bool.Parse(PlayerPrefs.GetString("pet2Unlocked"))) {
             PlayerPrefs.SetString("pet2Name", "Pet 2");
             PlayerPrefs.SetInt("pet2Level", 1);
             PlayerPrefs.SetInt("pet2Xp", 0);
@@ -52,7 +52,7 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetInt("pet2Id", 2);
             PlayerPrefs.SetString("pet2Upgraded", "false");
         }
-        else if (PlayerPrefs.GetString("pet3Unlocked", "notUnlocked").Equals("notUnlocked")) {
+        else if (PlayerPrefs.GetString("pet3Unlocked", "notUnlocked").Equals("notUnlocked") && bool.Parse(PlayerPrefs.GetString("pet3Unlocked"))) {
             PlayerPrefs.SetString("pet3Name", "Pet 3");
             PlayerPrefs.SetInt("pet3Level", 1);
             PlayerPrefs.SetInt("pet3Xp", 0);
@@ -65,18 +65,6 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetInt("pet3Id", 3);
             PlayerPrefs.SetString("pet3Upgraded", "false");
         }
-
-        PlayerPrefs.SetString("pet3Name", "Pet 3");
-        PlayerPrefs.SetInt("pet3Level", 1);
-        PlayerPrefs.SetInt("pet3Xp", 0);
-        PlayerPrefs.SetInt("pet3Atk", 9);
-        PlayerPrefs.SetInt("pet3Def", 3);
-        PlayerPrefs.SetInt("pet3Hp", 15);
-        PlayerPrefs.SetInt("pet3Mp", 2);
-        PlayerPrefs.SetString("pet3Chosen", "false");
-        PlayerPrefs.SetString("pet3Unlocked", "false");
-        PlayerPrefs.SetInt("pet3Id", 3);
-        PlayerPrefs.SetString("pet3Upgraded", "false");
 
         // Enabling and displaying pet objects depending on unlocked status
         if (SceneManager.GetActiveScene().name == "Pet Menu")
@@ -93,7 +81,7 @@ public class PetManager : MonoBehaviour
                 pet1.SetActive(false);
                 pet1Button.SetActive(false);
             }
-            if (!pet2.GetComponent<Pet2>().GetUnlocked()) {
+            if (pet2.GetComponent<Pet2>().GetUnlocked()) {
                 pet2.SetActive(true);                
                 pet2.GetComponent<Pet2>().DisplayInfo();
                 pet2.GetComponent<Pet2>().DisplayName();
@@ -103,7 +91,7 @@ public class PetManager : MonoBehaviour
                 pet2.SetActive(false);
                 pet2Button.SetActive(false);
             }
-            if (!pet3.GetComponent<Pet3>().GetUnlocked()) {
+            if (pet3.GetComponent<Pet3>().GetUnlocked()) {
                 pet3.SetActive(true);                
                 pet3.GetComponent<Pet3>().DisplayInfo();
                 pet3.GetComponent<Pet3>().DisplayName();
