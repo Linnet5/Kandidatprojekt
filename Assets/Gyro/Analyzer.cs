@@ -75,6 +75,7 @@ public class Analyzer : MonoBehaviour
 
     private void Update()
     {
+        //REMOVE AT 5*65-1???? @Elin
         accelBuffer.RemoveAt(129);
         accelBuffer.Insert(0, Input.gyro.userAcceleration);
 
@@ -151,6 +152,8 @@ public class Analyzer : MonoBehaviour
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
 
+        Debug.Log(deltaGyro.y);
+        //@elin ska vi inte jämföra x nu?
         return deltaGyro.y;
 
 
@@ -169,8 +172,16 @@ public class Analyzer : MonoBehaviour
 
     public float GetResult() {
 
-        float result = 0;
 
+        /* @Elin Behöver ändra siffrorna här
+        delta = 0.1251 //godkänd kanske 0.15
+           result =  0.85 = 1 - 0.15;
+        result = result -  
+        */
+        Debug.Log("Analys buffert "+ Analyze(accelBuffer, gyroBuffer));
+
+        float result = 0;
+        
         result = 1 - Analyze(accelBuffer,gyroBuffer);
         
         result -= 0.2f;

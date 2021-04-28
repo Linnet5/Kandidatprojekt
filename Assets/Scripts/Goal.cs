@@ -136,6 +136,7 @@ public class Goal : MonoBehaviour
 
         GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
 
+        //@elin kan behöva ändra accuracy
         if (accuracy > 0.85f)
         {
             //Successful rep
