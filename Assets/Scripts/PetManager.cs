@@ -24,6 +24,7 @@ public class PetManager : MonoBehaviour
     {
         PlayerPrefs.SetString("pet1FirstTimeUnlock", "true");
         PlayerPrefs.SetString("pet2FirstTimeUnlock", "true");
+        PlayerPrefs.SetString("pet3FirstTimeUnlock", "true");
 
         // First time startup check
         if (PlayerPrefs.GetString("pet2Unlocked", "NotSet").Equals("NotSet"))
@@ -66,7 +67,7 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetString("pet2Upgraded", "false");
             PlayerPrefs.SetString("pet2FirstTimeUnlock", "false");
         }
-        if (bool.Parse(PlayerPrefs.GetString("pet3Default", "false")))
+        if (bool.Parse(PlayerPrefs.GetString("pet3FirstTimeUnlock", "false")))
         {
             PlayerPrefs.SetString("pet3FirstTimeUnlock", "Pet 3");
             PlayerPrefs.SetInt("pet3Level", 1);

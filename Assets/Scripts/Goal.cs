@@ -10,7 +10,10 @@ public class Goal : MonoBehaviour
     private int attempts = 0;
     private int great = 0;
     private int ok = 0;
-    private int miss = 0; 
+    private int miss = 0;
+    private int xp = 0;
+    private int level = 0;
+
 
     [SerializeField] private int repGoal;
     [SerializeField] private GameObject gm;
@@ -31,6 +34,8 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject bodyText;
     [SerializeField] private GameObject scoreText;
     [SerializeField] private bool showTips;
+    [SerializeField] private GameObject petxp;
+    [SerializeField] private GameObject petlevel;
 
     // Start is called before the first frame update
     void Start()
@@ -128,6 +133,11 @@ public class Goal : MonoBehaviour
             resultsCanvas.SetActive(true);
             bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n ok: " + ok + "\n miss: " + miss + "\n \n SCORE ");
             scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" +gmScript.score / attemptGoal);
+            xp = (100 * great) + (10 * ok);
+            level = xp / 100;
+            xp -= level * 100;
+            petlevel.GetComponent<TMPro.TextMeshProUGUI>().SetText("Level: 1" + " + " + level);
+            petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/100");
         }
 
         repProgress = 0;
