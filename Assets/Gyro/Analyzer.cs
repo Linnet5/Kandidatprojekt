@@ -81,6 +81,7 @@ public class Analyzer : MonoBehaviour
 
         gyroBuffer.RemoveAt(324);
         gyroBuffer.Insert(0, Input.gyro.gravity);
+        Debug.Log(gyroBuffer.Count);
     }
 
     private List<Vector3> CreateMeans(List<Vector3> input)
@@ -169,7 +170,6 @@ public class Analyzer : MonoBehaviour
 
         for (int i = 0; i < meanReferenceGyro.Count; i++) {
             //deltaGyro += (meanReferenceGyro[i] - new Vector3(Mathf.Abs(meanAccel[i].x), Mathf.Abs(meanAccel[i].y), Mathf.Abs(meanAccel[i].z)));
-            Debug.Log(meanReferenceGyro[i].ToString("F4"));
             deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x / xMax));
             deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
             deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
