@@ -298,8 +298,8 @@ mnZ = (accelZ_1 + accelZ_2 + accelZ_3 + accelZ_4 + accelZ_5 + accelZ_6 + accelZ_
 
 %delta = 0.35;
 hold on;
-theRecMax = max(abs(min(accelY_50)),max(accelY_50));
-accelY_50 = accelY_50 * (1/theRecMax);
+theRecMax = max(abs(min(accelX_25)),max(accelX_25));
+accelX_25 = accelX_25 * (1/theRecMax);
 
 theRefXMax = max(abs(min(mnX)),max(mnX));
 mnX = mnX * (1/theRefXMax);
@@ -310,9 +310,10 @@ mnY = mnY * (1/theRefYMax);
 theRefZMax = max(abs(min(mnZ)),max(mnZ));
 mnZ = mnZ * (1/theRefZMax);
 
-delta = sum(abs(mnY-accelY_50))/50;
-scatter(t,accelY_50); ylim([-1,1]);
-plot(t,mnZ);
+delta = sum(abs(mnX-accelX_25))/50;
+
+scatter(t,accelX_25); ylim([-1,1]);
+plot(t,mnX);
 %plot(t,mnX-delta);
 %plot(t,mnX+delta);
 
