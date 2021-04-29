@@ -132,18 +132,21 @@ public class Analyzer : MonoBehaviour
     
     private float Analyze(List<Vector3> accel, List<Vector3> gyro) {
 
+        
+
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
 
         Vector3 deltaAccel = Vector3.zero;
         Vector3 deltaGyro = Vector3.zero;
 
-        float xMax = 1.0f;
-        float yMax = 1.0f;
-        float zMax = 1.0f;
+        float xMax = Mathf.Epsilon;
+        float yMax = Mathf.Epsilon;
+        float zMax = Mathf.Epsilon;
 
         for (int i = 0; i < meanGyro.Count; i++)
         {
+            
             if (Mathf.Abs(meanGyro[i].x) > xMax)
             {
                 xMax = Mathf.Abs(meanGyro[i].x);
@@ -159,7 +162,7 @@ public class Analyzer : MonoBehaviour
                 zMax = Mathf.Abs(meanGyro[i].z);
             }
         }
-
+        Debug.Log("xMax = " + xMax);
         for (int i = 0; i < meanReferenceAccel.Count; i++)
         {
             deltaAccel += (meanReferenceAccel[i] - meanAccel[i]);
@@ -168,16 +171,15 @@ public class Analyzer : MonoBehaviour
 
         for (int i = 0; i < meanReferenceGyro.Count; i++) {
             //deltaGyro += (meanReferenceGyro[i] - new Vector3(Mathf.Abs(meanAccel[i].x), Mathf.Abs(meanAccel[i].y), Mathf.Abs(meanAccel[i].z)));
-            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x/xMax));
-            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y/yMax));
-            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z/zMax));
+            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x / xMax));
+            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
+            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
-
-        Debug.Log(deltaGyro.x);
+        
+        
         //@elin ska vi inte jämföra x nu?
         return deltaGyro.x;
-
 
     }
 
@@ -200,7 +202,7 @@ public class Analyzer : MonoBehaviour
            result =  0.85 = 1 - 0.15;
         result = result -  
         */
-        Debug.Log("Analys buffert "+ Analyze(accelBuffer, gyroBuffer));
+        //Debug.Log("Analys buffert "+ Analyze(accelBuffer, gyroBuffer));
 
         float result = 0;
         
