@@ -10,7 +10,7 @@ public class Analyzer : MonoBehaviour
 {
 
     private bool result;
-    private int standardNom = 20; 
+    private int standardNom = 50; 
     private int numberOfMeans;
     int samplesPerMean;
     float samplesPerMeanF;
@@ -45,7 +45,7 @@ public class Analyzer : MonoBehaviour
         accelBuffer = new List<Vector3>();
         gyroBuffer = new List<Vector3>();
 
-        for (int i = 0; i < 130; i++) {
+        for (int i = 0; i < 325; i++) {
             accelBuffer.Add(Vector3.zero);
             gyroBuffer.Add(Vector3.zero);
         }
@@ -56,8 +56,8 @@ public class Analyzer : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         //Read TextAssets with two loops
         //string filePath = "Assets/Resources/Reference Moves/Squat/";
-        TextAsset gyro = Resources.Load("Reference Moves/Squat/meanReferenceGyro") as TextAsset;
-        TextAsset accel = Resources.Load("Reference Moves/Squat/meanReferenceAccel") as TextAsset;
+        TextAsset gyro = Resources.Load("Reference Moves/Backlift/meanReferenceGyro") as TextAsset;
+        //TextAsset accel = Resources.Load("Reference Moves/Backlift/meanReferenceAccel") as TextAsset;
 
         string[] lines = gyro.text.Split('\n');
         string[] vectorString;
@@ -76,10 +76,10 @@ public class Analyzer : MonoBehaviour
     private void Update()
     {
         //REMOVE AT 5*65-1???? @Elin
-        accelBuffer.RemoveAt(129);
+        accelBuffer.RemoveAt(324);
         accelBuffer.Insert(0, Input.gyro.userAcceleration);
 
-        gyroBuffer.RemoveAt(129);
+        gyroBuffer.RemoveAt(324);
         gyroBuffer.Insert(0, Input.gyro.gravity);
     }
 
@@ -138,6 +138,28 @@ public class Analyzer : MonoBehaviour
         Vector3 deltaAccel = Vector3.zero;
         Vector3 deltaGyro = Vector3.zero;
 
+        float xMax = 1.0f;
+        float yMax = 1.0f;
+        float zMax = 1.0f;
+
+        for (int i = 0; i < meanGyro.Count; i++)
+        {
+            if (Mathf.Abs(meanGyro[i].x) > xMax)
+            {
+                xMax = Mathf.Abs(meanGyro[i].x);
+            }
+
+            if (Mathf.Abs(meanGyro[i].y) > yMax)
+            {
+                yMax = Mathf.Abs(meanGyro[i].y);
+            }
+
+            if (Mathf.Abs(meanGyro[i].z) > zMax)
+            {
+                zMax = Mathf.Abs(meanGyro[i].z);
+            }
+        }
+
         for (int i = 0; i < meanReferenceAccel.Count; i++)
         {
             deltaAccel += (meanReferenceAccel[i] - meanAccel[i]);
@@ -146,15 +168,15 @@ public class Analyzer : MonoBehaviour
 
         for (int i = 0; i < meanReferenceGyro.Count; i++) {
             //deltaGyro += (meanReferenceGyro[i] - new Vector3(Mathf.Abs(meanAccel[i].x), Mathf.Abs(meanAccel[i].y), Mathf.Abs(meanAccel[i].z)));
-            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - Mathf.Abs(meanGyro[i].x));
-            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - Mathf.Abs(meanGyro[i].y));
-            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - Mathf.Abs(meanGyro[i].z));
+            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x/xMax));
+            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y/yMax));
+            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z/zMax));
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
 
-        Debug.Log(deltaGyro.y);
+        Debug.Log(deltaGyro.x);
         //@elin ska vi inte jämföra x nu?
-        return deltaGyro.y;
+        return deltaGyro.x;
 
 
     }
@@ -184,8 +206,8 @@ public class Analyzer : MonoBehaviour
         
         result = 1 - Analyze(accelBuffer,gyroBuffer);
         
-        result -= 0.2f;
-        result *= 1.45f;
+        //result -= 0.2f;
+        //result *= 1.45f;
 
         //accelBuffer = new List<Vector3>();
         //gyroBuffer = new List<Vector3>();
