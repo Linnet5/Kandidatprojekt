@@ -184,9 +184,9 @@ public class Analyzer : MonoBehaviour
 
         for (int i = 0; i < meanReferenceGyro.Count; i++) {
             //deltaGyro += (meanReferenceGyro[i] - new Vector3(Mathf.Abs(meanAccel[i].x), Mathf.Abs(meanAccel[i].y), Mathf.Abs(meanAccel[i].z)));
-            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x / xMax));
-            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
-            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
+            deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (-meanGyro[i].x / xMax));
+            deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (-meanGyro[i].y / yMax));
+            deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (-meanGyro[i].z / zMax));
             Debug.Log("meanGyro/xMax  " + (meanGyro[i].x / xMax));
             //Debug.Log("meanGyro  " + meanGyro[i].x);
         }
