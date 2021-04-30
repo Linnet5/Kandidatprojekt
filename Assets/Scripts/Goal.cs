@@ -37,6 +37,7 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject petxp;
     [SerializeField] private GameObject petlevel;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,7 @@ public class Goal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.tag == "Player") { 
         attempts++;
 
         if (repProgress == repGoal)
@@ -141,7 +143,8 @@ public class Goal : MonoBehaviour
         }
 
         repProgress = 0;
-        calibrationParentObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);     
+        calibrationParentObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+        }
 
     }
     IEnumerator SoundPlayed(int s)
