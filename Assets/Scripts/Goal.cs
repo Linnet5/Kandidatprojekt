@@ -134,7 +134,7 @@ public class Goal : MonoBehaviour
         float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
         Debug.Log(accuracy);
 
-        //GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
+        GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
 
         //@elin kan behöva ändra accuracy
         if (accuracy > 0.85f)
