@@ -132,7 +132,7 @@ public class Goal : MonoBehaviour
         attempts++;
 
         float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
-        Debug.Log(accuracy);
+        //Debug.Log(accuracy);
 
         GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
 
@@ -164,7 +164,7 @@ public class Goal : MonoBehaviour
         else
         {
             //failed rep
-            Debug.Log("Miss");
+            //Debug.Log("Miss");
             miss++;
             if (attempts != attemptGoal)
             {

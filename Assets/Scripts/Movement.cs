@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
 
             if ((fCounter - (stageLength * 5)) % restCounter == 0)
             {
-                Debug.Log("NU ANALYSERAR JAG ÖVNINGEN");
+                //Debug.Log("NU ANALYSERAR JAG ÖVNINGEN");
                 GameObject.Find("Goal").GetComponent<Goal>().SquatGame();
             }
 

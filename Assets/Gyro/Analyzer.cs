@@ -183,7 +183,7 @@ public class Analyzer : MonoBehaviour
             deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
             deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
             //Debug.Log("meanGyro/xMax  " + (meanGyro[i].x / xMax));
-            Debug.Log("meanGyro  " + meanGyro[i].x);
+            //Debug.Log("meanGyro  " + meanGyro[i].x);
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
         
