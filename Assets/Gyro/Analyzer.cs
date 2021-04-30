@@ -120,13 +120,13 @@ public class Analyzer : MonoBehaviour
             for (int j = i * samplesPerMean; j < (i + 1) * samplesPerMean; j++)
             {
                 inputSum = inputSum + input[j];
-                Debug.Log("Inputsum  " + inputSum);
+                //Debug.Log("Inputsum  " + inputSum);
             }
             floatConversion = (float)samplesPerMean;
-            Debug.Log("floatConversion  " + floatConversion);
+            //Debug.Log("floatConversion  " + floatConversion);
             output.Add(inputSum / floatConversion);
-            Debug.Log("output  " + output);
-            Debug.Log(" InputSum/floatAnalyz    "+(inputSum/floatConversion).ToString("F9"));
+            //Debug.Log("output  " + output);
+            //Debug.Log(" InputSum/floatAnalyz    "+(inputSum/floatConversion).ToString("F9"));
         }
 
 
