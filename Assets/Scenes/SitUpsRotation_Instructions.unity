@@ -336,7 +336,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -359}
+  m_AnchoredPosition: {x: 0, y: -300}
   m_SizeDelta: {x: 267.8, y: 546.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &103240013
@@ -359,8 +359,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The exercise is divided into individual steps. Listen to the audio cues
-    and follow the video example above.
+  m_text: 'Turne your phone counter clockwise.
+
+    Have the back of the phone against
+    your forehead.
+
+
+    The exercise is divided into individual steps. Listen to
+    the audio cues and follow the video example above.
 
 '
   m_isRightToLeft: 0
@@ -752,7 +758,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204769820}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 441890ce19fe9d645ba7b89af9792b11, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 6cddc4db20143ad458bd2167ac798990, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
