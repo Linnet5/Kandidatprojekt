@@ -193,9 +193,9 @@ public class Goal : MonoBehaviour
             audioSource.PlayOneShot(victory);
             if (great >= 5)
             {
-                audioSource.PlayOneShot(greatJob);
+               // audioSource.PlayOneShot(greatJob);
             }
-            Vibration.Vibrate(1000);
+           // Vibration.Vibrate(1000);
             //calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
             GameObject.Find("Calibration").GetComponent<Movement>().canMove = false;
 
