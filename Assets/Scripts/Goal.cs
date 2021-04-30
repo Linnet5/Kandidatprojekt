@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 3;
+    private const int attemptGoal = 10;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -145,8 +145,8 @@ public class Goal : MonoBehaviour
             great++;
             if (attempts != attemptGoal)
             {
-                Vibration.Vibrate(100);
-                audioSource.PlayOneShot(greatSound);
+               // Vibration.Vibrate(100);
+               // audioSource.PlayOneShot(greatSound);
             }
         }
         else if (accuracy > 0.73f)
@@ -157,8 +157,8 @@ public class Goal : MonoBehaviour
             ok++;
             if (attempts != attemptGoal)
             {
-                Vibration.Vibrate(50);
-                audioSource.PlayOneShot(okSound);
+               // Vibration.Vibrate(50);
+               // audioSource.PlayOneShot(okSound);
             }
         }
         else
@@ -169,7 +169,7 @@ public class Goal : MonoBehaviour
             if (attempts != attemptGoal)
             {
 
-                audioSource.PlayOneShot(missSound);
+               // audioSource.PlayOneShot(missSound);
 
                 //if (attempts - great == 5)
                 //{
