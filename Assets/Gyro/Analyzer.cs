@@ -81,7 +81,7 @@ public class Analyzer : MonoBehaviour
 
         gyroBuffer.RemoveAt(324);
         gyroBuffer.Insert(0, Input.gyro.gravity);
-        Debug.Log(gyroBuffer.Count);
+        //Debug.Log(gyroBuffer.Count);
     }
 
     private List<Vector3> CreateMeans(List<Vector3> input)
@@ -132,6 +132,11 @@ public class Analyzer : MonoBehaviour
 
     
     private float Analyze(List<Vector3> accel, List<Vector3> gyro) {
+        
+        for (int i = 0; i < gyro.Count; i++)
+        {
+            Debug.Log("GyroList  " + gyro[i].ToString("F4"));
+        }
 
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
@@ -161,7 +166,7 @@ public class Analyzer : MonoBehaviour
                 zMax = Mathf.Abs(meanGyro[i].z);
             }
         }
-        Debug.Log("xMax = " + xMax);
+        //Debug.Log("xMax = " + xMax);
         for (int i = 0; i < meanReferenceAccel.Count; i++)
         {
             deltaAccel += (meanReferenceAccel[i] - meanAccel[i]);
@@ -173,12 +178,14 @@ public class Analyzer : MonoBehaviour
             deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x / xMax));
             deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
             deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
+            //Debug.Log("meanGyro/xMax  " + (meanGyro[i].x / xMax));
+           // Debug.Log("meanGyro  " + meanGyro[i].x);
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
         
         
-        //@elin ska vi inte jämföra x nu?
-        return deltaGyro.x;
+        //@elin ska vi inte jämföra x nu? Kanske ska va y
+        return deltaGyro.y;
 
     }
 
