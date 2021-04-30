@@ -202,7 +202,7 @@ public class Analyzer : MonoBehaviour
             return deltaGyro.x;
         }
 
-        return 0;
+        return 1.0f;
 
         //@elin ska vi inte jämföra x nu? Kanske ska va y
         
