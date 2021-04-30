@@ -137,13 +137,18 @@ public class Analyzer : MonoBehaviour
     
     private float Analyze(List<Vector3> accel, List<Vector3> gyro) {
         
-       for (int i = 0; i < gyro.Count; i++)
-       {
-           Debug.Log("GyroList  " + gyro[i].ToString("F4"));
-       }
+       //for (int i = 0; i < gyro.Count; i++)
+       //{
+       //    Debug.Log("GyroList  " + gyro[i].ToString("F4"));
+       //}
 
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
+
+        for (int i = 0; i < meanGyro.Count; i++)
+        {
+            Debug.Log("GyroList  " + meanGyro[i].ToString("F4"));
+        }
 
         Vector3 deltaAccel = Vector3.zero;
         Vector3 deltaGyro = Vector3.zero;
