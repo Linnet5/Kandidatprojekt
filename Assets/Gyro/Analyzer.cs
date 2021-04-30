@@ -187,14 +187,14 @@ public class Analyzer : MonoBehaviour
             deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (-meanGyro[i].x / xMax));
             deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (-meanGyro[i].y / yMax));
             deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (-meanGyro[i].z / zMax));
-            Debug.Log("meanGyro/xMax  " + (meanGyro[i].x / xMax));
+            Debug.Log("meanGyro/yMax  " + (-meanGyro[i].y / yMax));
             //Debug.Log("meanGyro  " + meanGyro[i].x);
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
         
         
         //@elin ska vi inte jämföra x nu? Kanske ska va y
-        return deltaGyro.x;
+        return deltaGyro.y;
 
     }
 
