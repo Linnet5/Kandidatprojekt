@@ -145,10 +145,10 @@ public class Analyzer : MonoBehaviour
         meanAccel = CreateMeans(accel);
         meanGyro = CreateMeans(gyro);
 
-        for (int i = 0; i < meanGyro.Count; i++)
-        {
-            Debug.Log("GyroList  " + meanGyro[i].ToString("F4"));
-        }
+        //for (int i = 0; i < meanGyro.Count; i++)
+        //{
+        //    Debug.Log("GyroList  " + meanGyro[i].ToString("F4"));
+        //}
 
         Vector3 deltaAccel = Vector3.zero;
         Vector3 deltaGyro = Vector3.zero;
@@ -187,7 +187,7 @@ public class Analyzer : MonoBehaviour
             deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (meanGyro[i].x / xMax));
             deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
             deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
-            //Debug.Log("meanGyro/xMax  " + (meanGyro[i].x / xMax));
+            Debug.Log("meanGyro/xMax  " + (meanGyro[i].x / xMax));
             //Debug.Log("meanGyro  " + meanGyro[i].x);
         }
         deltaGyro /= (float)(meanReferenceGyro.Count);
