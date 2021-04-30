@@ -131,7 +131,7 @@ public class Goal : MonoBehaviour
             //Display results
             gameCanvas.SetActive(false);
             resultsCanvas.SetActive(true);
-            bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n ok: " + ok + "\n miss: " + miss + "\n \n SCORE ");
+            bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n Nice: " + ok + "\n Miss: " + miss + "\n \n SCORE ");
             scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" +gmScript.score / attemptGoal);
             xp = (100 * great) + (10 * ok);
             level = xp / 100;
