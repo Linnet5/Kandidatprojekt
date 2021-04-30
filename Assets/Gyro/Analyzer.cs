@@ -200,7 +200,7 @@ public class Analyzer : MonoBehaviour
 
         GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + deltaGyro.y);
 
-        if (1-deltaGyro.y > 0.85) {
+        if (1-deltaGyro.y > 0.5f) {
             return deltaGyro.x;
         }
 
