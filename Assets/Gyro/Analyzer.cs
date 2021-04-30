@@ -198,8 +198,14 @@ public class Analyzer : MonoBehaviour
         deltaGyro.y /= 10.0f;
         deltaGyro.z /= (float)(meanReferenceGyro.Count);
 
+        if (1-deltaGyro.y > 0.85) {
+            return deltaGyro.x;
+        }
+
+        return 0;
+
         //@elin ska vi inte jämföra x nu? Kanske ska va y
-        return deltaGyro.y;
+        
 
     }
 
