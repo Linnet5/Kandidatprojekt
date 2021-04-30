@@ -53,7 +53,7 @@ public class Analyzer : MonoBehaviour
         meanReferenceAccel = new List<Vector3>();
         meanReferenceGyro = new List<Vector3>();
 
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
+        //Screen.orientation = ScreenOrientation.LandscapeLeft;
         //Read TextAssets with two loops
         //string filePath = "Assets/Resources/Reference Moves/Squat/";
         TextAsset gyro = Resources.Load("Reference Moves/Backlift/meanReferenceGyro") as TextAsset;
