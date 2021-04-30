@@ -137,7 +137,7 @@ public class Goal : MonoBehaviour
         //GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
 
         //@elin kan behöva ändra accuracy
-        if (accuracy > 0.85f)
+        if (accuracy > 0.75f)
         {
             //Successful rep
             Debug.Log("Greate!!");
@@ -149,7 +149,7 @@ public class Goal : MonoBehaviour
                // audioSource.PlayOneShot(greatSound);
             }
         }
-        else if (accuracy > 0.73f)
+        else if (accuracy > 0.60f)
         {
             //ok rep
             Debug.Log("Ok!");
