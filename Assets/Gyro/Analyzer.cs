@@ -53,6 +53,7 @@ public class Analyzer : MonoBehaviour
         meanReferenceAccel = new List<Vector3>();
         meanReferenceGyro = new List<Vector3>();
 
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
         //Screen.orientation = ScreenOrientation.LandscapeLeft;
         //Read TextAssets with two loops
         //string filePath = "Assets/Resources/Reference Moves/Squat/";
@@ -155,6 +156,7 @@ public class Analyzer : MonoBehaviour
 
         float xMax = Mathf.Epsilon;
         float yMax = Mathf.Epsilon;
+        float yRefMax = Mathf.Epsilon;
         float zMax = Mathf.Epsilon;
 
         for (int i = 0; i < meanGyro.Count; i++)
@@ -165,11 +167,17 @@ public class Analyzer : MonoBehaviour
                 xMax = Mathf.Abs(meanGyro[i].x);
             }
 
-            if (Mathf.Abs(meanGyro[i].y) > yMax)
-            {
-                yMax = Mathf.Abs(meanGyro[i].y);
+            if (i < 10) {
+                if (Mathf.Abs(meanGyro[i].y) > yMax)
+                {
+                    yMax = Mathf.Abs(meanGyro[i].y);
+                }
+                if (Mathf.Abs(meanReferenceGyro[i].y) > yRefMax)
+                {
+                    yRefMax = Mathf.Abs(meanReferenceGyro[i].y);
+                }
             }
-
+            
             if (Mathf.Abs(meanGyro[i].z) > zMax)
             {
                 zMax = Mathf.Abs(meanGyro[i].z);
@@ -188,10 +196,11 @@ public class Analyzer : MonoBehaviour
             deltaGyro.x += Mathf.Abs(meanReferenceGyro[i].x - (-meanGyro[i].x / xMax));
             if (i < 10)
             {
-                deltaGyro.y += Mathf.Abs(meanReferenceGyro[i].y - (meanGyro[i].y / yMax));
+                deltaGyro.y += Mathf.Abs((meanReferenceGyro[i].y/yRefMax) - (meanGyro[i].y / yMax));
+                Debug.Log(meanReferenceGyro[i].y / yRefMax);
             }
             deltaGyro.z += Mathf.Abs(meanReferenceGyro[i].z - (meanGyro[i].z / zMax));
-            Debug.Log("meanGyro/yMax  " + (meanGyro[i].y / yMax));
+            //Debug.Log("meanGyro/yMax  " + (meanGyro[i].y / yMax));
             //Debug.Log("meanGyro  " + meanGyro[i].x);
         }
         deltaGyro.x /= (float)(meanReferenceGyro.Count);
@@ -206,8 +215,6 @@ public class Analyzer : MonoBehaviour
 
         return 1.0f;
 
-        //@elin ska vi inte jämföra x nu? Kanske ska va y
-        
 
     }
 
