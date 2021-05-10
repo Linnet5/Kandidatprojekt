@@ -312,10 +312,11 @@ mnZ = mnZ * (1/theRefZMax);
 
 delta = sum(abs(mnX-accelX_25))/50;
 
-scatter(t,accelX_25); ylim([-1,1]);
-plot(t,mnX);
-%plot(t,mnX-delta);
-%plot(t,mnX+delta);
+%%scatter(t,accelX_25); 
+ylim([-1,1]);
+plot(t,mnX); xlabel('Medelvärde'); ylabel('Amplitud');
+plot(t,mnX-delta);
+plot(t,mnX+delta);
 
 mnTOT(:,1) = mnX;
 mnTOT(:,2) = mnY;
