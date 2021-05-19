@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 2;
+    private const int attemptGoal = 10;
 
     private int repProgress = 0;
     private int attempts = 0;

@@ -173,15 +173,23 @@ public class PetResultScreen : MonoBehaviour
                 xp = PlayerPrefs.GetInt("pet1Xp");
                 level = PlayerPrefs.GetInt("pet1Level");
                 xp += addedXp;
-                if (xp >= (450 + level * 50) && level < 15)
+                if (xp >= (300 + level * 30) && level < 10)
                 {
-                    xp -= (450 + level * 50);
-                    IncreaseLevel(1);
+                    while (xp >= (300 + level * 30))
+                    {
+                        xp -= (300 + level * 30);
+                        IncreaseLevel(1);
+                        level = PlayerPrefs.GetInt("pet1Level");
+                    }
                 }
-                else if (xp >= (750 + level * 50))
+                else if (xp >= (500 + level * 30))
                 {
-                    xp -= (750 + level * 50);
-                    IncreaseLevel(1);
+                    while (xp >= (500 + level * 30))
+                    {
+                        xp -= (500 + level * 30);
+                        IncreaseLevel(1);
+                        level = PlayerPrefs.GetInt("pet1Level");
+                    }
                 }
                 PlayerPrefs.SetInt("pet1Xp", xp);
                 break;
@@ -190,16 +198,26 @@ public class PetResultScreen : MonoBehaviour
                 xp = PlayerPrefs.GetInt("pet2Xp");
                 level = PlayerPrefs.GetInt("pet2Level");
                 xp += addedXp;
-                if (xp >= (300 + level * 30) && level < 10)
+
+                if (xp >= (450 + level * 50) && level < 15)
                 {
-                    xp -= (300 + level * 30);
-                    IncreaseLevel(2);
+                    while (xp >= (450 + level * 50))
+                    {
+                        xp -= (450 + level * 50);
+                        IncreaseLevel(2);
+                        level = PlayerPrefs.GetInt("pet2Level");
+                    }
                 }
-                else if (xp >= (500 + level * 30))
+                else if (xp >= (750 + level * 50))
                 {
-                    xp -= (500 + level * 30);
-                    IncreaseLevel(2);
+                    while (xp >= (750 + level * 50))
+                    {
+                        xp -= (750 + level * 50);
+                        IncreaseLevel(2);
+                        level = PlayerPrefs.GetInt("pet2Level");
+                    }
                 }
+
                 PlayerPrefs.SetInt("pet2Xp", xp);
                 break;
 
@@ -209,13 +227,21 @@ public class PetResultScreen : MonoBehaviour
                 xp += addedXp;
                 if (xp >= (400 + level * 40) && level < 12)
                 {
-                    xp -= (400 + level * 40);
-                    IncreaseLevel(3);
+                    while(xp >= (400 + level * 40))
+                    {
+                        xp -= (400 + level * 40);
+                        IncreaseLevel(3);
+                        level = PlayerPrefs.GetInt("pet3Level");
+                    }
                 }
                 else if (xp >= (600 + level * 40))
                 {
-                    xp -= (600 + level * 40);
-                    IncreaseLevel(3);
+                    while(xp >= (600 + level * 40))
+                    {
+                        xp -= (600 + level * 40);
+                        IncreaseLevel(3);
+                        level = PlayerPrefs.GetInt("pet3Level");
+                    }
                 }
                 PlayerPrefs.SetInt("pet3Xp", xp);
                 break;
