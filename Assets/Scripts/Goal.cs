@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 10;
+    private const int attemptGoal = 2;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -36,6 +36,8 @@ public class Goal : MonoBehaviour
     [SerializeField] private bool showTips;
     [SerializeField] private GameObject petxp;
     [SerializeField] private GameObject petlevel;
+
+    [SerializeField] private GameObject petObject;
 
 
     // Start is called before the first frame update
@@ -135,11 +137,7 @@ public class Goal : MonoBehaviour
             resultsCanvas.SetActive(true);
             bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n Nice: " + ok + "\n Miss: " + miss + "\n \n SCORE ");
             scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" +gmScript.score / attemptGoal);
-            xp = (100 * great) + (10 * ok);
-            level = xp / 100;
-            xp -= level * 100;
-            petlevel.GetComponent<TMPro.TextMeshProUGUI>().SetText("Level: 1" + " + " + level);
-            petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/100");
+            progressPet();
         }
 
         repProgress = 0;
@@ -151,6 +149,63 @@ public class Goal : MonoBehaviour
     {
         yield return new WaitForSeconds(s);
         calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(4); //unpauses player movement
+    }
+
+    void progressPet()
+    {
+        if(bool.Parse(PlayerPrefs.GetString("pet1Chosen")))
+        {
+            int oldLvl = PlayerPrefs.GetInt("pet1Level");
+            xp = (100 * great) + (10 * ok);
+
+            xp = petObject.GetComponent<PetResultScreen>().IncreaseXp(1 ,xp);
+            petlevel.GetComponent<TMPro.TextMeshProUGUI>().SetText("Level: " + oldLvl + " + " + (PlayerPrefs.GetInt("pet1Level") - oldLvl));
+
+            if(bool.Parse(PlayerPrefs.GetString("pet1Upgraded")))
+            {
+                petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (750 + PlayerPrefs.GetInt("pet1Level") * 50));
+            }
+            else
+            {
+                petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (450 + PlayerPrefs.GetInt("pet1Level") * 50));
+            }
+        }
+
+        else if (bool.Parse(PlayerPrefs.GetString("pet2Chosen")))
+        {
+            int oldLvl = PlayerPrefs.GetInt("pet2Level");
+            xp = (100 * great) + (10 * ok);
+            level = xp / 100;
+
+            xp = petObject.GetComponent<PetResultScreen>().IncreaseXp(2, xp);
+            petlevel.GetComponent<TMPro.TextMeshProUGUI>().SetText("Level: " + oldLvl + " + " + (PlayerPrefs.GetInt("pet2Level") - oldLvl));
+
+            if (bool.Parse(PlayerPrefs.GetString("pet2Upgraded")))
+            {
+                petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (500 + PlayerPrefs.GetInt("pet2Level") * 30));
+            }
+            else
+            {
+                petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (300 + PlayerPrefs.GetInt("pet2Level") * 30));
+            }
+        }
+        else if (bool.Parse(PlayerPrefs.GetString("pet3Chosen")))
+        {
+            int oldLvl = PlayerPrefs.GetInt("pet3Level");
+            xp = (100 * great) + (10 * ok);
+            level = xp / 100;
+
+            xp = petObject.GetComponent<PetResultScreen>().IncreaseXp(3, xp);
+            petlevel.GetComponent<TMPro.TextMeshProUGUI>().SetText("Level: " + oldLvl + " + " + (PlayerPrefs.GetInt("pet3Level") - oldLvl));
+            if (bool.Parse(PlayerPrefs.GetString("pet2Upgraded")))
+            {
+                petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (600 + PlayerPrefs.GetInt("pet3Level") * 40));
+            }
+            else
+            {
+                petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (400 + PlayerPrefs.GetInt("pet3Level") * 40));
+            }
+        }
     }
 }
     

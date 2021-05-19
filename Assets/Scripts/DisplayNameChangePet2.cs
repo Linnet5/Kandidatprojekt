@@ -14,7 +14,6 @@ public class DisplayNameChangePet2 : MonoBehaviour
     void Start()
     {
         nameInput = GameObject.Find("NameInputPet2");
-        Debug.Log(nameInput);
     }
 
     // Update is called once per frame

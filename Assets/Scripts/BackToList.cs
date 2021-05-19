@@ -31,8 +31,12 @@ public class BackToList : MonoBehaviour
         petList.SetActive(true);
         gameObject.SetActive(false);
         back.SetActive(true);
-        pet1.GetComponent<Pet1>().DisplayName();
-        pet2.GetComponent<Pet2>().DisplayName();
-        pet3.GetComponent<Pet3>().DisplayName();
+
+        if (bool.Parse(PlayerPrefs.GetString("pet1Unlocked")))
+            pet1.GetComponent<Pet1>().DisplayName();
+        if (bool.Parse(PlayerPrefs.GetString("pet2Unlocked")))
+            pet2.GetComponent<Pet2>().DisplayName();
+        if (bool.Parse(PlayerPrefs.GetString("pet3Unlocked")))
+            pet3.GetComponent<Pet3>().DisplayName();
     }
 }

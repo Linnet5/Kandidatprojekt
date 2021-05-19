@@ -533,6 +533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 240173512}
+  - component: {fileID: 240173513}
   m_Layer: 0
   m_Name: Pet
   m_TagString: Untagged
@@ -557,6 +558,24 @@ Transform:
   m_Father: {fileID: 186247338}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &240173513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240173511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49c4ed7e051e954b82d9ee35ec11b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pet1Sprite: {fileID: 2800000, guid: dfeacb47dc50f254883b713456b6e85d, type: 3}
+  pet1UpgradedSprite: {fileID: 2800000, guid: 9c25bd9a57851ad4ca226240c2ea20fe, type: 3}
+  pet2Sprite: {fileID: 2800000, guid: 6d0d922e76efc8c4591de38243036a9b, type: 3}
+  pet2UpgradedSprite: {fileID: 2800000, guid: f321d9c538e0adf44b8caf1b9d759ae4, type: 3}
+  pet3Sprite: {fileID: 2800000, guid: 3a461ce5162c8df428ea5f87cc8e9b15, type: 3}
+  pet3UpgradedSprite: {fileID: 2800000, guid: 65c0ab03dde4d004fbbe2fd1a1b763fd, type: 3}
 --- !u!1 &321186137
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,7 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945311484d38075428d0c4bea256cc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: UserTestThankYou
+  sceneName: TitleScreen
 --- !u!4 &1131639765
 Transform:
   m_ObjectHideFlags: 0
@@ -2921,6 +2940,7 @@ MonoBehaviour:
   showTips: 0
   petxp: {fileID: 1698448554}
   petlevel: {fileID: 1779639681}
+  petObject: {fileID: 240173511}
 --- !u!65 &1319711044
 BoxCollider:
   m_ObjectHideFlags: 0

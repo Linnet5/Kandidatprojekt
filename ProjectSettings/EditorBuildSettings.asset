@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TitleScreen.unity
     guid: 06d4cf11dac72c241ab6fa34afea6f9a
   - enabled: 1
@@ -26,10 +26,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BackLiftUserTest.unity
     guid: 0db474ee4b5664e4fa063931cd372f91
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UserTestThankYou.unity
     guid: b463be7210d7d0943b423a749b59433a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pet Menu.unity
     guid: 8195ee289c31bdb4a9336df3bf6de83d
   - enabled: 0

@@ -23,11 +23,11 @@ public class AddXpToAllPets : MonoBehaviour
     }
 
     public void AddXpToAll() {
-        pet1Inspect.GetComponent<Pet1>().IncreaseXp(1000);
-        // pet2Inspect.GetComponent<Pet2>().IncreaseXp(1000);
-        // pet3Inspect.GetComponent<Pet3>().IncreaseXp(1000);
-        pet1.GetComponent<Pet1>().IncreaseXp(1000);
-        // pet2.GetComponent<Pet2>().IncreaseXp(1000);
-        // pet3.GetComponent<Pet3>().IncreaseXp(1000);
+        //pet1Inspect.GetComponent<Pet1>().IncreaseXp(1000);
+        //pet2Inspect.GetComponent<Pet2>().IncreaseXp(1000);
+        //pet3Inspect.GetComponent<Pet3>().IncreaseXp(1000);
+        //pet1.GetComponent<Pet1>().IncreaseXp(1000);
+        //pet2.GetComponent<Pet2>().IncreaseXp(1000);
+        //pet3.GetComponent<Pet3>().IncreaseXp(1000);
     }
 }

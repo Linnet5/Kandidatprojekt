@@ -14,7 +14,6 @@ public class DisplayNameChange : MonoBehaviour
     void Start()
     {
         nameInput = GameObject.Find("NameInputPet1");
-        Debug.Log(nameInput);
     }
 
     // Update is called once per frame
@@ -29,6 +28,5 @@ public class DisplayNameChange : MonoBehaviour
         txt = displayName.GetComponent<TextMeshProUGUI>();
         txt.SetText(nameInputField.text);
         PlayerPrefs.SetString("pet1Name", nameInputField.text);
-        Debug.Log(PlayerPrefs.GetString("pet1Name"));
     }
 }
