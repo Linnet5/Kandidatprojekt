@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private const int attemptGoal = 1;
+    private int attemptGoal = 1;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -49,6 +49,8 @@ public class Goal : MonoBehaviour
 
         gmScript = gm.GetComponent<GameMaster>();
         boss = (PlayerPrefs.GetInt("currentExcersize") == 4);
+        if (boss)
+            attemptGoal += (attemptGoal % 2);
     }
 
     // Update is called once per frame
