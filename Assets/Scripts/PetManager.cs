@@ -58,11 +58,11 @@ public class PetManager : MonoBehaviour
         {
             PlayerPrefs.SetString("pet3Unlocked", "false");
         }
-        
+        /*
         if (bool.Parse(PlayerPrefs.GetString("pet1FirstTimeUnlock", "false")))
         {
             Debug.Log(PlayerPrefs.GetString("pet1FirstTimeUnlock"));
-            PlayerPrefs.SetString("pet1Name", "Pet 1");
+            PlayerPrefs.SetString("pet1Name", "Mole");
             PlayerPrefs.SetInt("pet1Level", 1);
             PlayerPrefs.SetInt("pet1Xp", 0);
             PlayerPrefs.SetInt("pet1Atk", 5);
@@ -75,9 +75,10 @@ public class PetManager : MonoBehaviour
             PlayerPrefs.SetString("pet1Upgraded", "false");
             PlayerPrefs.SetString("pet1FirstTimeUnlock", "false");
         }
+        */
         if (bool.Parse(PlayerPrefs.GetString("pet2FirstTimeUnlock", "false")))
         {
-            PlayerPrefs.SetString("pet2Name", "Pet 2");
+            PlayerPrefs.SetString("pet2Name", "Slime");
             PlayerPrefs.SetInt("pet2Level", 1);
             PlayerPrefs.SetInt("pet2Xp", 0);
             PlayerPrefs.SetInt("pet2Atk", 4);
@@ -92,7 +93,7 @@ public class PetManager : MonoBehaviour
         }
         if (bool.Parse(PlayerPrefs.GetString("pet3FirstTimeUnlock", "false")))
         {
-            PlayerPrefs.SetString("pet3Name", "Pet 3");
+            PlayerPrefs.SetString("pet3Name", "Tail");
             PlayerPrefs.SetInt("pet3Level", 1);
             PlayerPrefs.SetInt("pet3Xp", 0);
             PlayerPrefs.SetInt("pet3Atk", 9);

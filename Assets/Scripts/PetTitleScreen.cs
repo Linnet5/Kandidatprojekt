@@ -10,6 +10,25 @@ public class PetTitleScreen : MonoBehaviour
 
     private void Awake()
     {
+        //THIS IF STATEMENT ONLY HAPPENS ON FIRST TIME APP STARTUP
+        if(bool.Parse(PlayerPrefs.GetString("firstTimeStartup", "true")))
+        {
+            PlayerPrefs.SetString("pet1Name", "Mole");
+            PlayerPrefs.SetInt("pet1Level", 1);
+            PlayerPrefs.SetInt("pet1Xp", 0);
+            PlayerPrefs.SetInt("pet1Atk", 5);
+            PlayerPrefs.SetInt("pet1Def", 3);
+            PlayerPrefs.SetInt("pet1Hp", 10);
+            PlayerPrefs.SetInt("pet1Mp", 10);
+            PlayerPrefs.SetString("pet1Chosen", "true");
+            PlayerPrefs.SetString("pet1Unlocked", "true");
+            PlayerPrefs.SetInt("pet1Id", 1);
+            PlayerPrefs.SetString("pet1Upgraded", "false");
+            PlayerPrefs.SetString("pet1FirstTimeUnlock", "false");
+
+            PlayerPrefs.SetString("firstTimeStartup", "false");
+        }
+
         animator = gameObject.GetComponent<Animator>();
 
         if (bool.Parse(PlayerPrefs.GetString("pet1Chosen", "true")))
