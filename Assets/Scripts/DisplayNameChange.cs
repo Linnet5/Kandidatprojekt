@@ -7,13 +7,12 @@ using TMPro;
 public class DisplayNameChange : MonoBehaviour
 {
     public GameObject displayName;
-    GameObject nameInput;
-    InputField nameInputField;
+    [SerializeField] GameObject nameInput;
+    TMP_InputField nameInputField;
     TextMeshProUGUI txt;
     // Start is called before the first frame update
     void Start()
     {
-        nameInput = GameObject.Find("NameInputPet1");
     }
 
     // Update is called once per frame
@@ -24,7 +23,7 @@ public class DisplayNameChange : MonoBehaviour
 
     public void changeName()
     {
-        nameInputField = nameInput.GetComponent<InputField>();
+        nameInputField = nameInput.GetComponent<TMP_InputField>();
         txt = displayName.GetComponent<TextMeshProUGUI>();
         txt.SetText(nameInputField.text);
         PlayerPrefs.SetString("pet1Name", nameInputField.text);
