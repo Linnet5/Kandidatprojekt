@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class Goal : MonoBehaviour
 {
@@ -25,7 +27,7 @@ public class Goal : MonoBehaviour
     public AudioClip greatJob;
     public AudioClip victory;
     public AudioClip tip;
-    public AudioSource audioSource; 
+    public AudioSource audioSource;
 
     private GameMaster gmScript;
 
@@ -55,7 +57,7 @@ public class Goal : MonoBehaviour
     {
         
     }
-
+    
     public void IncrementProgress()
     {
         repProgress++;
@@ -66,72 +68,150 @@ public class Goal : MonoBehaviour
         Debug.Log(repProgress);
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    attempts++;
+
+    //    if (repProgress == repGoal)
+    //    {
+    //        //Successful rep
+
+    //        gmScript.IncrementScore(500);
+    //        great++;
+    //        if (attempts != attemptGoal)
+    //        {
+    //            Vibration.Vibrate(100);
+    //            audioSource.PlayOneShot(greatSound);
+    //        }
+    //    }
+    //    else if (repProgress == repGoal - 1)
+    //    {
+    //        //ok rep
+    //        gmScript.IncrementScore(200);
+    //        ok++;
+    //        if (attempts != attemptGoal)
+    //        {
+    //            Vibration.Vibrate(50);
+    //            audioSource.PlayOneShot(okSound);
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //failed rep
+    //        miss++;
+    //        if (attempts != attemptGoal)
+    //        {
+    //            if (attempts - great == 5)
+    //            {
+    //                calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+    //                audioSource.PlayOneShot(tip);
+    //                StartCoroutine(SoundPlayed(7));
+
+
+    //            }
+
+    //            else
+    //            {
+    //                audioSource.PlayOneShot(missSound);
+    //            }
+    //        }
+    //    }
+        
+    //    if (attempts == attemptGoal)
+    //    {
+    //        //Win the game
+    //        audioSource.PlayOneShot(victory);
+    //        if (great >= 5)
+    //        {
+    //            audioSource.PlayOneShot(greatJob);
+    //        }
+    //        Vibration.Vibrate(1000);
+    //        calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+
+    //        //Display results
+    //        gameCanvas.SetActive(false);
+    //        resultsCanvas.SetActive(true);
+    //        bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n ok: " + ok + "\n miss: " + miss + "\n \n SCORE ");
+    //        scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" +gmScript.score / attemptGoal);
+    //    }
+
+    //    repProgress = 0;
+    //    calibrationParentObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);     
+
+    //}
+
+    public void SquatGame()
     {
         if(other.tag == "Player") { 
         attempts++;
 
-        if (repProgress == repGoal)
+        float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
+        Debug.Log("Accuracy = " + accuracy);
+
+        //GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + accuracy);
+
+        //@elin kan beh�va �ndra accuracy
+        if (accuracy > 0.75f)
         {
             //Successful rep
-            if (repGoal > 2)
-            {
-                gmScript.IncrementScore(500);
-            }
-            else
-            {
-                gmScript.IncrementScore(1000);
-            }
+            Debug.Log("Great!!");
+            gmScript.IncrementScore(500);
             great++;
             if (attempts != attemptGoal)
             {
-                Vibration.Vibrate(100);
-                audioSource.PlayOneShot(greatSound);
+               // Vibration.Vibrate(100);
+               // audioSource.PlayOneShot(greatSound);
             }
         }
-        else if (repProgress == repGoal - 1 && repProgress != 1)
+        else if (accuracy > 0.60f)
         {
             //ok rep
+            Debug.Log("Ok!");
             gmScript.IncrementScore(200);
             ok++;
             if (attempts != attemptGoal)
             {
-                Vibration.Vibrate(50);
-                audioSource.PlayOneShot(okSound);
+               // Vibration.Vibrate(50);
+               // audioSource.PlayOneShot(okSound);
             }
         }
         else
         {
             //failed rep
+            //Debug.Log("Miss");
             miss++;
             if (attempts != attemptGoal)
             {
-                if (attempts - great == 5 && showTips)
-                {
-                    calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
-                    audioSource.PlayOneShot(tip);
-                    StartCoroutine(SoundPlayed(7));
+
+               // audioSource.PlayOneShot(missSound);
+
+                //if (attempts - great == 5)
+                //{
+                //    calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+                //    audioSource.PlayOneShot(tip);
+                //    StartCoroutine(SoundPlayed(7));
 
 
-                }
+                //}
 
-                else
-                {
-                    audioSource.PlayOneShot(missSound);
-                }
+                //else
+                //{
+                //    audioSource.PlayOneShot(missSound);
+                //}
             }
         }
-        
+
         if (attempts == attemptGoal)
         {
             //Win the game
             audioSource.PlayOneShot(victory);
             if (great >= 5)
             {
-                audioSource.PlayOneShot(greatJob);
+               // audioSource.PlayOneShot(greatJob);
             }
-            Vibration.Vibrate(1000);
-            calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+           // Vibration.Vibrate(1000);
+            //calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
+            GameObject.Find("Calibration").GetComponent<Movement>().canMove = false;
 
             //Display results
             gameCanvas.SetActive(false);
@@ -146,6 +226,7 @@ public class Goal : MonoBehaviour
         }
 
     }
+
     IEnumerator SoundPlayed(int s)
     {
         yield return new WaitForSeconds(s);

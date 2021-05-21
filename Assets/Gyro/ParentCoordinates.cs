@@ -22,8 +22,8 @@ public class ParentCoordinates : MonoBehaviour
     {
         rotateIcon = GameObject.Find("counter-clockwise-icon");
 
-        if(rotateIcon.activeSelf)
-            rotateIcon.SetActive(false);
+        //if(rotateIcon.activeSelf)
+        //    rotateIcon.SetActive(false);
 
         StartCoroutine("Calibrate");
         initialYAngle = transform.rotation.y;
@@ -33,16 +33,17 @@ public class ParentCoordinates : MonoBehaviour
     IEnumerator Calibrate()
     {
         yield return new WaitForSeconds(3.0f);
-        gm = GameObject.Find("Spawned GyroManager").GetComponent<GyroManager>();
-        transform.LookAt(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
-        bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(instructionText);
-        rotateIcon.SetActive(true);
+        //gm = GameObject.Find("Spawned GyroManager").GetComponent<GyroManager>();
+        //transform.LookAt(new Vector3(target.transform.position.x, 0f, target.transform.position.z));
+        //bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
+        //    "Turn your phone counter-clockwise, put it against your chest and lay down. A countdown will indicate when the exercise is about to start.");
+        //rotateIcon.SetActive(true);
         StartCoroutine("StartExercise");
     }
 
     IEnumerator StartExercise()
     {
-        yield return new WaitForSeconds(10.0f);
+        //yield return new WaitForSeconds(10.0f);
         audioSource.PlayOneShot(three);
         yield return new WaitForSeconds(1.0f);
         audioSource.PlayOneShot(two);
@@ -53,7 +54,9 @@ public class ParentCoordinates : MonoBehaviour
 
         bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText(
         "CURRENTLY IN A TRAINING SESSION. REMEMBER TO HAVE THE PHONE IN THE CORRECT POSITION AND FOLLOW THE INSTRUCTIONS.");
-        rotateIcon.SetActive(false);
+        //bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: ");
+
+        //rotateIcon.SetActive(false);
         gameObject.GetComponent<Movement>().canMove = true;
     }
 }
