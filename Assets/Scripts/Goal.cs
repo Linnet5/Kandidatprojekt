@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Goal : MonoBehaviour
 {
-    private int attemptGoal = 1;
+    private int attemptGoal = 5;
 
     private int repProgress = 0;
     private int attempts = 0;
@@ -55,9 +55,9 @@ public class Goal : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    
+
     public void IncrementProgress()
     {
         repProgress++;
@@ -116,7 +116,7 @@ public class Goal : MonoBehaviour
     //            }
     //        }
     //    }
-        
+
     //    if (attempts == attemptGoal)
     //    {
     //        //Win the game
@@ -142,7 +142,6 @@ public class Goal : MonoBehaviour
 
     public void SquatGame()
     {
-        if(other.tag == "Player") { 
         attempts++;
 
         float accuracy = GameObject.Find("Analyzer").GetComponent<Analyzer>().GetResult();
@@ -159,8 +158,8 @@ public class Goal : MonoBehaviour
             great++;
             if (attempts != attemptGoal)
             {
-               // Vibration.Vibrate(100);
-               // audioSource.PlayOneShot(greatSound);
+                // Vibration.Vibrate(100);
+                // audioSource.PlayOneShot(greatSound);
             }
         }
         else if (accuracy > 0.60f)
@@ -171,8 +170,8 @@ public class Goal : MonoBehaviour
             ok++;
             if (attempts != attemptGoal)
             {
-               // Vibration.Vibrate(50);
-               // audioSource.PlayOneShot(okSound);
+                // Vibration.Vibrate(50);
+                // audioSource.PlayOneShot(okSound);
             }
         }
         else
@@ -183,7 +182,7 @@ public class Goal : MonoBehaviour
             if (attempts != attemptGoal)
             {
 
-               // audioSource.PlayOneShot(missSound);
+                // audioSource.PlayOneShot(missSound);
 
                 //if (attempts - great == 5)
                 //{
@@ -207,9 +206,9 @@ public class Goal : MonoBehaviour
             audioSource.PlayOneShot(victory);
             if (great >= 5)
             {
-               // audioSource.PlayOneShot(greatJob);
+                // audioSource.PlayOneShot(greatJob);
             }
-           // Vibration.Vibrate(1000);
+            // Vibration.Vibrate(1000);
             //calibrationParentObj.GetComponent<Movement>().SetMovementSpeed(0); //Pauses player movement
             GameObject.Find("Calibration").GetComponent<Movement>().canMove = false;
 
@@ -217,13 +216,12 @@ public class Goal : MonoBehaviour
             gameCanvas.SetActive(false);
             resultsCanvas.SetActive(true);
             bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("Great: " + great + "\n Nice: " + ok + "\n Miss: " + miss + "\n \n SCORE ");
-            scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" +gmScript.score / attemptGoal);
+            scoreText.GetComponent<TMPro.TextMeshProUGUI>().SetText("" + gmScript.score / attemptGoal);
             progressPet();
         }
 
         repProgress = 0;
         calibrationParentObj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
-        }
 
     }
 
@@ -235,15 +233,15 @@ public class Goal : MonoBehaviour
 
     void progressPet()
     {
-        if(bool.Parse(PlayerPrefs.GetString("pet1Chosen")))
+        if (bool.Parse(PlayerPrefs.GetString("pet1Chosen")))
         {
             int oldLvl = PlayerPrefs.GetInt("pet1Level");
             xp = (100 * great) + (10 * ok);
 
-            xp = petObject.GetComponent<PetResultScreen>().IncreaseXp(1 ,xp);
+            xp = petObject.GetComponent<PetResultScreen>().IncreaseXp(1, xp);
             petlevel.GetComponent<TMPro.TextMeshProUGUI>().SetText("Level: " + oldLvl + " + " + (PlayerPrefs.GetInt("pet1Level") - oldLvl));
 
-            if(bool.Parse(PlayerPrefs.GetString("pet1Upgraded")))
+            if (bool.Parse(PlayerPrefs.GetString("pet1Upgraded")))
             {
                 petxp.GetComponent<TMPro.TextMeshProUGUI>().SetText("Xp: " + xp + "/" + (750 + PlayerPrefs.GetInt("pet1Level") * 50));
             }
@@ -290,4 +288,4 @@ public class Goal : MonoBehaviour
         }
     }
 }
-    
+

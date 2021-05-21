@@ -207,7 +207,7 @@ public class Analyzer : MonoBehaviour
         deltaGyro.y /= 10.0f;
         deltaGyro.z /= (float)(meanReferenceGyro.Count);
 
-        GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + deltaGyro.y);
+       // GameObject.Find("Calibration").GetComponent<ParentCoordinates>().bodyText.GetComponent<TMPro.TextMeshProUGUI>().SetText("dE: " + deltaGyro.y);
 
         if (1-deltaGyro.y > 0.5f) {
             return deltaGyro.x;
