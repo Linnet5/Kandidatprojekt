@@ -21,6 +21,8 @@ public class PetResultScreen : MonoBehaviour
     [SerializeField] Texture pet3Sprite;
     [SerializeField] Texture pet3UpgradedSprite;
 
+    [SerializeField] GameObject orientationObject;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +37,8 @@ public class PetResultScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        orientationObject.GetComponent<aScreenOrientation>().DefaultOrientation();
+
         if(bool.Parse(PlayerPrefs.GetString("pet1Chosen")))
         {
             if (bool.Parse(PlayerPrefs.GetString("pet1Upgraded")))

@@ -169,7 +169,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135919004}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 06e9124cea5262f4c9027bf6aec7ef8a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: c2503af691c40e64f8324e319239874e, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1398,9 +1398,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The exercise is divided into multiple steps. Listen to the audio cues
-    and follow the video example above. If you do a step correctly, you will hear
-    a short beep, as shown in the video above.
+  m_text: 'Turn your phone counterclockwise.
+
+    Have the back of the phone against
+    your forehead.
+
+
+    The exercise is divided into multiple steps. Listen to the
+    audio cues and follow the video example above. If you do a step correctly, you
+    will hear a short beep, as shown in the video above.
 
 '
   m_isRightToLeft: 0

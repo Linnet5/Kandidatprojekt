@@ -729,6 +729,7 @@ MonoBehaviour:
   pet2UpgradedSprite: {fileID: 2800000, guid: f321d9c538e0adf44b8caf1b9d759ae4, type: 3}
   pet3Sprite: {fileID: 2800000, guid: 3a461ce5162c8df428ea5f87cc8e9b15, type: 3}
   pet3UpgradedSprite: {fileID: 2800000, guid: 65c0ab03dde4d004fbbe2fd1a1b763fd, type: 3}
+  orientationObject: {fileID: 2027021604}
 --- !u!1 &213256689
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,7 +3827,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -137.728, y: 276.9065}
+  m_AnchoredPosition: {x: -506.52, y: 276.9065}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1190341218
@@ -4362,7 +4363,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 360, y: 640}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -6031,6 +6032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orientation: 3
+  defaultOrientation: 1
 --- !u!4 &2027021606
 Transform:
   m_ObjectHideFlags: 0
