@@ -37,11 +37,11 @@ public class PetManager : MonoBehaviour
         pet3Button.SetActive(false);
 
         //RESET TO DEFAULT PLAYERPREFS IF UNCOMMENTED
-
+        //PlayerPrefs.GetString("firstTimeStartup", "true");
         //PlayerPrefs.SetString("pet2Unlocked", "false");
         //PlayerPrefs.SetString("pet3Unlocked", "false");
 
-        //PlayerPrefs.SetString("pet1FirstTimeUnlock", "true");
+        //PlayerPrefs.SetString("pet1FirstTimeUnlock", "false");
         //PlayerPrefs.SetString("pet2FirstTimeUnlock", "false");
         //PlayerPrefs.SetString("pet3FirstTimeUnlock", "false");
 
