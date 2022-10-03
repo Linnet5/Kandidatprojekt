@@ -11,8 +11,14 @@ At the end of each level, you might encounter a new friend to bring with you on 
 *(This project was developed as a bachelor project for Media Technology students at Linköping University. The game is not fully fledged with many different exercises, but rather at a proof of concept stage with only one exercise implemented. The project is scalable, and new exercises could be added by recording them into the reference database).*
 
 **Authors**
+
 Max Benecke
+
 Ruben Bromée
+
 Elin Djurberg
+
 Julius Halldan 
+
 Linus Karlsson
+
